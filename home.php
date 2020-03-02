@@ -43,8 +43,8 @@
             <div class="grid">
                 <img src="./img/chat-icon.png" alt="chat Icon">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
-                <img src="./img/heart-icon.png" alt="heart Icon">
-                <img src="./img/sleep-icon.png" alt="sleep Icon">
+                <img src="./img/heart-icon.png" alt="heart Icon"> <a href="/E-Health-System/healthDiagram.php?type=heart_rate">Heart</a>
+                <img src="./img/sleep-icon.png" alt="sleep Icon"> <a href="/E-Health-System/healthDiagram.php?type=hours_slept">Sleep</a>
                 <img src="./img/info-icon.png" alt="info Icon">
             </div>
 		</div>

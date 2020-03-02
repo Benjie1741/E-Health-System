@@ -1,12 +1,12 @@
 <?php
   require('includes/conn.inc.php');
+  require('includes/functions.inc.php');
 
-  $type = "heart_rate"; //NEEDS TO CHANGE DEPENDING ON WHAT YOU CLICK
+  $sType = safeString($_GET['type']); //NEEDS TO CHANGE DEPENDING ON WHAT YOU CLICK
   $user_id = "1";       //CHANGES DEPENDING ON USER LOGGED IN
 
-  $sql = "SELECT $type FROM healthData WHERE user_id = $user_id";
+  $sql = "SELECT $sType FROM healthData WHERE user_id = $user_id";
   $stmt = $pdo->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -47,19 +47,18 @@
 
 <!-- Main body -->
 <body>
-    <div id="container">
-        <h1 style="text-align:center">Hello world</h1>
+    <div style="text-align:center" id="container">
+        <h1>Hello world</h1>
 
         <?php
-				while($row =$stmt->fetchObject()){
-          // echo "<p>$row->id</p>";
-          // echo "<p>$row->user_id</p>";
-          // echo "<p>$row->doctor_id</p>";
-          echo "<p>$row->heart_rate</p>";
-          // echo "<p>$row->hours_slept</p>";
-          // echo "<p>$row->exercise_done</p>";
-          // echo "<p>$row->exercise_time</p>";
-          // echo "<p>$row->date</p>";
+        if($sType == "heart_rate"){
+				  while($row =$stmt->fetchObject()){
+            echo "<p> Heart Rate: $row->heart_rate </p>"; 
+          }
+        } elseif ($sType == "hours_slept") {
+          while($row =$stmt->fetchObject()){
+            echo "<p> Hours Slept: $row->hours_slept </p>";
+          }
         }
         ?>
         
