@@ -38,12 +38,23 @@
     <div id="container">
         <h1 style="text-align:center">Hello world</h1>
 
+        <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
-                <img src="./img/chat-icon.png" alt="chat Icon">
+                
+                <a href="/E-Health-System/healthDiagram.php?type=heart_rate">
+                <img src="./img/heart-icon.png" alt="heart Icon">
+                </a>
+
+                <a href="/E-Health-System/healthDiagram.php?type=exercise_done">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
-                <img src="./img/heart-icon.png" alt="heart Icon"> <a href="/E-Health-System/healthDiagram.php?type=heart_rate">Heart</a>
-                <img src="./img/sleep-icon.png" alt="sleep Icon"> <a href="/E-Health-System/healthDiagram.php?type=hours_slept">Sleep</a>
+                </a>
+
+                <a href="/E-Health-System/healthDiagram.php?type=hours_slept">
+                <img src="./img/sleep-icon.png" alt="heart Icon">
+                </a>
+
+                <img src="./img/chat-icon.png" alt="chat Icon">
                 <img src="./img/info-icon.png" alt="info Icon">
             </div>
 		</div>

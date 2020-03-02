@@ -5,7 +5,12 @@
   $sType = safeString($_GET['type']); //Changes depending on what you click
   $user_id = "1";                     //NEEDS to change depending on the logged in user
 
-  $sql = "SELECT $sType FROM healthData WHERE user_id = $user_id";
+  if ($sType != "exercise_done"){
+    $sql = "SELECT $sType FROM healthData WHERE user_id = $user_id";
+  } else {
+    $sql = "SELECT $sType, exercise_time FROM healthData WHERE user_id = $user_id";
+  }
+  
   $stmt = $pdo->query($sql);
 ?>
 
@@ -48,16 +53,21 @@
 <body>
     <div style="text-align:center" id="container">
         <h1>Hello world</h1>
-
+        <br>
         <?php
         if($sType == "heart_rate"){
 				  while($row =$stmt->fetchObject()){
-            echo "<p> Heart Rate: $row->heart_rate </p>"; 
+            echo "<p> Heart Rate: <b> $row->heart_rate </b> </p>"; 
           }
         } elseif ($sType == "hours_slept") {
           while($row =$stmt->fetchObject()){
-            echo "<p> Hours Slept: $row->hours_slept </p>";
+            echo "<p> Hours Slept: <b> $row->hours_slept </b> </p>";
           }
+        } elseif ($sType == "exercise_done") {
+            while($row =$stmt->fetchObject()){
+              echo "<p> Exercise Name: <b> $row->exercise_done </b> --
+                        Time: <b> $row->exercise_time </b> </p>";
+            }
         }
         ?>
         
@@ -66,7 +76,7 @@
 </body>
 
 <footer style="padding-top:3%" class="container-fluid text-center">
-    <br> <br>
+    <br>
     <p>Copyright &copy; 2020</p>
     <p>Footer Text</p>
 </footer>
