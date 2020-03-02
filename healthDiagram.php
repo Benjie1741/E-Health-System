@@ -10,7 +10,6 @@
   } else {
     $sql = "SELECT $sType, exercise_time FROM healthData WHERE user_id = $user_id";
   }
-  
   $stmt = $pdo->query($sql);
 ?>
 
@@ -54,25 +53,25 @@
     <div style="text-align:center" id="container">
         <h1>Hello world</h1>
         <br>
-        <?php
+
+        <!-- PHP for displaying the raw data -->
+        <?php 
         if($sType == "heart_rate"){
 				  while($row =$stmt->fetchObject()){
-            echo "<p> Heart Rate: <b> $row->heart_rate </b> </p>"; 
+            echo "<p> Heart Rate: <b> $row->heart_rate </b></p>"; 
           }
         } elseif ($sType == "hours_slept") {
           while($row =$stmt->fetchObject()){
-            echo "<p> Hours Slept: <b> $row->hours_slept </b> </p>";
+            echo "<p> Hours Slept: <b> $row->hours_slept </b></p>"; 
           }
         } elseif ($sType == "exercise_done") {
             while($row =$stmt->fetchObject()){
               echo "<p> Exercise Name: <b> $row->exercise_done </b> --
-                        Time: <b> $row->exercise_time </b> </p>";
+                        Time: <b> $row->exercise_time </b></p>"; 
             }
-        }
-        ?>
-        
-    </div>
-   
+        }?>
+    
+  </div>
 </body>
 
 <footer style="padding-top:3%" class="container-fluid text-center">
