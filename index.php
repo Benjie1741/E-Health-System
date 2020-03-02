@@ -1,3 +1,35 @@
+<?php 
+// #includes
+require('includes/conn.inc.php');
+
+
+  session_start();
+  $found=false;
+  if($_SESSION["login"]==1){
+    $found=true;
+  }
+  if($found==false){
+    header("Location: ../eHealth/login.php");
+  }
+
+if (isset($_GET['search'])){
+  $searchTerm = "%" . $_GET['search'] . "%";
+  $sql= "SELECT * FROM items
+        WHERE (name LIKE :search OR price LIKE :search)"; /* could add genre */
+  $stmt2 = $pdo->prepare($sql);
+  $stmt2->bindParam(':search', $searchTerm, PDO::PARAM_STR);
+  $stmt2->execute();
+}
+
+
+ini_set('display_errors', 1);
+
+//to display all the images
+$sql = "SELECT * FROM items";
+$stmt = $pdo->query($sql);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +93,7 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>
