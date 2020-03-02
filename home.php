@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Index</title>
+  <title>ARJ - Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -26,8 +26,8 @@
       <!-- Desktop navbar -->
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/E-Health-System/index.html">Index</a></li>
-          <li><a href="/E-Health-System/home.php">Home</a></li>
+          <li><a href="/E-Health-System/index.html">Index</a></li>
+          <li class="active"><a href="/E-Health-System/home.php">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Projects</a></li>
           <li><a href="#">Contact</a></li>
