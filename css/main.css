@@ -1,1 +1,46 @@
 /* main */
+
+#container {
+	max-width: auto;
+	/* 1366x768	16:9*/
+	margin:auto;
+}
+
+/** PAGE */
+
+#page {
+	overflow: hidden;
+	display:flex;
+	width: 1100px;
+	margin: 0px 25x;
+	padding: 50px 0px;
+}
+
+/* CONTENT */
+
+.content{ 
+	display: flex;
+	box-sizing: border-box;
+}
+
+#content h2 {
+	font-size: 2.10em;
+}
+
+/* Boxes with info */
+
+.box {
+	display:flex;
+	margin: 0px 50px;
+	padding: 50px 0px;
+}
+
+.box .box {
+	width: 320px;
+	margin-right:40px;
+}
+
+.grid {
+	padding: 5px; 
+	width: 25%;
+}

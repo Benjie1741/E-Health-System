@@ -36,36 +36,22 @@
 
 <!-- Main body -->
 <body>
-  <div class="container-fluid text-center">
-    <div class="row content">
+    <div id="container">
+        <h1 style="text-align:center">Hello world</h1>
 
-      <div class="col-sm-8 text-left">
-        <h1>Welcome</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <hr>
-        <h3>Test</h3>
-        <p>Lorem ipsum...</p>
-      </div>
+        <div class="imgGrid">
 
-      <div class="col-sm-2 sidenav">
-        <div class="well">
-          <p>ADS</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
-      </div>
+		</div>
 
     </div>
-  </div>
+   
 
-  <footer class="container-fluid text-center">
-    <p>Footer Text</p>
-  </footer>
 </body>
+
+<footer class="container-fluid text-center">
+    <br> <br>
+    <p>Copyright &copy; 2020</p>
+    <p>Footer Text</p>
+</footer>
 
 </html>
