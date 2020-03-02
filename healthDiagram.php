@@ -2,8 +2,8 @@
   require('includes/conn.inc.php');
   require('includes/functions.inc.php');
 
-  $sType = safeString($_GET['type']); //NEEDS TO CHANGE DEPENDING ON WHAT YOU CLICK
-  $user_id = "1";       //CHANGES DEPENDING ON USER LOGGED IN
+  $sType = safeString($_GET['type']); //Changes depending on what you click
+  $user_id = "1";                     //NEEDS to change depending on the logged in user
 
   $sql = "SELECT $sType FROM healthData WHERE user_id = $user_id";
   $stmt = $pdo->query($sql);
@@ -36,7 +36,6 @@
         <ul class="nav navbar-nav">
           <li><a href="/E-Health-System/index.html">Index</a></li>
           <li><a href="/E-Health-System/home.php">Home</a></li>
-          <li class="active"><a href="/E-Health-System/healthDiagram.php">TEMP</a></li>
           <li><a href="#">Projects</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -64,7 +63,6 @@
         
     </div>
    
-
 </body>
 
 <footer style="padding-top:3%" class="container-fluid text-center">
