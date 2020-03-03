@@ -200,7 +200,7 @@ hr {
 </style>
 <body>
 
-<h2>Modal Signup Form</h2>
+<h2>Patient Signup Form</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
 
@@ -208,7 +208,7 @@ hr {
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form  action="insert.php"  method="post">
     <div class="container">
-      <h1>Sign Up</h1>
+      <h1>Patient Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="name"><b>Name</b></label>

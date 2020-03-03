@@ -54,12 +54,12 @@ try {
     $mail->send();
     echo 'Message has been sent';
 
-    header("Location: ../eHealth/login.php");
+    header("Location: ../eHealth/index.php");
 
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 
-    header("Location: ../eHealth/login.php");
+    header("Location: ../eHealth/index.php");
 }
 
 }
