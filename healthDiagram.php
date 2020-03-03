@@ -6,7 +6,7 @@
   $user_id = "1";                     //NEEDS to change depending on the logged in user
 
   if ($sType != "exercise_done"){
-    $sql = "SELECT $sType, date_stored FROM healthData WHERE user_id = $user_id";
+    $sql = "SELECT $sType, date_stored, exercise_time FROM healthData WHERE user_id = $user_id";
   } else {
     $sql = "SELECT $sType, exercise_time FROM healthData WHERE user_id = $user_id";
   }
@@ -68,36 +68,40 @@
 				  while($row =$stmt->fetchObject()){
             // echo "<p> Exercise Name: <b> $row->heart_rate </b> --
             //           Date: <b> $row->date_stored </b></p>"; 
+            //THIS SHOULD BE WORKING : "x"=>$row->date_stored,
 
             array_push($dataP, array( "y"=>$row->heart_rate));
           }
         } elseif ($sType == "hours_slept") {
           while($row =$stmt->fetchObject()){
-            echo "<p> Exercise Name: <b> $row->hours_slept </b> --
-                      Date: <b> $row->date_stored </b></p>"; 
+            // echo "<p> Exercise Name: <b> $row->hours_slept </b> --
+            //           Date: <b> $row->date_stored </b></p>"; 
             
-            array_push($dataP, array("x"=>$row->date_stored, "y"=>$row->hours_slept));
+            array_push($dataP, array("x"=>$row->exercise_time, "y"=>$row->hours_slept));
           }
         } elseif ($sType == "exercise_done") {
             while($row =$stmt->fetchObject()){
-              echo "<p> Exercise Name: <b> $row->exercise_done </b> --
-                        Time: <b> $row->exercise_time </b></p>"; 
+              // echo "<p> Exercise Name: <b> $row->exercise_done </b> --
+              //           Time: <b> $row->exercise_time </b></p>"; 
+
+              array_push($dataP, array("x"=> $row->exercise_done, "y"=>$row->exercise_time));
             }
         }?>
-    
+
 <script> 
-
-
 window.onload = function () {
+  var graphType = "line"
+  loadGraph(graphType);
+}
 
-  var year = "line";
+window.onchange = function () {
   $("#select" ).on('change', function() { 
-  year = $(this).val();
-  console.log(year);
+    loadGraph( $(this).val() );
   });
+}
 
-console.log("outside: ", year)
-var chartType = "line";
+function loadGraph(graphType) {
+console.log("type: ", graphType)
 var titleMsg = "<?php echo $sType; ?>"
 
 var chart = new CanvasJS.Chart("chartContainer", {
@@ -106,18 +110,14 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	title:{
 		text: titleMsg
 	},
-	axisY:{
-		includeZero: false
-	},
 	data: [{        
-		type: "line",
+		type: graphType,
       	indexLabelFontSize: 16,
 		dataPoints: <?php echo json_encode($dataP, JSON_NUMERIC_CHECK); ?>
 	}]
 });
 chart.render();
 }
-
 </script>
 
 <div id="chartContainer" style="height: 370px; width: 60%; padding-left: 20%"></div>
@@ -132,5 +132,4 @@ chart.render();
     <p>Copyright &copy; 2020</p>
     <p>Footer Text</p>
 </footer>
-
 </html>
