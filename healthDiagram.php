@@ -65,12 +65,14 @@
         <!-- PHP for displaying the raw data -->
         <?php 
         if($sType == "heart_rate"){
+          $i = 99;
 				  while($row =$stmt->fetchObject()){
             // echo "<p> Exercise Name: <b> $row->heart_rate </b> --
             //           Date: <b> $row->date_stored </b></p>"; 
             //THIS SHOULD BE WORKING : "x"=>$row->date_stored,
 
-            array_push($dataP, array( "y"=>$row->heart_rate));
+            array_push($dataP, array( "x"=>$i, "y"=>$row->heart_rate));
+            $i++;
           }
         } elseif ($sType == "hours_slept") {
           while($row =$stmt->fetchObject()){
@@ -101,8 +103,9 @@ window.onchange = function () {
 }
 
 function loadGraph(graphType) {
-console.log("type: ", graphType)
-var titleMsg = "<?php echo $sType; ?>"
+console.log("type: ", graphType);
+var titleMsg = "<?php echo $sType; ?>";
+var data = <?php echo json_encode($dataP, JSON_NUMERIC_CHECK); ?>;
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
@@ -113,7 +116,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{        
 		type: graphType,
       	indexLabelFontSize: 16,
-		dataPoints: <?php echo json_encode($dataP, JSON_NUMERIC_CHECK); ?>
+		dataPoints: data
 	}]
 });
 chart.render();
