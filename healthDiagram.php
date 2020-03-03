@@ -71,7 +71,8 @@
             //           Date: <b> $row->date_stored </b></p>"; 
             //THIS SHOULD BE WORKING : "x"=>$row->date_stored,
 
-            array_push($dataP, array( "x"=>$i, "y"=>$row->heart_rate));
+            //array_push($dataP, array( "x"=>$i, "y"=>$row->heart_rate));
+            array_push($dataP, array("y"=>$row->heart_rate, "x"=>$i));
             $i++;
           }
         } elseif ($sType == "hours_slept") {
@@ -79,7 +80,7 @@
             // echo "<p> Exercise Name: <b> $row->hours_slept </b> --
             //           Date: <b> $row->date_stored </b></p>"; 
             
-            array_push($dataP, array("x"=>$row->exercise_time, "y"=>$row->hours_slept));
+            array_push($dataP, array("x"=>new Date($row->exercise_time), "y"=>$row->hours_slept));
           }
         } elseif ($sType == "exercise_done") {
             while($row =$stmt->fetchObject()){
@@ -105,7 +106,16 @@ window.onchange = function () {
 function loadGraph(graphType) {
 console.log("type: ", graphType);
 var titleMsg = "<?php echo $sType; ?>";
-var data = <?php echo json_encode($dataP, JSON_NUMERIC_CHECK); ?>;
+var data2 = <?php echo json_encode($dataP, JSON_NUMERIC_CHECK); ?>;
+
+
+var dps = [];
+//Insert Array Assignment function here
+for(var i=0; i<data2.length;i++) {
+    dps.push({"x":data2[i].x, "y":data2[i].y});
+}
+
+console.log(dps)
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
@@ -113,10 +123,15 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	title:{
 		text: titleMsg
 	},
+  axisX:{
+    title: "YYYY MM DD",
+  },
 	data: [{        
 		type: graphType,
-      	indexLabelFontSize: 16,
-		dataPoints: data
+    xValueType: "YYYY-MM-DD",
+    indexLabelFontSize: 16,
+    
+		dataPoints: dps
 	}]
 });
 chart.render();
