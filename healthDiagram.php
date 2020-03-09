@@ -6,9 +6,9 @@
   $user_id = "1";                     //NEEDS to change depending on the logged in user
 
   if ($sType != "exercise_done"){
-    $sql = "SELECT $sType, date_stored, exercise_time FROM healthData WHERE user_id = $user_id";
+    $sql = "SELECT $sType, date FROM healthData WHERE userID = $user_id";
   } else {
-    $sql = "SELECT $sType, exercise_time FROM healthData WHERE user_id = $user_id";
+    $sql = "SELECT $sType, date, hoursOfExercise FROM healthData WHERE userID = $user_id";
   }
   $stmt = $pdo->query($sql);
 
@@ -64,30 +64,30 @@
 
         <!-- PHP for displaying the raw data -->
         <?php 
-        if($sType == "heart_rate"){
+        if($sType == "heartRate"){
           $i = 99;
 				  while($row =$stmt->fetchObject()){
-            // echo "<p> Exercise Name: <b> $row->heart_rate </b> --
-            //           Date: <b> $row->date_stored </b></p>"; 
+            echo "<p> Exercise Name: <b> $row->heartRate </b> --
+                      Date: <b> $row->date </b></p>"; 
             //THIS SHOULD BE WORKING : "x"=>$row->date_stored,
 
             //array_push($dataP, array( "x"=>$i, "y"=>$row->heart_rate));
-            array_push($dataP, array("y"=>$row->heart_rate, "x"=>$i));
+            array_push($dataP, array("y"=>$row->heartRate, "x"=>$i));
             $i++;
           }
-        } elseif ($sType == "hours_slept") {
+        } elseif ($sType == "hoursOfSleep") {
           while($row =$stmt->fetchObject()){
             // echo "<p> Exercise Name: <b> $row->hours_slept </b> --
             //           Date: <b> $row->date_stored </b></p>"; 
             
-            array_push($dataP, array("x"=>new Date($row->exercise_time), "y"=>$row->hours_slept));
+            array_push($dataP, array( "y"=>$row->hoursOfSleep));
           }
-        } elseif ($sType == "exercise_done") {
+        } elseif ($sType == "exerciseDone") {
             while($row =$stmt->fetchObject()){
               // echo "<p> Exercise Name: <b> $row->exercise_done </b> --
               //           Time: <b> $row->exercise_time </b></p>"; 
 
-              array_push($dataP, array("x"=> $row->exercise_done, "y"=>$row->exercise_time));
+              array_push($dataP, array("x"=> $row->exerciseDone, "y"=>$row->hoursOfExercise));
             }
         }?>
 

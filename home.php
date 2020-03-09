@@ -42,15 +42,15 @@
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 
-                <a href="/E-Health-System/healthDiagram.php?type=heart_rate">
+                <a href="/E-Health-System/healthDiagram.php?type=heartRate">
                 <img src="./img/heart-icon.png" alt="heart Icon">
                 </a>
 
-                <a href="/E-Health-System/healthDiagram.php?type=exercise_done">
+                <a href="/E-Health-System/healthDiagram.php?type=exerciseDone">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
                 </a>
 
-                <a href="/E-Health-System/healthDiagram.php?type=hours_slept">
+                <a href="/E-Health-System/healthDiagram.php?type=hoursOfSleep">
                 <img src="./img/sleep-icon.png" alt="heart Icon">
                 </a>
 
