@@ -5,11 +5,7 @@
   $sType = safeString($_GET['type']); //Changes depending on what you click
   $user_id = "1";                     //NEEDS to change depending on the logged in user
 
-  if ($sType != "exerciseDone"){
-    $sql = "SELECT $sType, date FROM healthData WHERE userID = $user_id";
-  } else {
-    $sql = "SELECT $sType, date, hoursOfExercise FROM healthData WHERE userID = $user_id";
-  }
+  $sql = "SELECT $sType, dateOfExercise FROM healthData WHERE userID = $user_id";
   $stmt = $pdo->query($sql);
 
   //Arrays for data
@@ -72,10 +68,9 @@
         $i = 0;
 				  while($row =$stmt->fetchObject()){
             if ($i < 7 ) {
-            array_push($dataPoints, array("y"=>$row->$sType));
-            $datePoints[] = $row->date;
+            $dataPoints[] = $row->$sType;
+            $datePoints[] = $row->dateOfExercise;
             $i++;
-            echo $sType;
             }
           }
         ?>
@@ -90,7 +85,7 @@
 
           //Weekly data
             var data = {
-              "xData": [ dateT[6], dateT[5], dateT[4],  dateT[3],  dateT[2],  dateT[1],  dateT[0]],              
+              "xData": [ dateT[0], dateT[1], dateT[2],  dateT[3],  dateT[4],  dateT[5],  dateT[6]],              
               "yData":[{ "data": dataPoints }]
             }      
             $scope.lineChartYData=data.yData
@@ -100,19 +95,36 @@
 
     <!-- Displaying the graph -->
     <script>
-    var type = "line"
-    $("#select" ).on('change', function() { 
-    //loadGraph( $(this).val() );
-    type = $(this).val();
-    });
+    window.onload = function () {
+      var graphType = "line"
+      loadGraph(graphType);
+    }
+
+    window.onchange = function () {
+      $("#select" ).on('change', function() {
+        console.log("onchange")
+        loadGraph( $(this).val() );
+      });
+    }
+
+    function loadGraph(graphType) {
+
+    var title =  "<?php echo $sType; ?>";
+    var type = graphType
+
+    console.log("In function")
+    console.log("graphType: ", graphType)
     console.log("type: ", type)
+
     angular.module('GraphData',['AngularChart'], function( $routeProvider, $locationProvider ){
-        $routeProvider.when('/',{
-            template: '<chart title="Line Data" type='+type+' xData="lineChartXData" yData="lineChartYData" xName="Values" yName="Date"></chart>',
-            controller: MainCtrl
-            })
-    })
-    </script>
+      $routeProvider.when('/',{
+          template: '<chart title='+title+' type='+type+' xData="lineChartXData" yData="lineChartYData" xName="Values" yName="Date"></chart>',
+          controller: MainCtrl
+          })
+      })
+  }
+  </script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <div ng-view></div>
 
