@@ -57,7 +57,7 @@ CREATE TABLE `healthdata` (
   `hoursOfExercise` int(255) NOT NULL,
   `heartRate` int(255) NOT NULL,
   `exerciseDone` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `dateOfExercise` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -75,7 +75,7 @@ CREATE TABLE `patients` (
   `address` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `phoneNumber` bigint(11) NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `eassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bloodType` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `medicalHistory` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `illness` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
