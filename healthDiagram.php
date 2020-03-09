@@ -5,18 +5,20 @@
   $sType = safeString($_GET['type']); //Changes depending on what you click
   $user_id = "1";                     //NEEDS to change depending on the logged in user
 
-  if ($sType != "exercise_done"){
+  if ($sType != "exerciseDone"){
     $sql = "SELECT $sType, date FROM healthData WHERE userID = $user_id";
   } else {
     $sql = "SELECT $sType, date, hoursOfExercise FROM healthData WHERE userID = $user_id";
   }
   $stmt = $pdo->query($sql);
 
-  $dataP = array();
+  //Arrays for data
+  $dataPoints = array();
+  $datePoints = array();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="GraphData">
 
 <head>
   <title>ARJ - Health Diagram</title>
@@ -25,6 +27,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="chart.js"></script>
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -62,85 +67,54 @@
         </select>
         <br>
 
-        <!-- PHP for displaying the raw data -->
+        <!-- PHP for storing the data in the arrays from the database -->
         <?php 
-        if($sType == "heartRate"){
-          $i = 99;
+        $i = 0;
 				  while($row =$stmt->fetchObject()){
-            echo "<p> Exercise Name: <b> $row->heartRate </b> --
-                      Date: <b> $row->date </b></p>"; 
-            //THIS SHOULD BE WORKING : "x"=>$row->date_stored,
-
-            //array_push($dataP, array( "x"=>$i, "y"=>$row->heart_rate));
-            array_push($dataP, array("y"=>$row->heartRate, "x"=>$i));
+            if ($i < 7 ) {
+            array_push($dataPoints, array("y"=>$row->$sType));
+            $datePoints[] = $row->date;
             $i++;
-          }
-        } elseif ($sType == "hoursOfSleep") {
-          while($row =$stmt->fetchObject()){
-            // echo "<p> Exercise Name: <b> $row->hours_slept </b> --
-            //           Date: <b> $row->date_stored </b></p>"; 
-            
-            array_push($dataP, array( "y"=>$row->hoursOfSleep));
-          }
-        } elseif ($sType == "exerciseDone") {
-            while($row =$stmt->fetchObject()){
-              // echo "<p> Exercise Name: <b> $row->exercise_done </b> --
-              //           Time: <b> $row->exercise_time </b></p>"; 
-
-              array_push($dataP, array("x"=> $row->exerciseDone, "y"=>$row->hoursOfExercise));
+            echo $sType;
             }
-        }?>
+          }
+        ?>
 
-<script> 
-window.onload = function () {
-  var graphType = "line"
-  loadGraph(graphType);
-}
+  <!-- Graph data -->
+  <script>
+        function MainCtrl($scope, $http){
+          var dataPoints = <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>;
+          var dateT = <?php echo json_encode($datePoints); ?>;
+          console.log(dataPoints)
+          console.log(dateT)
 
-window.onchange = function () {
-  $("#select" ).on('change', function() { 
-    loadGraph( $(this).val() );
-  });
-}
+          //Weekly data
+            var data = {
+              "xData": [ dateT[6], dateT[5], dateT[4],  dateT[3],  dateT[2],  dateT[1],  dateT[0]],              
+              "yData":[{ "data": dataPoints }]
+            }      
+            $scope.lineChartYData=data.yData
+            $scope.lineChartXData=data.xData
+        }
+    </script>
 
-function loadGraph(graphType) {
-console.log("type: ", graphType);
-var titleMsg = "<?php echo $sType; ?>";
-var data2 = <?php echo json_encode($dataP, JSON_NUMERIC_CHECK); ?>;
+    <!-- Displaying the graph -->
+    <script>
+    var type = "line"
+    $("#select" ).on('change', function() { 
+    //loadGraph( $(this).val() );
+    type = $(this).val();
+    });
+    console.log("type: ", type)
+    angular.module('GraphData',['AngularChart'], function( $routeProvider, $locationProvider ){
+        $routeProvider.when('/',{
+            template: '<chart title="Line Data" type='+type+' xData="lineChartXData" yData="lineChartYData" xName="Values" yName="Date"></chart>',
+            controller: MainCtrl
+            })
+    })
+    </script>
 
-
-var dps = [];
-//Insert Array Assignment function here
-for(var i=0; i<data2.length;i++) {
-    dps.push({"x":data2[i].x, "y":data2[i].y});
-}
-
-console.log(dps)
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: titleMsg
-	},
-  axisX:{
-    title: "YYYY MM DD",
-  },
-	data: [{        
-		type: graphType,
-    xValueType: "YYYY-MM-DD",
-    indexLabelFontSize: 16,
-    
-		dataPoints: dps
-	}]
-});
-chart.render();
-}
-</script>
-
-<div id="chartContainer" style="height: 370px; width: 60%; padding-left: 20%"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<div ng-view></div>
 
 </div>
 </body>

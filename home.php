@@ -46,7 +46,7 @@
                 <img src="./img/heart-icon.png" alt="heart Icon">
                 </a>
 
-                <a href="/E-Health-System/healthDiagram.php?type=exerciseDone">
+                <a href="/E-Health-System/healthDiagram.php?type=hourOfExercise">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
                 </a>
 
