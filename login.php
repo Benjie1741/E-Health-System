@@ -160,7 +160,7 @@ span.psw {
   <form class="modal-content animate" action="checkPatLogin.php" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
@@ -171,9 +171,9 @@ span.psw {
       <input type="password" placeholder="Enter Password" name="password" required>
         
       <button type="submit">Login</button>
-      <!-- <label>
+      <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label> -->
+      </label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -190,7 +190,7 @@ span.psw {
   <form class="modal-content animate" action="checkDocLogin.php" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+    
     </div>
 
     <div class="container">

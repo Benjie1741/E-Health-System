@@ -1,32 +1,26 @@
 <?php 
 // #includes
 require('includes/conn.inc.php');
+require('includes/functions.inc.php');
+    
+
+  // session_start();
+  // $found=false;
+  // if($_SESSION["login"]==1){
+  //   $found=true;
+  // }
+  // if($found==false){
+  //   header("Location: ../eHealth/login.php");
+  // }
 
 
-  session_start();
-  $found=false;
-  if($_SESSION["login"]==1){
-    $found=true;
-  }
-  if($found==false){
-    header("Location: ../eHealth/login.php");
-  }
-
-if (isset($_GET['search'])){
-  $searchTerm = "%" . $_GET['search'] . "%";
-  $sql= "SELECT * FROM items
-        WHERE (name LIKE :search OR price LIKE :search)"; /* could add genre */
-  $stmt2 = $pdo->prepare($sql);
-  $stmt2->bindParam(':search', $searchTerm, PDO::PARAM_STR);
-  $stmt2->execute();
-}
 
 
 ini_set('display_errors', 1);
 
 //to display all the images
-$sql = "SELECT * FROM items";
-$stmt = $pdo->query($sql);
+$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName` FROM `patients`";
+$result = $pdo->query($sql);
 ?>
 
 
@@ -39,6 +33,22 @@ $stmt = $pdo->query($sql);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Search -->
+  <script>
+      $(document).ready(function(){
+          $('.search').on('keyup',function(){
+              var searchTerm = $(this).val().toLowerCase();
+              $('#myTable tbody tr').each(function(){
+                  var lineStr = $(this).text().toLowerCase();
+                  if(lineStr.indexOf(searchTerm) === -1){
+                      $(this).hide();
+                  }else{
+                      $(this).show();
+                  }
+              });
+          });
+      });
+</script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -214,18 +224,38 @@ hr {
   <div class="row content">
     <div class="col-sm-2 sidenav">
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
-      <p><a href="#">Link</a></p>
+    <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register new Doctor</button>
+
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
-      
+    <div id="patientList" class="bg-1">
+              
+                <h3 class="text-center">Patient List</h3>
+                <p class="text-center">In this section you can find a list of your patients!</p>
+                <input type="text" class="search"  onkeyup="myFunction()" placeholder="Find Events">
+                <br><br>
+            <table id="myTable" class= "table" style=" border: 2px solid black;">
+                    <tr>
+                        <td>ID</td>
+                        <td>Patient first name</td>
+                        <td>Patient last name</td>
+                        <td>Patient Age</td>
+                    </tr>
+            <?php
+               while($row = $result->fetchObject()) {
+                   echo "<tr>";
+                       echo "<td>$row->PatientID</td>";
+                       echo "<td>$row->firstName</td>";
+                       echo "<td>$row->lastName</td>";
+                       echo "<td>$row->age</td>";
+                   echo "</tr>";
+               }
+            ?>
+            </table>
     </div>
+</div>
     <div class="col-sm-2 sidenav">
       <div class="well">
         <p>ADS</p>
@@ -238,19 +268,40 @@ hr {
 </div>
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form  action="insert.php"  method="post">
+  <form  action="insertPat.php"  method="post">
     <div class="container">
       <h1>Patient Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="name" required>
+      <label for="firstName"><b>First Name</b></label>
+      <input type="text" placeholder="Enter First Name" name="firstname" required>
+
+      <label for="lastName"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="lastname" required>
+
+      <label for="age"><b>Age</b></label>
+      <input type="text" placeholder="Enter Age" name="age" required>
+
+      <label for="address"><b>Adress</b></label>
+      <input type="text" placeholder="Enter Address" name="address" required>
+
+      <label for="phone"><b>Phone Number</b></label>
+      <input type="text" placeholder="Enter Phone Number" name="num" required>
+
+      <label for="blood"><b>Blood type</b></label>
+      <input type="text" placeholder="Enter BT" name="bood" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
 
+      <label for="docID"><b>Doctor ID</b></label>
+      <input type="text" placeholder="Enter ID" name="docID" required>
+
       <label for="password"><b>Password</b></label>
       <input type="text" placeholder="Enter Password" name="password" required>
+
+      <label for="dateOfBirth"><b>Date of Birth</b></label>
+      <input type="date" placeholder="Enter Name" name="dob" required>
       
       <!-- <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -265,10 +316,40 @@ hr {
     </div>
   </form>
 </div>
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form  action="insertDoc.php"  method="post">
+    <div class="container">
+      <h1>Doctor Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="name" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="text" placeholder="Enter Password" name="password" required>
+      
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit"  class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
 
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
+var modal2 = document.getElementById('id02');
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -276,11 +357,16 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
 </script>
 
 <footer class="container-fluid text-center">
     <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>
-    <p>Made with PHP, Bootstrap, JS and</p>
+    <p>Made with PHP, Bootstrap, JS and MySQL</p>
             <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
               gsanchezcollado@gmail.com</a></p>
 </footer>

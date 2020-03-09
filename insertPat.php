@@ -5,16 +5,17 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $email = $_POST['email'];
-$name = $_POST['name'];
+
 $password = $_POST['password'];
-$dob = $_POST['dob'];
+$doctorID = $_POST['docID'];
+
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 try {
 
-	$sql= "INSERT INTO users (email, name, password, dob)
-       VALUES ('$email', '$name', '$hashed_password', '$dob')";
+	$sql= "INSERT INTO patients (email, password, doctorID)
+       VALUES ('$email', '$hashed_password', '$doctorID')";
        $stmt = $pdo -> query($sql);
    	  
 
@@ -54,12 +55,12 @@ try {
     $mail->send();
     echo 'Message has been sent';
 
-    header("Location: ../eHealth/index.php");
+    header("Location: ../eHealth/homePat.php");
 
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 
-    header("Location: ../eHealth/index.php");
+    header("Location: ../eHealth/homePat.php");
 }
 
 }
@@ -67,7 +68,7 @@ catch (\Exception $e) {
     	
     	$message = "Email Already Exists!";
 		echo "<script type='text/javascript'>alert('$message');
-		location.href = 'register.php';
+		location.href = 'homePat.php';
 		</script>";
 
 //		header("Location: ../eHealth/register.php");

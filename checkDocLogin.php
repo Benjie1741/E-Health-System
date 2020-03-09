@@ -22,7 +22,7 @@ require('includes/conn.inc.php');
             $_SESSION['email'] = $email;
             $_SESSION['product_name'] =  [];
             $_SESSION['login'] = 1;
-            header("Location: ../eHealth/index.php");
+            header("Location: ../eHealth/homeDoc.php");
            
         }
         else{
