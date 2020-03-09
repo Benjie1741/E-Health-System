@@ -1,0 +1,161 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 03, 2020 at 06:54 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `e-health system`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctors`
+--
+
+CREATE TABLE `doctors` (
+  `DoctorID` int(11) NOT NULL,
+  `First Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Last Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Date of Birth` date NOT NULL,
+  `Age` tinyint(3) NOT NULL,
+  `Address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Phone Number` bigint(11) NOT NULL,
+  `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `License Revalidation Date` date NOT NULL,
+  `Specialty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Clearance Level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PatientID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `healthdata`
+--
+
+CREATE TABLE `healthdata` (
+  `HealthDataID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Hours of Sleep` int(255) NOT NULL,
+  `Hours of Exercise` int(255) NOT NULL,
+  `Heart Rate` int(255) NOT NULL,
+  `Exercise Done` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patients`
+--
+
+CREATE TABLE `patients` (
+  `PatientID` int(11) NOT NULL,
+  `First Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Last Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Date of Birth` date NOT NULL,
+  `Age` int(3) NOT NULL,
+  `Address` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Phone Number` bigint(11) NOT NULL,
+  `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Blood Type` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Medical History` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Illness` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Allergies` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DoctorID` int(11) NOT NULL,
+  `Prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`DoctorID`),
+  ADD KEY `DoctorID` (`DoctorID`),
+  ADD KEY `PatientID` (`PatientID`);
+
+--
+-- Indexes for table `healthdata`
+--
+ALTER TABLE `healthdata`
+  ADD PRIMARY KEY (`HealthDataID`),
+  ADD KEY `UserID` (`UserID`);
+
+--
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`PatientID`),
+  ADD KEY `PatientID` (`PatientID`),
+  ADD KEY `DoctorID` (`DoctorID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `doctors`
+--
+ALTER TABLE `doctors`
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `healthdata`
+--
+ALTER TABLE `healthdata`
+  MODIFY `HealthDataID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`PatientID`) REFERENCES `patients` (`PatientID`);
+
+--
+-- Constraints for table `healthdata`
+--
+ALTER TABLE `healthdata`
+  ADD CONSTRAINT `healthdata_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `patients` (`PatientID`);
+
+--
+-- Constraints for table `patients`
+--
+ALTER TABLE `patients`
+  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`DoctorID`) REFERENCES `doctors` (`DoctorID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
