@@ -64,7 +64,7 @@ CREATE TABLE `healthdata` (
   `HealthDataID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `hoursOfSleep` int(255) NOT NULL,
-  `hourOfExercise` int(255) NOT NULL,
+  `hoursOfExercise` int(255) NOT NULL,
   `heartRate` int(255) NOT NULL,
   `exerciseDone` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dateOfExercise` date NOT NULL
