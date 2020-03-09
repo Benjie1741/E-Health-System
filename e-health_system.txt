@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `doctors` (
-  `DoctorID` int(11) NOT NULL,
-  `First Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Last Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Date of Birth` date NOT NULL,
-  `Age` tinyint(3) NOT NULL,
-  `Address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Phone Number` bigint(11) NOT NULL,
-  `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `License Revalidation Date` date NOT NULL,
-  `Specialty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Clearance Level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PatientID` int(11) NOT NULL
+  `doctorID` int(11) NOT NULL,
+  `firstName` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastName` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dateOfBirth` date NOT NULL,
+  `age` tinyint(3) NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phoneNumber` bigint(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `licenseRevalidationDate` date NOT NULL,
+  `specialty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `clearanceLevel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `patientID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -51,13 +51,13 @@ CREATE TABLE `doctors` (
 --
 
 CREATE TABLE `healthdata` (
-  `HealthDataID` int(11) NOT NULL,
-  `UserID` int(11) NOT NULL,
-  `Hours of Sleep` int(255) NOT NULL,
-  `Hours of Exercise` int(255) NOT NULL,
-  `Heart Rate` int(255) NOT NULL,
-  `Exercise Done` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `healthDataID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `hoursOfSleep` int(255) NOT NULL,
+  `hoursOfExercise` int(255) NOT NULL,
+  `heartRate` int(255) NOT NULL,
+  `exerciseDone` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -67,21 +67,21 @@ CREATE TABLE `healthdata` (
 --
 
 CREATE TABLE `patients` (
-  `PatientID` int(11) NOT NULL,
-  `First Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Last Name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Date of Birth` date NOT NULL,
-  `Age` int(3) NOT NULL,
-  `Address` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Phone Number` bigint(11) NOT NULL,
-  `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Blood Type` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Medical History` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Illness` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Allergies` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DoctorID` int(11) NOT NULL,
-  `Prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `patientID` int(11) NOT NULL,
+  `firstName` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastName` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dateOfBirth` date NOT NULL,
+  `age` int(3) NOT NULL,
+  `address` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phoneNumber` bigint(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `eassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bloodType` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `medicalHistory` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `illness` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `allergies` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `doctorID` int(11) NOT NULL,
+  `prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -92,24 +92,24 @@ CREATE TABLE `patients` (
 -- Indexes for table `doctors`
 --
 ALTER TABLE `doctors`
-  ADD PRIMARY KEY (`DoctorID`),
-  ADD KEY `DoctorID` (`DoctorID`),
-  ADD KEY `PatientID` (`PatientID`);
+  ADD PRIMARY KEY (`doctorID`),
+  ADD KEY `DoctorID` (`doctorID`),
+  ADD KEY `PatientID` (`patientID`);
 
 --
 -- Indexes for table `healthdata`
 --
 ALTER TABLE `healthdata`
-  ADD PRIMARY KEY (`HealthDataID`),
-  ADD KEY `UserID` (`UserID`);
+  ADD PRIMARY KEY (`healthDataID`),
+  ADD KEY `UserID` (`userID`);
 
 --
 -- Indexes for table `patients`
 --
 ALTER TABLE `patients`
-  ADD PRIMARY KEY (`PatientID`),
-  ADD KEY `PatientID` (`PatientID`),
-  ADD KEY `DoctorID` (`DoctorID`);
+  ADD PRIMARY KEY (`patientID`),
+  ADD KEY `PatientID` (`patientID`),
+  ADD KEY `DoctorID` (`doctorID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -119,19 +119,19 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `doctorID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `healthdata`
 --
 ALTER TABLE `healthdata`
-  MODIFY `HealthDataID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `healthDataID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -141,19 +141,19 @@ ALTER TABLE `patients`
 -- Constraints for table `doctors`
 --
 ALTER TABLE `doctors`
-  ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`PatientID`) REFERENCES `patients` (`PatientID`);
+  ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`patientID`) REFERENCES `patients` (`patientID`);
 
 --
 -- Constraints for table `healthdata`
 --
 ALTER TABLE `healthdata`
-  ADD CONSTRAINT `healthdata_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `patients` (`PatientID`);
+  ADD CONSTRAINT `healthdata_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `patients` (`patientID`);
 
 --
 -- Constraints for table `patients`
 --
 ALTER TABLE `patients`
-  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`DoctorID`) REFERENCES `doctors` (`DoctorID`);
+  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`doctorID`) REFERENCES `doctors` (`doctorID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
