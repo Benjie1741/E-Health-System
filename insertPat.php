@@ -68,7 +68,7 @@ catch (\Exception $e) {
     	
     	$message = "Email Already Exists!";
 		echo "<script type='text/javascript'>alert('$message');
-		location.href = 'homePat.php';
+		location.href = 'homeDoc.php';
 		</script>";
 
 //		header("Location: ../eHealth/register.php");

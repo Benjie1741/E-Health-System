@@ -11,7 +11,7 @@ require('includes/conn.inc.php');
         header("login.php");
     }
     else{
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $sql = "SELECT * FROM doctors WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
         $dbPasswordHash = password_verify($password, $row['password']);
