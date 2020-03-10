@@ -74,7 +74,7 @@ CREATE TABLE `healthdata` (
 -- Dumping data for table `healthdata`
 --
 
-INSERT INTO `healthdata` (`HealthDataID`, `userID`, `hoursOfSleep`, `hourOfExercise`, `heartRate`, `exerciseDone`, `dateOfExercise`) VALUES
+INSERT INTO `healthdata` (`HealthDataID`, `userID`, `hoursOfSleep`, `hoursOfExercise`, `heartRate`, `exerciseDone`, `dateOfExercise`) VALUES
 (1, 1, 7, 1, 75, 'Running', '2020-03-08'),
 (2, 2, 8, 0, 74, 'N/A', '2020-03-08'),
 (3, 3, 10, 2, 78, 'Weight lifting, Running', '2020-03-06'),
