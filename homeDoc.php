@@ -4,25 +4,27 @@ require('includes/conn.inc.php');
 require('includes/functions.inc.php');
     
 
-  // session_start();
-  // $found=false;
-  // if($_SESSION["login"]==1){
-  //   $found=true;
-  // }
-  // if($found==false){
-  //   header("Location: ../eHealth/login.php");
-  // }
+   session_start();
+   $found=false;
+   if($_SESSION["login"]==1){
+     $found=true;
+   }
+   if($found==false){
+     header("Location: ../eHealth/login.php");
+   }
 
+   echo '<script>';
+   echo 'console.log('. json_encode( $_SESSION ) .')';
+   echo '</script>';
 
 
 
 ini_set('display_errors', 1);
 
 //to display all the images
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName` FROM `patients`";
+$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID` FROM `patients`";
 $result = $pdo->query($sql);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -234,7 +236,7 @@ hr {
               
                 <h3 class="text-center">Patient List</h3>
                 <p class="text-center">In this section you can find a list of your patients!</p>
-                <input type="text" class="search"  onkeyup="myFunction()" placeholder="Find Events">
+                <input type="text" class="search"  onkeyup="myFunction()" placeholder="Find Patients">
                 <br><br>
             <table id="myTable" class= "table" style=" border: 2px solid black;">
                     <tr>
@@ -242,15 +244,19 @@ hr {
                         <td>Patient first name</td>
                         <td>Patient last name</td>
                         <td>Patient Age</td>
+                        <td></td>
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
+                 if($row->doctorID === $_SESSION['DoctorID']){
                    echo "<tr>";
                        echo "<td>$row->PatientID</td>";
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
                        echo "<td>$row->age</td>";
+                       echo "<td><Button style='margin-top:-5px;' class='btn btn-primary btn-sm'>SELECT</Button></td>";
                    echo "</tr>";
+                 }
                }
             ?>
             </table>

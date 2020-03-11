@@ -1,33 +1,27 @@
 <?php 
 // #includes
 require('includes/conn.inc.php');
+require('includes/functions.inc.php');
+    
 
+   session_start();
+   $found=false;
+   if($_SESSION["login"]==1){
+     $found=true;
+   }
+   if($found==false){
+     header("Location: ../eHealth/login.php");
+   }
 
-  session_start();
-  $found=false;
-  if($_SESSION["login"]==1){
-    $found=true;
-  }
-  if($found==false){
-    header("Location: ../eHealth/login.php");
-  }
+   echo '<script>';
+   echo 'console.log('. json_encode( $_SESSION ) .')';
+   echo '</script>';
 
-if (isset($_GET['search'])){
-  $searchTerm = "%" . $_GET['search'] . "%";
-  $sql= "SELECT * FROM items
-        WHERE (name LIKE :search OR price LIKE :search)"; /* could add genre */
-  $stmt2 = $pdo->prepare($sql);
-  $stmt2->bindParam(':search', $searchTerm, PDO::PARAM_STR);
-  $stmt2->execute();
-}
 
 
 ini_set('display_errors', 1);
-
-//to display all the images
-$sql = "SELECT * FROM items";
-$stmt = $pdo->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,16 +32,7 @@ $stmt = $pdo->query($sql);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
 
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-      margin-top: 100px;
-    }
-    </style>
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -72,34 +57,41 @@ $stmt = $pdo->query($sql);
   </div>
 </nav>
 </head>
+
 <!-- Main body -->
 <body>
     <div id="container">
         <h1 style="text-align:center">Hello world</h1>
+
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 
-                <a href="healthDiagram.php?type=heartRate">
+                <a href="/eHealth/healthDiagram.php?type=heartRate">
                 <img src="./img/heart-icon.png" alt="heart Icon">
                 </a>
-                <a href="healthDiagram.php?type=exerciseDone">
+
+                <a href="/eHealth/healthDiagram.php?type=hoursOfExercise">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
                 </a>
-                <a href="healthDiagram.php?type=hoursOfSleep">
-                <img src="./img/sleep-icon.png" alt="heart Icon">
+
+                <a href="/eHealth/healthDiagram.php?type=hoursOfSleep">
+                <img src="./img/sleep-icon.png" alt="Sleep Icon">
                 </a>
+
                 <img src="./img/chat-icon.png" alt="chat Icon">
                 <img src="./img/info-icon.png" alt="info Icon">
             </div>
 		</div>
     </div>
    
+
 </body>
-<footer class="container-fluid text-center">
-    <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>
-    <p>Made with PHP, Bootstrap, JS and MySQL</p>
-            <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
-              gsanchezcollado@gmail.com</a></p>
+
+<footer style="padding-top:3%" class="container-fluid text-center">
+    <br> <br>
+    <p>Copyright &copy; 2020</p>
+    <p>Footer Text</p>
 </footer>
+
 </html>

@@ -1,5 +1,5 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=webshop';
+$dsn = 'mysql:host=localhost;dbname=ehealth';
 $user = 'root';
 $password = '';
 try { 
