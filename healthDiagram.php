@@ -2,11 +2,34 @@
   require('includes/conn.inc.php');
   require('includes/functions.inc.php');
 
+  session_start();
+  $found=false;
+  if($_SESSION["login"]==1){
+    $found=true;
+  }
+  if($found==false){
+    header("Location: ../eHealth/login.php");
+  }
+
+  echo '<script>';
+  echo 'console.log('. json_encode( $_SESSION ) .')';
+  echo '</script>';
+
   $sType = safeString($_GET['type']); //Changes depending on what you click
-  $user_id = "1";                     //NEEDS to change depending on the logged in user
+  $user_id = $_SESSION["patientId"];                     //NEEDS to change depending on the logged in user
+  $cType = "null";
 
   $sql = "SELECT $sType, dateOfExercise FROM healthData WHERE userID = $user_id";
   $stmt = $pdo->query($sql);
+
+  if($sType == "heartRate") {
+    $cType = "line";
+  }elseif ($sType == "hourOfSleep") {
+    $cType = "pie";
+  }else{
+    $cType = "bar";
+  }
+
 
   //Arrays for data
   $dataPoints = array();
@@ -28,42 +51,37 @@
   <script src="chart.js"></script>
 
   <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <!-- Mobile navbar -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-      </div>
-      <!-- Desktop navbar -->
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="/E-Health-System/index.html">Index</a></li>
-          <li><a href="/E-Health-System/home.php">Home</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 </head>
 
 <!-- Main body -->
 <body>
     <div style="text-align:center" id="container">
         <h1>Hello world</h1>
-        <select id="select">
-        <option value="line">line</option>
-        <option value="bar">bar</option>
-        <option value="pie">pie</option>
-        <option value="scatter">scatter</option>
-        </select>
         <br>
 
-        <!-- PHP for storing the data in the arrays from the database -->
+        <!-- PHP for storing the data from the db into an array, only stores the latest 7 values by date -->
         <?php 
         $i = 0;
 				  while($row =$stmt->fetchObject()){
@@ -96,7 +114,7 @@
     <!-- Displaying the graph -->
     <script>
     window.onload = function () {
-      var graphType = "line"
+      var graphType =  "<?php echo $cType; ?>";
       loadGraph(graphType);
     }
 

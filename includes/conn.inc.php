@@ -1,6 +1,5 @@
 <?php
-
-$dsn = 'mysql:host=localhost;dbname=ehealth3';
+$dsn = 'mysql:host=localhost;dbname=ehealth';
 $user = 'root';
 $password = '';
 try { 
