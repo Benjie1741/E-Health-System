@@ -24,7 +24,7 @@
 
   if($sType == "heartRate") {
     $cType = "line";
-  }elseif ($sType == "hourOfSleep") {
+  }elseif ($sType == "hoursOfSleep") {
     $cType = "pie";
   }else{
     $cType = "bar";
