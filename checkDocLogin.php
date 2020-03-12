@@ -20,7 +20,7 @@ require('includes/conn.inc.php');
 
             echo "valid";
             $_SESSION['email'] = $email;
-            $_SESSION['product_name'] =  [];
+            $_SESSION['PatientID'] = 0;
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
             header("Location: ../eHealth/homeDoc.php");
