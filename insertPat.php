@@ -5,9 +5,28 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $email = $_POST['email'];
-
 $password = $_POST['password'];
 $doctorID = $_POST['docID'];
+$firstName = $_POST['firstname'];
+$lastName = $_POST['lastname'];
+$age = $_POST['age'];
+$address = $_POST['address'];
+$num = $_POST['num'];
+$blood = $_POST['blood'];
+$dob = $_POST['dob'];
+$history = $_POST['history'];
+$illness = $_POST['illness'];
+$prescription = $_POST['prescription'];
+$allergies = $_POST['allergies'];
+
+$emailInfo = 'Dear '.$_POST['firstname'].', <br><br> You have been registered as an E-Health patient by your GP.
+Your login details are as follows: <br><br>
+email: '.$_POST['email'].'<br>
+password: '.$_POST['password'].'<br><br>
+
+<a href="http://localhost/eHealth/">Click here to access the log in page</a>
+ <br><br> Kind Regards,
+ <br><br> The E-Health Team <br><br>';
 
 
 
@@ -17,8 +36,8 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 try {
 
-	$sql= "INSERT INTO patients (email, password, doctorID)
-       VALUES ('$email', '$hashed_password', '$doctorID')";
+	$sql= "INSERT INTO patients (email, password, doctorID, firstName, lastName, dateOfBirth, age, address, phoneNumber, bloodType, medicalHistory, allergies, prescription, illness)
+       VALUES ('$email', '$hashed_password', '$doctorID', '$firstName', '$lastName', '$dob', '$age', '$address', '$num', '$blood', '$history', '$allergies', '$prescription', '$illness')";
        $stmt = $pdo -> query($sql);
 	  
 	   header("Location: ../eHealth/homeDoc.php");
@@ -27,7 +46,7 @@ try {
 
 	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 	try {
-		$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+	$mail->SMTPDebug = 2;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  						// Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -38,7 +57,7 @@ try {
 	
 		//Recipients
 		$mail->setFrom('ehealth52@gmail.com', 'E-Health');
-		$mail->addAddress($email, 'Joe User');     // Add a recipient
+		$mail->addAddress($email, $firstName);     // Add a recipient
 		//$mail->addAddress('ellen@example.com');               // Name is optional
 		//$mail->addReplyTo('info@example.com', 'Information');
 		//$mail->addCC('cc@example.com');
@@ -46,12 +65,14 @@ try {
 	
 		// Attachments
 		//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-		//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+		//$mail->addAttachment('./chat-icon.png', 'chat-icon.png');    // Optional name
 	
 		// Content
 		$mail->isHTML(true);                                  // Set email format to HTML
 		$mail->Subject = 'Welcome to E-Health';
-		$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+		//$mail->AddEmbeddedImage('chat-icon.png', 'logoimg', 'chat-icon.png'); // attach file
+		$mail->Body    = $emailInfo;
+		  
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 	
 		$mail->send();
