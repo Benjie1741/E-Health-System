@@ -24,6 +24,7 @@ require('includes/conn.inc.php');
             $_SESSION['product_name'] =  [];
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
+            $_SESSION['chatID'] = $row['DoctorID'];
             $_SESSION['username'] = $row['DoctorID'];
             header("Location: ../eHealth/homeDoc.php");
            

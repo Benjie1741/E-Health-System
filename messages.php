@@ -20,7 +20,9 @@ include('includes/conn.inc.php');
 
         case "getMessages";
 
-        $query = $pdo->prepare("SELECT * FROM chatmessages");
+        session_start();
+        $user_id = $_SESSION['chatID'];
+        $query = $pdo->prepare("SELECT * FROM chatmessages WHERE user = $user_id");
         $run = $query->execute();
 
         $result = $query->fetchAll(PDO::FETCH_OBJ);
