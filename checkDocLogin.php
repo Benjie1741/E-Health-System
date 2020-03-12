@@ -2,6 +2,7 @@
 require('includes/conn.inc.php');
 
     session_start();
+
     $email = $_POST['email'];
     $password = $_POST['password'];   
 
@@ -23,6 +24,7 @@ require('includes/conn.inc.php');
             $_SESSION['product_name'] =  [];
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
+            $_SESSION['username'] = $row['DoctorID'];
             header("Location: ../eHealth/homeDoc.php");
            
         }

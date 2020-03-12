@@ -79,7 +79,9 @@ ini_set('display_errors', 1);
                 <img src="./img/sleep-icon.png" alt="Sleep Icon">
                 </a>
 
+                <a href="/eHealth/chat.php">
                 <img src="./img/chat-icon.png" alt="chat Icon">
+                </a>
                 <img src="./img/info-icon.png" alt="info Icon">
             </div>
 		</div>
