@@ -74,19 +74,19 @@ ini_set('display_errors', 1);
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 
-                <a href="/eHealth/healthDiagram.php?type=heartRate">
+                <a href="./healthDiagram.php?type=heartRate">
                 <img src="./img/heart-icon.png" alt="heart Icon">
                 </a>
 
-                <a href="/eHealth/healthDiagram.php?type=hoursOfExercise">
+                <a href="./healthDiagram.php?type=hoursOfExercise">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
                 </a>
 
-                <a href="/eHealth/healthDiagram.php?type=hoursOfSleep">
+                <a href="./healthDiagram.php?type=hoursOfSleep">
                 <img src="./img/sleep-icon.png" alt="Sleep Icon">
                 </a>
 
-                <a href="/eHealth/chat.php">
+                <a href="./chat.php">
                 <img src="./img/chat-icon.png" alt="chat Icon">
                 </a>
                 <img src="./img/info-icon.png" alt="info Icon">
