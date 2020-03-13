@@ -14,16 +14,18 @@ require('includes/conn.inc.php');
         $sql = "SELECT * FROM doctors WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
-        $dbPasswordHash = password_verify($password, $row['password']);
+        $dbPasswordHash = password_verify($password, $row['userPassword']);
 
         if($dbPasswordHash == true){
 
             echo "valid";
             $_SESSION['email'] = $email;
-            $_SESSION['product_name'] =  [];
+            $_SESSION['product_name'] =  []; //Do we need this??
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
-            header("Location: ../eHealth/homeDoc.php");
+            $_SESSION['chatID'] = $row['DoctorID'];
+            $_SESSION['username'] = $row['DoctorID'];
+            header("Location: ./homeDoc.php");
            
         }
         else{

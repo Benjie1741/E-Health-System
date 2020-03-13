@@ -3,5 +3,5 @@
     $_SESSION = array();
     session_destroy();
 
-     header("Location: ../eHealth/login.php");
+     header("Location: ./login.php");
 ?>

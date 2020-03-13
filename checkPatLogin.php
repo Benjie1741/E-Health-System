@@ -14,7 +14,7 @@ require('includes/conn.inc.php');
         $sql = "SELECT * FROM patients WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
-        $dbPasswordHash = password_verify($password, $row['password']);
+        $dbPasswordHash = password_verify($password, $row['userPassword']);
 
         if($dbPasswordHash == true){
 
@@ -23,7 +23,9 @@ require('includes/conn.inc.php');
             $_SESSION['product_name'] =  [];
             $_SESSION['login'] = 1;
             $_SESSION['patientId'] = $row['PatientID'];
-            header("Location: ../eHealth/homePat.php");
+            $_SESSION['chatID'] = $row['PatientID'];
+            $_SESSION['username'] = $row['PatientID'];
+            header("Location: ./homePat.php");
            
         }
         else{

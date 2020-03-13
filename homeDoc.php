@@ -10,7 +10,7 @@ require('includes/functions.inc.php');
      $found=true;
    }
    if($found==false){
-     header("Location: ../eHealth/login.php");
+     header("Location: ./login.php");
    }
 
    echo '<script>';
