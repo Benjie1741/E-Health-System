@@ -1,6 +1,9 @@
 <?php
 include('includes/conn.inc.php');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $email = $_POST['email'];
 
 $password = $_POST['password'];

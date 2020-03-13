@@ -32,7 +32,16 @@ ini_set('display_errors', 1);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
 
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      margin-top: 100px;
+    }
+    </style>
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -57,12 +66,10 @@ ini_set('display_errors', 1);
   </div>
 </nav>
 </head>
-
 <!-- Main body -->
 <body>
     <div id="container">
         <h1 style="text-align:center">Hello world</h1>
-
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
