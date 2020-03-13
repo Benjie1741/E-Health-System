@@ -10,19 +10,21 @@ require('includes/functions.inc.php');
      $found=true;
    }
    if($found==false){
-     header("Location: ./login.php");
+     header("Location: ../eHealth/login.php");
    }
 
    echo '<script>';
    echo 'console.log('. json_encode( $_SESSION ) .')';
    echo '</script>';
 
-
 ini_set('display_errors', 1);
 
-//to display all the images
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID` FROM `patients`";
+
+$sql =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result = $pdo->query($sql);
+$sql1 = "SELECT * FROM `healthdata` where `userID` = " . $_GET["pid"];
+$result1 = $pdo->query($sql1);
+$_SESSION['chat_pID'] = $_GET["pid"];
 ?>
 
 <!DOCTYPE html>
@@ -226,38 +228,75 @@ hr {
     <div class="col-sm-2 sidenav">
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
     <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register new Doctor</button>
+    <br><br>
+    <button onclick="window.location.href = './chat.php';"style="width:auto; background-color: #00acee;"> Chat with
+    <?php while($row = $result->fetchObject()) {echo "$row->firstName";}?>
+    </button>
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
               
                 <h3 class="text-center">Patient List</h3>
                 <p class="text-center">In this section you can find a list of your patients!</p>
-                <input type="text" class="search"  onkeyup="myFunction()" placeholder="Find Patients">
                 <br><br>
-            <table id="myTable" class= "table" style=" border: 2px solid black;">
+            <table id="myTable1" class= "table" style=" border: 2px solid black;">
                     <tr>
                         <td>ID</td>
                         <td>Patient first name</td>
                         <td>Patient last name</td>
+                        <td>Patient Date of Birth</td>
                         <td>Patient Age</td>
-                        <td></td>
+                        <td>Patient Address</td>
+                        <td>Patient Phone Number</td>
+                        <td>Patient Email</td>
+                        <td>Patient Blood Type</td>
+                        <td>Patient Medical History</td>
+                        <td>Patient Illness</td>
+                        <td>Patient Allergies</td>
+                        <td>Patient Perscription</td>                       
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
-                 if($row->doctorID === $_SESSION['DoctorID']){
                    echo "<tr>";
                        echo "<td>$row->PatientID</td>";
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
-                       echo "<td>$row->age</td>";
-                       echo "<td><form method='GET' name='form' action='selectedPat.php'>
-                                    <input type='hidden' value='$row->PatientID' name='pid'>
-                                    <input type='submit' value='SELECT' id='btnSelect' onClick='selected($row->PatientID)'>
-                                 </form>
-                             </td>";
+                       echo "<td>$row->dateOfBirth</td>";                       
+                       echo "<td>$row->age</td>";                       
+                       echo "<td>$row->userAddress</td>";                       
+                       echo "<td>$row->phoneNumber</td>";                       
+                       echo "<td>$row->email</td>";                       
+                       echo "<td>$row->bloodType</td>";                       
+                       echo "<td>$row->medicalHistory</td>";                       
+                       echo "<td>$row->illness</td>";                       
+                       echo "<td>$row->allergies</td>";                       
+                       echo "<td>$row->prescription</td>";                       
+                   echo "</tr>";    
+                   
+                   $name = $row->firstName;
+               }
+            ?>
+            </table>
+            </br>
+            <input type="text" class="search"  onkeyup="myFunction()" placeholder="Find Data">
+            <table id="myTable" class= "table" style=" border: 2px solid black;">
+                    <tr>
+                        <td>Date</td>
+                        <td>Hours of Sleep</td>
+                        <td>Hours of Exercise</td>
+                        <td>Heart Rate</td>
+                        <td>Exercise Done</td>                                               
+                    </tr>
+            <?php
+               while($row = $result1->fetchObject()) {
+                   echo "<tr>";
+                       echo "<td>$row->dateOfExercise</td>";
+                       echo "<td>$row->hoursOfSleep</td>";
+                       echo "<td>$row->hoursOfExercise</td>";
+                       echo "<td>$row->heartRate</td>";
+                       echo "<td>$row->exerciseDone</td>";                       
                    echo "</tr>";
                  }
-               }
             ?>
             </table>
     </div>
@@ -271,6 +310,9 @@ hr {
       </div>
     </div>
   </div>
+</div>
+<div id="id01" class="modal">
+
 </div>
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -368,15 +410,6 @@ window.onclick = function(event) {
     modal2.style.display = "none";
   }
 }
-<<<<<<< HEAD
-=======
-
-function selected(pid){
-   <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
-   window.location.href = "./selectedPat.php";
-}
-
->>>>>>> Luke-Branch
 </script>
 
 <footer class="container-fluid text-center">
@@ -385,6 +418,5 @@ function selected(pid){
             <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
               gsanchezcollado@gmail.com</a></p>
 </footer>
-
 </body>
 </html>

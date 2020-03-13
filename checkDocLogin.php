@@ -2,7 +2,6 @@
 require('includes/conn.inc.php');
 
     session_start();
-
     $email = $_POST['email'];
     $password = $_POST['password'];   
 
@@ -15,18 +14,24 @@ require('includes/conn.inc.php');
         $sql = "SELECT * FROM doctors WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
-        $dbPasswordHash = password_verify($password, $row['password']);
+        $dbPasswordHash = password_verify($password, $row['userPassword']);
 
         if($dbPasswordHash == true){
 
             echo "valid";
             $_SESSION['email'] = $email;
-            $_SESSION['product_name'] =  [];
+            $_SESSION['product_name'] =  []; //Do we need this??
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
-            $_SESSION['chatID'] = $row['DoctorID'];
-            $_SESSION['username'] = $row['DoctorID'];
-            header("Location: ../eHealth/homeDoc.php");
+
+            //sessions for chat
+            $_SESSION['username'] = $row['firstName'];
+            $_SESSION['chat_dID'] = $row['DoctorID'];
+            $_SESSION['chat_pID'] = null;
+            $_SESSION['redirect'] = "./homeDoc.php";
+            $_SESSION['msgTime'] = null;
+            
+            header("Location: ./homeDoc.php");
            
         }
         else{

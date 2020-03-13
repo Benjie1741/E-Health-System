@@ -11,10 +11,10 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 try {
 
-	$sql= "INSERT INTO doctors (email, password)
+	$sql= "INSERT INTO doctors (email, userPassword)
        VALUES ('$email', '$hashed_password')";
        $stmt = $pdo -> query($sql);
-       header("Location: ../eHealth/homeDoc.php");
+       header("Location: ./homeDoc.php");
 }catch (\Exception $e) {
     	
     $message = "Email Already Exists!";

@@ -1,6 +1,9 @@
 <?php
 include('includes/conn.inc.php');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $email = $_POST['email'];
 
 $password = $_POST['password'];
@@ -11,10 +14,10 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 try {
 
-	$sql= "INSERT INTO patients (email, password, doctorID)
+	$sql= "INSERT INTO patients (email, userPassword, doctorID)
        VALUES ('$email', '$hashed_password', '$doctorID')";
        $stmt = $pdo -> query($sql);
-	   header("Location: ../eHealth/homeDoc.php");
+	   header("Location: ./homeDoc.php");
     }catch (\Exception $e) {
     	
     	$message = "Email Already Exists!";

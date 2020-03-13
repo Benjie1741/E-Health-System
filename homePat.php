@@ -10,7 +10,7 @@ require('includes/functions.inc.php');
      $found=true;
    }
    if($found==false){
-     header("Location: ../eHealth/login.php");
+     header("Location: ./login.php");
    }
 
    echo '<script>';
@@ -32,7 +32,16 @@ ini_set('display_errors', 1);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
 
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      margin-top: 100px;
+    }
+    </style>
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -57,29 +66,27 @@ ini_set('display_errors', 1);
   </div>
 </nav>
 </head>
-
 <!-- Main body -->
 <body>
     <div id="container">
         <h1 style="text-align:center">Hello world</h1>
-
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 
-                <a href="/eHealth/healthDiagram.php?type=heartRate">
+                <a href="./healthDiagram.php?type=heartRate">
                 <img src="./img/heart-icon.png" alt="heart Icon">
                 </a>
 
-                <a href="/eHealth/healthDiagram.php?type=hoursOfExercise">
+                <a href="./healthDiagram.php?type=hoursOfExercise">
                 <img src="./img/exercise-icon.png" alt="exercise Icon">
                 </a>
 
-                <a href="/eHealth/healthDiagram.php?type=hoursOfSleep">
+                <a href="./healthDiagram.php?type=hoursOfSleep">
                 <img src="./img/sleep-icon.png" alt="Sleep Icon">
                 </a>
 
-                <a href="/eHealth/chat.php">
+                <a href="./chat.php">
                 <img src="./img/chat-icon.png" alt="chat Icon">
                 </a>
                 <img src="./img/info-icon.png" alt="info Icon">
