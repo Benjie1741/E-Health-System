@@ -23,8 +23,14 @@ require('includes/conn.inc.php');
             $_SESSION['product_name'] =  []; //Do we need this??
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
-            $_SESSION['chatID'] = $row['DoctorID'];
-            $_SESSION['username'] = $row['DoctorID'];
+
+            //sessions for chat
+            $_SESSION['username'] = $row['firstName'];
+            $_SESSION['chat_dID'] = $row['DoctorID'];
+            $_SESSION['chat_pID'] = null;
+            $_SESSION['redirect'] = "./homeDoc.php";
+            $_SESSION['msgTime'] = null;
+            
             header("Location: ./homeDoc.php");
            
         }

@@ -209,7 +209,7 @@ hr {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="./homeDoc.php">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -226,9 +226,6 @@ hr {
     <div class="col-sm-2 sidenav">
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
     <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register new Doctor</button>
-
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
@@ -371,15 +368,12 @@ window.onclick = function(event) {
     modal2.style.display = "none";
   }
 }
-<<<<<<< HEAD
-=======
 
 function selected(pid){
    <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
    window.location.href = "./selectedPat.php";
 }
 
->>>>>>> Luke-Branch
 </script>
 
 <footer class="container-fluid text-center">

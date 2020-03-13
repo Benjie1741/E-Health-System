@@ -1,3 +1,18 @@
+<?php 
+// #includes
+require('includes/conn.inc.php');
+    
+   session_start();
+   $found=false;
+   if($_SESSION["login"]==1){
+     $found=true;
+   }
+   if($found==false){
+     header("Location: ./login.php");
+   }
+ini_set('display_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +49,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="./homePat.php">Home</a></li>
+        <li><a href=<?php echo $_SESSION['redirect']; ?>>Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -51,18 +66,13 @@
 
 <div id = "wrapper">
 
-    <h1>Hello <?php session_start(); echo $_SESSION['username']; ?></h1>
-
+    <h1>Hello <?php echo $_SESSION['username']; ?></h1>
     <div class = "chat_wrapper">
-
         <div id = "chat"></div>
-
         <form method = "POST" id = "messageForm">
             <textarea name = "message" cols = "30" rows = "7" class = "textarea"></textarea>
         </form>
-
     </div>
-
 </div>
 
 <script>
@@ -72,8 +82,6 @@ loadChat();
     setInterval(function(){
         loadChat();
     }, 1000);
-
-
 
     function loadChat() {
         $.post('messages.php?action=getMessages', function(response){
@@ -108,11 +116,9 @@ loadChat();
             document.getElementById('messageForm').reset();
           }
       });  
-
         return false;
     });
 
 </script>
-    
 </body>
 </html>
