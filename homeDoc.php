@@ -10,7 +10,7 @@ require('includes/functions.inc.php');
      $found=true;
    }
    if($found==false){
-     header("Location: ../eHealth/login.php");
+     header("Location: ./login.php");
    }
 
    echo '<script>';
@@ -214,7 +214,6 @@ hr {
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="/eHealth/chat.php">Chat</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
