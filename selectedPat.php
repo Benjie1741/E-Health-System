@@ -24,7 +24,6 @@ $sql =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result = $pdo->query($sql);
 $sql1 = "SELECT * FROM `healthdata` where `userID` = " . $_GET["pid"];
 $result1 = $pdo->query($sql1);
-$_SESSION['chat_pID'] = $_GET["pid"];
 ?>
 
 <!DOCTYPE html>
@@ -296,7 +295,19 @@ hr {
                        echo "<td>$row->hoursOfSleep</td>";
                        echo "<td>$row->hoursOfExercise</td>";
                        echo "<td>$row->heartRate</td>";
-                       echo "<td>$row->exerciseDone</td>";                       
+                       echo "<td>$row->exerciseDone</td>";
+                       echo "<td><form method='GET' name='form' action='editDataForm.php'>
+                       <input type='hidden' value='$row->HealthDataID' name='hid'>
+                       <input type='hidden' value='$row->UserID' name='pid'>
+                       <input type='submit' value='Edit' id='btnSelect' onClick='selected($row->PatientID)'>
+                       </form>
+                       </td>";
+                       echo "<td><form method='GET' name='form' action='deleteDataView.php'>
+                       <input type='hidden' value='$row->HealthDataID' name='hid'>
+                       <input type='hidden' value='$row->UserID' name='pid'>
+                       <input type='submit' value='Delete' id='btnSelect' onClick='selected($row->PatientID)'>
+                       </form>
+                       </td>";
                    echo "</tr>";
                  }
             ?>
