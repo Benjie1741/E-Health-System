@@ -17,7 +17,7 @@
 
   $sType = safeString($_GET['type']); //Changes depending on what you click
   $user_id = $_SESSION["patientId"];                     //NEEDS to change depending on the logged in user
-  $cType = "null";
+  $cType = null;
 
   $sql = "SELECT $sType, dateOfExercise FROM healthData WHERE userID = $user_id";
   $stmt = $pdo->query($sql);
