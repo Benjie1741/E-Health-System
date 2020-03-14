@@ -230,7 +230,8 @@ hr {
                         <td><b>Patient first name</b></td>
                         <td><b>Patient last name</b></td>
                         <td><b>Patient Age</b></td>
-                        <td></td>
+                        <td><b>View Info</b></td>
+                        <td><b>Delete</b></td>
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
@@ -240,11 +241,19 @@ hr {
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
                        echo "<td>$row->age</td>";
+                       //Selected Patient Button
                        echo "<td><form method='GET' name='form' action='selectedPat.php'>
                                     <input type='hidden' value='$row->PatientID' name='pid'>
                                     <input type='submit' value='SELECT' id='btnSelect' onClick='selected($row->PatientID)'>
                                  </form>
                              </td>";
+                      //Delete Patient Button
+                      echo "<td>
+                         <form method='GET' name='form' action='deletePat.php'>
+                         <input type='hidden' value='$row->PatientID' name='pid'>
+                         <input type='submit' value='Delete' id='btnDel' onClick='selected($row->PatientID)'>
+                         </form>
+                        </td>";
                    echo "</tr>";
                  }
                }
