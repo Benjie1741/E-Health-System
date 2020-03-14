@@ -24,6 +24,8 @@ $sql =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result = $pdo->query($sql);
 $sql1 = "SELECT * FROM `healthdata` where `userID` = " . $_GET["pid"];
 $result1 = $pdo->query($sql1);
+
+$_SESSION['chat_pID'] = $_GET["pid"];
 ?>
 
 <!DOCTYPE html>
