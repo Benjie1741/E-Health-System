@@ -257,7 +257,7 @@ hr {
             </table>
 
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" onclick="leave()" class="cancelbtn">Cancel</button>
         <button type="submit"  class="signupbtn">Delete</button>
       </div>
     </div>
@@ -280,6 +280,11 @@ window.onclick = function(event) {
   if (event.target == modal2) {
     modal2.style.display = "none";
   }
+}
+    
+function leave()
+{
+  window.location.href = "./homeDoc.php";
 }
 </script>
 
