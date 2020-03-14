@@ -295,7 +295,19 @@ hr {
       <input type="text" placeholder="Enter Phone Number" name="num" required>
 
       <label for="blood"><b>Blood type</b></label>
-      <input type="text" placeholder="Enter BT" name="bood" required>
+      <input type="text" placeholder="Enter BT" name="blood" required>
+
+      <label for="history"><b>Medical History</b></label>
+      <input type="text" placeholder="Enter BT" name="history" required>
+
+      <label for="illness"><b>Illness</b></label>
+      <input type="text" placeholder="Enter BT" name="illness" required>
+
+      <label for="allergies"><b>Allergies</b></label>
+      <input type="text" placeholder="Enter BT" name="allergies" required>
+
+      <label for="prescription"><b>Prescription</b></label>
+      <input type="text" placeholder="Enter BT" name="prescription" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
@@ -329,14 +341,38 @@ hr {
       <h1>Doctor Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="name" required>
+      <label for="firstName"><b>First Name</b></label>
+      <input type="text" placeholder="Enter First Name" name="firstname" required>
+
+      <label for="lastName"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="lastname" required>
+
+      <label for="age"><b>Age</b></label>
+      <input type="text" placeholder="Enter Age" name="age" required>
+
+      <label for="address"><b>Adress</b></label>
+      <input type="text" placeholder="Enter Address" name="address" required>
+
+      <label for="phone"><b>Phone Number</b></label>
+      <input type="text" placeholder="Enter Phone Number" name="num" required>
+
+      <label for="specialty"><b>Specialty</b></label>
+      <input type="text" placeholder="Enter Specialty" name="specialty" required>
+
+      <label for="clearance"><b>Clearance level</b></label>
+      <input type="text" placeholder="Enter Clearance level" name="clearance" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
 
       <label for="password"><b>Password</b></label>
       <input type="text" placeholder="Enter Password" name="password" required>
+
+      <label for="dateOfBirth"><b>Date of Birth</b></label>
+      <input type="date" placeholder="Enter Name" name="dob" required>
+
+      <label for="license"><b>License Revalidation Date</b></label>
+      <input type="date" placeholder="Enter License Revalidation Date" name="license" required>
       
 
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
