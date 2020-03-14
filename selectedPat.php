@@ -425,6 +425,11 @@ window.onclick = function(event) {
     modal2.style.display = "none";
   }
 }
+    
+function selected(pid){
+   <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
+   window.location.href = "./editDataForm.php";
+}
 </script>
 
 <footer class="container-fluid text-center">
