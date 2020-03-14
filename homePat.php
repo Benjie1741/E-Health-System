@@ -91,3 +91,23 @@ ini_set('display_errors', 1);
 </footer>
 
 </html>
+
+
+<script>
+//AUTO DATA UPLOAD
+insertData();
+    // Calls chat fucntion every second
+    setInterval(function(){
+        insertData();
+    }, 10000);
+
+    function inserData() {
+    
+    var randHeartRate = 1;
+    var randHoursOfExercise = 1;
+    var exerciseDone = "running";
+    var date = 1;
+
+    }
+
+</script>
