@@ -17,8 +17,6 @@ require('includes/functions.inc.php');
    echo 'console.log('. json_encode( $_SESSION ) .')';
    echo '</script>';
 
-
-
 ini_set('display_errors', 1);
 ?>
 
@@ -70,32 +68,30 @@ ini_set('display_errors', 1);
 <!-- Main body -->
 <body>
     <div id="container">
-        <h1 style="text-align:center">Hello world</h1>
+        <h1 style="text-align:center">Hello <?php echo $_SESSION['username']?></h1>
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 
                 <a href="./healthDiagram.php?type=heartRate">
-                <img src="./img/heart-icon.png" alt="heart Icon">
+                <img src="./img/heart-icon.png" alt="heart Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
 
                 <a href="./healthDiagram.php?type=hoursOfExercise">
-                <img src="./img/exercise-icon.png" alt="exercise Icon">
+                <img src="./img/exercise-icon.png" alt="exercise Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
 
                 <a href="./healthDiagram.php?type=hoursOfSleep">
-                <img src="./img/sleep-icon.png" alt="Sleep Icon">
+                <img src="./img/sleep-icon.png" alt="Sleep Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
 
                 <a href="./chat.php">
-                <img src="./img/chat-icon.png" alt="chat Icon">
+                <img src="./img/chat-icon.png" alt="chat Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
-                <img src="./img/info-icon.png" alt="info Icon">
+                <img src="./img/info-icon.png" alt="info Icon" style="padding-right: 20px; margin-bottom: 10px;">
             </div>
 		</div>
     </div>
-   
-
 </body>
 
 <footer style="padding-top:3%" class="container-fluid text-center">
