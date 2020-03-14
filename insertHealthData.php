@@ -2,7 +2,7 @@
 require('includes/conn.inc.php');
 session_start();
 
-$userID = $_SESSION['chatID'];
+$userID = $_SESSION['chat_pID'];
 $hoursOfSleep = $_POST['hoursOfSleep'];
 $hoursOfExercise = $_POST['hoursOfExercise'];
 $heartRate = $_POST['heartRate'];
