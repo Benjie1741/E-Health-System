@@ -29,14 +29,14 @@ try {
 
             $stmt->execute();
 
-	        header("Location: ../eHealth1/homePat.php");
+	        header("Location: ./homePat.php");
 }catch (\Exception $e) {
 
         print $e;
 
         $message = $e;
         echo "<script type='text/javascript'>alert('$message');
-        location.href = 'homeDoc.php';
+        location.href = 'homePat.php';
         </script>";
         //header("Location: ../eHealth/homeDoc.php");
 
