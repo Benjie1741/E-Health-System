@@ -13,12 +13,15 @@ $_SESSION['msgTime'] = (date("F d, Y h:i:s A", $timestamp));
 
         //Inserts the data into the database
         case "sendMessage":
-          $query = $pdo->prepare("INSERT INTO chatmessages SET displayName=?, pID=?, dID=?, message=?, date=?");
-          $run = $query->execute([$_SESSION['username'], $_SESSION['chat_pID'], $_SESSION['chat_dID'], $_REQUEST['message'], $_SESSION['msgTime']]);
-
-          if ( $run ) {
-            echo 1;
-            exit;
+          //Checks is message is empty
+          if($_REQUEST['message'] != ""){
+            $query = $pdo->prepare("INSERT INTO chatmessages SET displayName=?, pID=?, dID=?, message=?, date=?");
+            $run = $query->execute([$_SESSION['username'], $_SESSION['chat_pID'], $_SESSION['chat_dID'], $_REQUEST['message'], $_SESSION['msgTime']]);
+  
+            if ( $run ) {
+              echo 1;
+              exit;
+            }
           }
         break;
 
