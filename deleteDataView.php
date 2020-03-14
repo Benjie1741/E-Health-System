@@ -246,9 +246,9 @@ hr {
             <?php
                while($row = $result->fetchObject()) {
                    echo "<tr>";
-                       echo "<td>$row->date</td>";
+                       echo "<td>$row->dateOfExercise</td>";
                        echo "<td>$row->hoursOfSleep</td>";
-                       echo "<td>$row->hourOfExercise</td>";
+                       echo "<td>$row->hoursOfExercise</td>";
                        echo "<td>$row->heartRate</td>";
                        echo "<td>$row->exerciseDone</td>";
                    echo "</tr>";
