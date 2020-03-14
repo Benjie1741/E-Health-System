@@ -2,23 +2,13 @@
 // #includes
 require('includes/conn.inc.php');
 require('includes/functions.inc.php');
-    
-
-   session_start();
-   $found=false;
-   if($_SESSION["login"]==1){
-     $found=true;
-   }
-   if($found==false){
-     header("Location: ../eHealth/login.php");
-   }
+require('includes/checkLoggedIn.php'); 
 
    echo '<script>';
    echo 'console.log('. json_encode( $_SESSION ) .')';
    echo '</script>';
 
 ini_set('display_errors', 1);
-
 
 $sql =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result = $pdo->query($sql);
@@ -300,7 +290,7 @@ hr {
                        echo "<td>$row->exerciseDone</td>";
                        echo "<td><form method='GET' name='form' action='editDataForm.php'>
                        <input type='hidden' value='$row->HealthDataID' name='hid'>
-                       <input type='hidden' value='$row->UserID' name='pid'>
+                       <input type='hidden' value='$row->userID' name='pid'>
                        <input type='submit' value='Edit' id='btnSelect' onClick='selected($row->PatientID)'>
                        </form>
                        </td>";

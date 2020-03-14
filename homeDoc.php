@@ -2,25 +2,15 @@
 // #includes
 require('includes/conn.inc.php');
 require('includes/functions.inc.php');
-    
-
-   session_start();
-   $found=false;
-   if($_SESSION["login"]==1){
-     $found=true;
-   }
-   if($found==false){
-     header("Location: ./login.php");
-   }
+require('includes/checkLoggedIn.php'); 
 
    echo '<script>';
    echo 'console.log('. json_encode( $_SESSION ) .')';
    echo '</script>';
 
-
 ini_set('display_errors', 1);
 
-//to display all the images
+//to display all the patients
 $sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID` FROM `patients`";
 $result = $pdo->query($sql);
 ?>
