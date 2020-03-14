@@ -63,16 +63,18 @@ ini_set('display_errors', 1);
 
 </head>
 <body>
-
-<div id = "wrapper">
-
+<div id ="container"> 
+  <div id = "wrapper">
     <h1>Hello <?php echo $_SESSION['username']; ?></h1>
     <div class = "chat_wrapper">
         <div id = "chat"></div>
         <form method = "POST" id = "messageForm">
             <textarea name = "message" cols = "30" rows = "7" class = "textarea"></textarea>
+            <input type="submit" id="sendMsg" name="sendMsg" value="Send">
         </form>
+
     </div>
+  </div>
 </div>
 
 <script>

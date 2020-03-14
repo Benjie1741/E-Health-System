@@ -4,14 +4,14 @@
 }
 
 #wrapper{
-    width: 1000px;
+    width: auto;
     margin: 10px auto;
     background: #f1f1f1;
     padding: 20px;
 }
 
 .chat_wrapper{
-    width:70%;
+    width:90%;
     margin: 10px auto;
     background: #ffffff;
 }
