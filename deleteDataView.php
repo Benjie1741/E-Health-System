@@ -225,7 +225,7 @@ hr {
 </nav>
 
 <div id="id01" class="">
-  <form  action="editHealthData.php"  method="post">
+  <form  action="deleteHealthData.php"  method="post">
     <div class="container">
       <h1>Delete patient health data?</h1>
       <p>Are you sure you want to delete this patient data?</p>
