@@ -3,6 +3,7 @@ include('includes/conn.inc.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+session_start();
 
 $email = $_POST['email'];
 $userPassword = $_POST['password'];
