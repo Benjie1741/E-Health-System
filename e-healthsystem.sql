@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `e-healthsystem`
+-- Database: `e-health`
 --
 
 -- --------------------------------------------------------
@@ -82,6 +82,15 @@ CREATE TABLE `patients` (
   `doctorID` int(11) NOT NULL,
   `prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `chatmessages` (
+  `message` varchar(1000) NOT NULL,
+  `date` varchar(100) NOT NULL,
+  `displayName` varchar(100) NOT NULL,
+  `pID` int(100) NOT NULL,
+  `dID` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Indexes for dumped tables
