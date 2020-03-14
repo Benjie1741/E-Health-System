@@ -1,27 +1,23 @@
 <?php
+  //Includes
   require('includes/conn.inc.php');
   require('includes/functions.inc.php');
-
-  session_start();
-  $found=false;
-  if($_SESSION["login"]==1){
-    $found=true;
-  }
-  if($found==false){
-    header("Location: ../eHealth/login.php");
-  }
+  require('includes/checkLoggedIn.php'); 
 
   echo '<script>';
   echo 'console.log('. json_encode( $_SESSION ) .')';
   echo '</script>';
 
-  $sType = safeString($_GET['type']); //Changes depending on what you click
-  $user_id = $_SESSION["patientId"];                     //NEEDS to change depending on the logged in user
+  //Sets the health parameter, the user id, and the type of graph
+  $sType = safeString($_GET['type']);
+  $user_id = $_SESSION["patientId"];
   $cType = null;
 
+  //Gets the data
   $sql = "SELECT $sType, dateOfExercise FROM healthData WHERE userID = $user_id";
   $stmt = $pdo->query($sql);
 
+  //Changes the type of graph to display
   if($sType == "heartRate") {
     $cType = "line";
   }elseif ($sType == "hoursOfSleep") {
@@ -29,7 +25,6 @@
   }else{
     $cType = "bar";
   }
-
 
   //Arrays for data
   $dataPoints = array();
@@ -40,7 +35,7 @@
 <html ng-app="GraphData">
 
 <head>
-  <title>ARJ - Health Diagram</title>
+  <title>Health Diagram</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -78,9 +73,8 @@
 <!-- Main body -->
 <body>
     <div style="text-align:center" id="container">
-        <h1>Hello world</h1>
+        <h1><?php echo $sType?> Data</h1>
         <br>
-
         <!-- PHP for storing the data from the db into an array, only stores the latest 7 values by date -->
         <?php 
         $i = 0;
@@ -130,13 +124,9 @@
     var title =  "<?php echo $sType; ?>";
     var type = graphType
 
-    console.log("In function")
-    console.log("graphType: ", graphType)
-    console.log("type: ", type)
-
     angular.module('GraphData',['AngularChart'], function( $routeProvider, $locationProvider ){
       $routeProvider.when('/',{
-          template: '<chart title='+title+' type='+type+' xData="lineChartXData" yData="lineChartYData" xName="Values" yName="Date"></chart>',
+          template: '<chart title='+title+' type='+type+' xData="lineChartXData" yData="lineChartYData" xName="Date" yName="Values"></chart>',
           controller: MainCtrl
           })
       })

@@ -1,15 +1,8 @@
 <?php 
-// #includes
+//Includes
 require('includes/conn.inc.php');
-    
-   session_start();
-   $found=false;
-   if($_SESSION["login"]==1){
-     $found=true;
-   }
-   if($found==false){
-     header("Location: ./login.php");
-   }
+require('includes/checkLoggedIn.php'); 
+
 ini_set('display_errors', 1);
 ?>
 
@@ -17,25 +10,18 @@ ini_set('display_errors', 1);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-
-    <link rel = "stylesheet" href = "css/chatStyle.css"/>
-
+    <title>Chat</title>
     <script
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous">
     </script>
-
-<title>ARJ - Health Diagram</title>
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel = "stylesheet" href = "css/chatStyle.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
-  <script src="http://code.highcharts.com/highcharts.js"></script>
-  <script src="chart.js"></script>
 
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -65,7 +51,7 @@ ini_set('display_errors', 1);
 <body>
 <div id ="container"> 
   <div id = "wrapper">
-    <h1>Hello <?php echo $_SESSION['username']; ?></h1>
+    <h1 style="text-align: center;">Hello <?php echo $_SESSION['username']; ?></h1>
     <div class = "chat_wrapper">
         <div id = "chat"></div>
         <form method = "POST" id = "messageForm">
@@ -78,9 +64,8 @@ ini_set('display_errors', 1);
 </div>
 
 <script>
-
 loadChat();
-
+    // Calls chat fucntion every second
     setInterval(function(){
         loadChat();
     }, 1000);
@@ -91,9 +76,7 @@ loadChat();
               var scrollpos = $('#chat').scrollTop();
               var scrollpos = parseInt(scrollpos) + 520;
               var scrollHeight = $('#chat').prop('scrollHeight');
-              
               $('#chat').html(response);
-
               if( scrollpos < scrollHeight){
 
               }else {
@@ -102,7 +85,6 @@ loadChat();
         });
     }
 
-
     $('.textarea').keyup(function(e){
         if(e.which == 13 ) {
             $('form').submit();
@@ -110,8 +92,7 @@ loadChat();
     });
 
     $('form').submit(function(){
-
-        var message = $('.textarea').val();
+      var message = $('.textarea').val();
       $.post('messages.php?action=sendMessage&message=' + message, function(response){
           if(response == 1){
             loadChat();
