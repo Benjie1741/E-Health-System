@@ -298,22 +298,19 @@ hr {
       <input type="text" placeholder="Enter BT" name="blood" required>
 
       <label for="history"><b>Medical History</b></label>
-      <input type="text" placeholder="Enter BT" name="history" required>
+      <input type="text" placeholder="Enter Medical History" name="history" required>
 
       <label for="illness"><b>Illness</b></label>
-      <input type="text" placeholder="Enter BT" name="illness" required>
+      <input type="text" placeholder="Enter Illness" name="illness" required>
 
       <label for="allergies"><b>Allergies</b></label>
-      <input type="text" placeholder="Enter BT" name="allergies" required>
+      <input type="text" placeholder="Enter Allergies" name="allergies" required>
 
       <label for="prescription"><b>Prescription</b></label>
-      <input type="text" placeholder="Enter BT" name="prescription" required>
+      <input type="text" placeholder="Enter Perscription" name="prescription" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
-
-      <label for="docID"><b>Doctor ID</b></label>
-      <input type="text" placeholder="Enter ID" name="docID" required>
 
       <label for="password"><b>Password</b></label>
       <input type="text" placeholder="Enter Password" name="password" required>

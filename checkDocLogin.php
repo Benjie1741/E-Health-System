@@ -20,7 +20,6 @@ require('includes/conn.inc.php');
 
             echo "valid";
             $_SESSION['email'] = $email;
-            $_SESSION['product_name'] =  []; //Do we need this??
             $_SESSION['login'] = 1;
             $_SESSION['DoctorID'] = $row['DoctorID'];
 

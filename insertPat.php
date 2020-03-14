@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 
 $email = $_POST['email'];
 $userPassword = $_POST['password'];
-$doctorID = $_POST['docID'];
+$doctorID = $_SESSION['DoctorID'];
 $firstName = $_POST['firstname'];
 $lastName = $_POST['lastname'];
 $age = $_POST['age'];
