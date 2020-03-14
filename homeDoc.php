@@ -236,10 +236,10 @@ hr {
                 <br><br>
             <table id="myTable" class= "table" style=" border: 2px solid black;">
                     <tr>
-                        <td>ID</td>
-                        <td>Patient first name</td>
-                        <td>Patient last name</td>
-                        <td>Patient Age</td>
+                        <td><b>ID</b></td>
+                        <td><b>Patient first name</b></td>
+                        <td><b>Patient last name</b></td>
+                        <td><b>Patient Age</b></td>
                         <td></td>
                     </tr>
             <?php
