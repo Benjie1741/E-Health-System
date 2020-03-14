@@ -29,7 +29,7 @@ try {
 
             $stmt->execute();
 
-	        header("Location: ../eHealth/homePat.php");
+	        header("Location: ../eHealth/homeDoc.php");
 }catch (\Exception $e) {
 
         print $e;
