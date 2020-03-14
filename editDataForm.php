@@ -21,9 +21,11 @@ require('includes/functions.inc.php');
 
 ini_set('display_errors', 1);
 
-//to display all the images
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID` FROM `patients`";
+$hid = $_GET['hid'];
+$sql = "SELECT * FROM `healthdata` where `userID` = " . $patientID = $_SESSION['PatientID']. " AND `healthDataID` = " . $hid;
+print $sql;
 $result = $pdo->query($sql);
+$row = $result->fetchObject();
 ?>
 
 <!DOCTYPE html>
@@ -239,19 +241,19 @@ hr {
       <input type='hidden' value='<?php echo $patientID; ?>' name='pid'>
 
       <label for="hoursOfSleep"><b>Hours of sleep: </b></label>
-      <input type="text" placeholder="eg 7" name="hoursOfSleep" required>
+      <input type="text" placeholder="<?php print $row->hoursOfSleep ?>" name="hoursOfSleep" required>
 
       <label for="lastName"><b>Hours of exercise: </b></label>
-      <input type="text" placeholder="eg 2" name="hoursOfExercise" required>
+      <input type="text" placeholder="<?php print $row->hoursOfExercise?>" name="hoursOfExercise" required>
 
       <label for="heartRate"><b>Average daily heart rate (BPM):</b></label>
-      <input type="text" placeholder="eg 73" name="heartRate" required>
+      <input type="text" placeholder="<?php print $row->heartRate?>" name="heartRate" required>
 
       <label for="exerciseDone"><b>Exercise Done: </b></label>
-      <input type="text" placeholder="eg Running, Yoga, etc." name="exerciseDone" required>
+      <input type="text" placeholder="<?php print $row->exerciseDone?>" name="exerciseDone" required>
 
       <label for="dateOfExercise"><b>Date of exercise: </b></label>
-      <input type="date" placeholder="" name="doe" required>
+      <input type="date" placeholder="<?php print $row->dateOfExercise?>" name="doe" required>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
