@@ -14,15 +14,24 @@ require('includes/conn.inc.php');
         $sql = "SELECT * FROM patients WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
-        $dbPasswordHash = password_verify($password, $row['password']);
+        $dbPasswordHash = password_verify($password, $row['userPassword']);
 
         if($dbPasswordHash == true){
 
             echo "valid";
             $_SESSION['email'] = $email;
-            $_SESSION['product_name'] =  [];
             $_SESSION['login'] = 1;
-            header("Location: ../eHealth/homePat.php");
+            $_SESSION['patientId'] = $row['PatientID'];
+            
+            //Sessions for chat
+            $_SESSION['username'] = $row['firstName'];
+            $_SESSION['chat_pID'] = $row['PatientID'];
+            $_SESSION['chat_dID'] = $row['doctorID'];
+            $_SESSION['redirect'] = "./homePat.php";
+            $_SESSION['msgTime'] = null;
+            $_SESSION['isDoctorOrPatient'] = "P";
+
+            header("Location: ./homePat.php");
            
         }
         else{

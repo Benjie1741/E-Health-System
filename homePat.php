@@ -1,36 +1,21 @@
 <?php 
-// #includes
+//Includes
 require('includes/conn.inc.php');
+require('includes/functions.inc.php');
+require('includes/checkLoggedIn.php');    
 
-
-  session_start();
-  $found=false;
-  if($_SESSION["login"]==1){
-    $found=true;
-  }
-  if($found==false){
-    header("Location: ../eHealth/login.php");
-  }
-
-if (isset($_GET['search'])){
-  $searchTerm = "%" . $_GET['search'] . "%";
-  $sql= "SELECT * FROM items
-        WHERE (name LIKE :search OR price LIKE :search)"; /* could add genre */
-  $stmt2 = $pdo->prepare($sql);
-  $stmt2->bindParam(':search', $searchTerm, PDO::PARAM_STR);
-  $stmt2->execute();
-}
-
+echo '<script>';
+echo 'console.log('. json_encode( $_SESSION ) .')';
+echo '</script>';
 
 ini_set('display_errors', 1);
 
-//to display all the images
-$sql = "SELECT * FROM items";
-$stmt = $pdo->query($sql);
+$sql =  "SELECT COUNT(*) notification FROM chatmessages c where c.pID = ". $_SESSION['patientId'] ." and c.seen = 0";
+$result = $pdo->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Health Dashboard</title>
   <meta charset="utf-8">
@@ -48,6 +33,15 @@ $stmt = $pdo->query($sql);
       margin-top: 100px;
     }
     </style>
+
+  <?php
+    while($row = $result->fetchObject()) {
+      if($row->notification > 0) {
+      echo "<script type='text/javascript'>alert('You have a message off your Doctor!'); </script>";
+      }
+    }
+  ?>
+
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -64,6 +58,7 @@ $stmt = $pdo->query($sql);
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
+	<li><a href="uploadData.php">Upload</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -75,31 +70,36 @@ $stmt = $pdo->query($sql);
 <!-- Main body -->
 <body>
     <div id="container">
-        <h1 style="text-align:center">Hello world</h1>
+        <h1 style="text-align:center">Hello <?php echo $_SESSION['username']?></h1>
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 
-                <a href="healthDiagram.php?type=heartRate">
-                <img src="./img/heart-icon.png" alt="heart Icon">
+                <a href="./healthDiagram.php?type=heartRate">
+                <img src="./img/heart-icon.png" alt="heart Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
-                <a href="healthDiagram.php?type=exerciseDone">
-                <img src="./img/exercise-icon.png" alt="exercise Icon">
+
+                <a href="./healthDiagram.php?type=hoursOfExercise">
+                <img src="./img/exercise-icon.png" alt="exercise Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
-                <a href="healthDiagram.php?type=hoursOfSleep">
-                <img src="./img/sleep-icon.png" alt="heart Icon">
+
+                <a href="./healthDiagram.php?type=hoursOfSleep">
+                <img src="./img/sleep-icon.png" alt="Sleep Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
-                <img src="./img/chat-icon.png" alt="chat Icon">
-                <img src="./img/info-icon.png" alt="info Icon">
+
+                <a href="./chat.php">
+                <img src="./img/chat-icon.png" alt="chat Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                </a>
+                <img src="./img/info-icon.png" alt="info Icon" style="padding-right: 20px; margin-bottom: 10px;">
             </div>
 		</div>
     </div>
-   
 </body>
-<footer class="container-fluid text-center">
-    <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>
-    <p>Made with PHP, Bootstrap, JS and MySQL</p>
-            <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
-              gsanchezcollado@gmail.com</a></p>
+
+<footer style="padding-top:3%" class="container-fluid text-center">
+    <br> <br>
+    <p>Copyright &copy; 2020</p>
+    <p>Footer Text</p>
 </footer>
+
 </html>

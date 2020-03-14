@@ -2,27 +2,16 @@
 // #includes
 require('includes/conn.inc.php');
 require('includes/functions.inc.php');
-    
-
-   session_start();
-   $found=false;
-   if($_SESSION["login"]==1){
-     $found=true;
-   }
-   if($found==false){
-     header("Location: ../eHealth/login.php");
-   }
+require('includes/checkLoggedIn.php'); 
 
    echo '<script>';
    echo 'console.log('. json_encode( $_SESSION ) .')';
    echo '</script>';
 
-   
-
 ini_set('display_errors', 1);
 
-//to display all the images
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID` FROM `patients`";
+//to display all the patients
+$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID`, (SELECT COUNT(*) FROM chatmessages c where c.pID = PatientID and c.seen = 0) notification FROM `patients`p";
 $result = $pdo->query($sql);
 ?>
 
@@ -210,7 +199,7 @@ hr {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="./homeDoc.php">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -227,9 +216,6 @@ hr {
     <div class="col-sm-2 sidenav">
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
     <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register new Doctor</button>
-
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
@@ -240,10 +226,12 @@ hr {
                 <br><br>
             <table id="myTable" class= "table" style=" border: 2px solid black;">
                     <tr>
-                        <td>ID</td>
-                        <td>Patient first name</td>
-                        <td>Patient last name</td>
-                        <td>Patient Age</td>
+                        <td><b>ID</b></td>
+                        <td><b>Patient first name</b></td>
+                        <td><b>Patient last name</b></td>
+                        <td><b>Patient Age</b></td>
+                        <td><b>View Info</b></td>
+                        <td><b>Delete</b></td>
                         <td></td>
                     </tr>
             <?php
@@ -254,11 +242,25 @@ hr {
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
                        echo "<td>$row->age</td>";
+                       //Selected Patient Button
                        echo "<td><form method='GET' name='form' action='selectedPat.php'>
                                     <input type='hidden' value='$row->PatientID' name='pid'>
                                     <input type='submit' value='SELECT' id='btnSelect' onClick='selected($row->PatientID)'>
                                  </form>
                              </td>";
+                      //Delete Patient Button
+                      echo "<td>
+                         <form method='GET' name='form' action='deletePat.php'>
+                         <input type='hidden' value='$row->PatientID' name='pid'>
+                         <input type='submit' value='Delete' id='btnDel' onClick='selected($row->PatientID)'>
+                         </form>
+                        </td>";
+                        if($row->notification > 0){
+                          echo "<td>MESSAGE NOTIFICATION</td>";
+                        }     
+                        else {
+                          echo "<td></td>";
+                        }                  
                    echo "</tr>";
                  }
                }
@@ -299,13 +301,22 @@ hr {
       <input type="text" placeholder="Enter Phone Number" name="num" required>
 
       <label for="blood"><b>Blood type</b></label>
-      <input type="text" placeholder="Enter BT" name="bood" required>
+      <input type="text" placeholder="Enter BT" name="blood" required>
+
+      <label for="history"><b>Medical History</b></label>
+      <input type="text" placeholder="Enter Medical History" name="history" required>
+
+      <label for="illness"><b>Illness</b></label>
+      <input type="text" placeholder="Enter Illness" name="illness" required>
+
+      <label for="allergies"><b>Allergies</b></label>
+      <input type="text" placeholder="Enter Allergies" name="allergies" required>
+
+      <label for="prescription"><b>Prescription</b></label>
+      <input type="text" placeholder="Enter Perscription" name="prescription" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
-
-      <label for="docID"><b>Doctor ID</b></label>
-      <input type="text" placeholder="Enter ID" name="docID" required>
 
       <label for="password"><b>Password</b></label>
       <input type="text" placeholder="Enter Password" name="password" required>
@@ -333,14 +344,38 @@ hr {
       <h1>Doctor Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="name" required>
+      <label for="firstName"><b>First Name</b></label>
+      <input type="text" placeholder="Enter First Name" name="firstname" required>
+
+      <label for="lastName"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="lastname" required>
+
+      <label for="age"><b>Age</b></label>
+      <input type="text" placeholder="Enter Age" name="age" required>
+
+      <label for="address"><b>Adress</b></label>
+      <input type="text" placeholder="Enter Address" name="address" required>
+
+      <label for="phone"><b>Phone Number</b></label>
+      <input type="text" placeholder="Enter Phone Number" name="num" required>
+
+      <label for="specialty"><b>Specialty</b></label>
+      <input type="text" placeholder="Enter Specialty" name="specialty" required>
+
+      <label for="clearance"><b>Clearance level</b></label>
+      <input type="text" placeholder="Enter Clearance level" name="clearance" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
 
       <label for="password"><b>Password</b></label>
       <input type="text" placeholder="Enter Password" name="password" required>
+
+      <label for="dateOfBirth"><b>Date of Birth</b></label>
+      <input type="date" placeholder="Enter Name" name="dob" required>
+
+      <label for="license"><b>License Revalidation Date</b></label>
+      <input type="date" placeholder="Enter License Revalidation Date" name="license" required>
       
 
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>

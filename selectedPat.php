@@ -2,16 +2,7 @@
 // #includes
 require('includes/conn.inc.php');
 require('includes/functions.inc.php');
-    
-
-   session_start();
-   $found=false;
-   if($_SESSION["login"]==1){
-     $found=true;
-   }
-   if($found==false){
-     header("Location: ../eHealth/login.php");
-   }
+require('includes/checkLoggedIn.php'); 
 
    echo '<script>';
    echo 'console.log('. json_encode( $_SESSION ) .')';
@@ -19,11 +10,22 @@ require('includes/functions.inc.php');
 
 ini_set('display_errors', 1);
 
-
 $sql =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result = $pdo->query($sql);
 $sql1 = "SELECT * FROM `healthdata` where `userID` = " . $_GET["pid"];
 $result1 = $pdo->query($sql1);
+$sql2 =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
+$result2 = $pdo->query($sql);
+
+   echo '<script>';
+   echo 'console.log('. json_encode( $result ) .')';
+   echo '</script>';
+
+   echo '<script>';
+   echo 'console.log('. json_encode( $result1 ) .')';
+   echo '</script>';
+
+$_SESSION['chat_pID'] = $_GET["pid"];
 ?>
 
 <!DOCTYPE html>
@@ -210,7 +212,7 @@ hr {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="./homeDoc.php">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -227,9 +229,12 @@ hr {
     <div class="col-sm-2 sidenav">
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
     <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register new Doctor</button>
-
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+    <br><br>
+    <!-- Button for chat, displays the name of the patient -->
+    <button onclick="window.location.href = './chat.php';"style="width:auto; background-color: #00acee;"> Chat with
+    <?php while($row = $result2->fetchObject()) {echo "$row->firstName";}?>
+    </button>
+    
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
@@ -254,14 +259,14 @@ hr {
                         <td>Patient Perscription</td>                       
                     </tr>
             <?php
-               while($row = $result->fetchObject()) {
+               while($row = $result->fetchObject()) {            
                    echo "<tr>";
                        echo "<td>$row->PatientID</td>";
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
                        echo "<td>$row->dateOfBirth</td>";                       
                        echo "<td>$row->age</td>";                       
-                       echo "<td>$row->address</td>";                       
+                       echo "<td>$row->userAddress</td>";                       
                        echo "<td>$row->phoneNumber</td>";                       
                        echo "<td>$row->email</td>";                       
                        echo "<td>$row->bloodType</td>";                       
@@ -269,7 +274,9 @@ hr {
                        echo "<td>$row->illness</td>";                       
                        echo "<td>$row->allergies</td>";                       
                        echo "<td>$row->prescription</td>";                       
-                   echo "</tr>";                 
+                   echo "</tr>";    
+                   
+                   $name = $row->firstName;
                }
             ?>
             </table>
@@ -281,16 +288,31 @@ hr {
                         <td>Hours of Sleep</td>
                         <td>Hours of Exercise</td>
                         <td>Heart Rate</td>
-                        <td>Exercise Done</td>                                               
+                        <td>Exercise Done</td> 
+                        <td></td>  
+                        <td></td>    
+                        <td></td>                                        
                     </tr>
             <?php
                while($row = $result1->fetchObject()) {
                    echo "<tr>";
-                       echo "<td>$row->date</td>";
+                       echo "<td>$row->dateOfExercise</td>";
                        echo "<td>$row->hoursOfSleep</td>";
-                       echo "<td>$row->hourOfExercise</td>";
+                       echo "<td>$row->hoursOfExercise</td>";
                        echo "<td>$row->heartRate</td>";
-                       echo "<td>$row->exerciseDone</td>";                       
+                       echo "<td>$row->exerciseDone</td>";
+                       echo "<td><form method='GET' name='form' action='editDataForm.php'>
+                       <input type='hidden' value='$row->HealthDataID' name='hid'>
+                       <input type='hidden' value='$row->userID' name='pid'>
+                       <input type='submit' value='Edit' id='btnSelect' onClick='selected($row->userID)'>
+                       </form>
+                       </td>";
+                       echo "<td><form method='GET' name='form' action='deleteDataView.php'>
+                       <input type='hidden' value='$row->HealthDataID' name='hid'>
+                       <input type='hidden' value='$row->userID' name='pid'>
+                       <input type='submit' value='Delete' id='btnSelect' onClick='selected($row->userID)'>
+                       </form>
+                       </td>"; 
                    echo "</tr>";
                  }
             ?>
@@ -306,6 +328,9 @@ hr {
       </div>
     </div>
   </div>
+</div>
+<div id="id01" class="modal">
+
 </div>
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -403,6 +428,11 @@ window.onclick = function(event) {
     modal2.style.display = "none";
   }
 }
+    
+function selected(pid){
+   <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
+   window.location.href = "./editDataForm.php";
+}
 </script>
 
 <footer class="container-fluid text-center">
@@ -411,6 +441,5 @@ window.onclick = function(event) {
             <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
               gsanchezcollado@gmail.com</a></p>
 </footer>
-
 </body>
 </html>
