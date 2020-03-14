@@ -20,7 +20,7 @@ $prescription = $_POST['prescription'];
 $allergies = $_POST['allergies'];
 
 
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+$hashed_password = password_hash($userPassword, PASSWORD_DEFAULT);
 
 try {
 

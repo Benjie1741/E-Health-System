@@ -19,7 +19,7 @@ $hashed_password = password_hash($userPassword, PASSWORD_DEFAULT);
 
 try {
 
-	$sql= "INSERT INTO doctors (email, password, firstName, lastName, dateOfBirth, age, userAddress, phoneNumber, clearanceLevel, licenseRevalidationDate, specialty)
+	$sql= "INSERT INTO doctors (email, userPassword, firstName, lastName, dateOfBirth, age, userAddress, phoneNumber, clearanceLevel, licenseRevalidationDate, specialty)
        VALUES ('$email', '$hashed_password', '$firstName', '$lastName', '$dob', '$age', '$userAddress', '$num', '$clearance', '$license', '$specialty')";
        $stmt = $pdo -> query($sql);
        header("Location: ./homeDoc.php");
