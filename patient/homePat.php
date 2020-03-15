@@ -62,7 +62,6 @@ ini_set('display_errors', 1);
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
-                
                 <a href="./healthDiagram.php?type=heartRate">
                 <img src="../img/heart-icon.png" alt="heart Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
@@ -78,7 +77,10 @@ ini_set('display_errors', 1);
                 <a href="../chat/chat.php">
                 <img src="../img/chat-icon.png" alt="chat Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
+
+                <a href="./info.php">
                 <img src="../img/info-icon.png" alt="info Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                </a>
             </div>
 		</div>
     </div>
