@@ -4,10 +4,6 @@ require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php');    
 
-echo '<script>';
-echo 'console.log('. json_encode( $_SESSION ) .')';
-echo '</script>';
-
 ini_set('display_errors', 1);
 ?>
 
@@ -41,12 +37,9 @@ ini_set('display_errors', 1);
       <a class="navbar-brand" href="#">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
         <li><a href="./homePat.php">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-	<li><a href="./uploadData.php">Upload</a></li>
+	      <li><a href="./uploadData.php">Upload</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>

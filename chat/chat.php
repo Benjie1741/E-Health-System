@@ -36,9 +36,6 @@ ini_set('display_errors', 1);
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href=<?php echo $_SESSION['redirect']; ?>>Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -66,9 +63,7 @@ ini_set('display_errors', 1);
 <script>
 loadChat();
     // Calls chat fucntion every second
-    setInterval(function(){
-        loadChat();
-    }, 1000);
+    setInterval(function(){ loadChat(); }, 1000);
 
     function loadChat() {
         $.post('./messages.php?action=getMessages', function(response){
