@@ -12,7 +12,6 @@ ini_set('display_errors', 1);
 
 $hid = $_GET['hid'];
 $sql = "SELECT * FROM `healthdata` where `userID` = " . $patientID = $_SESSION['PatientID']. " AND `healthDataID` = " . $hid;
-print $sql;
 $result = $pdo->query($sql);
 $row = $result->fetchObject();
 ?>
