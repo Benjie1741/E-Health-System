@@ -67,10 +67,10 @@ $row = $result->fetchObject();
       <input type='hidden' value='<?php echo $patientID; ?>' name='pid'>
 
       <label for="hoursOfSleep"><b>Hours of sleep: </b></label>
-      <input type="number" placeholder="<?php print $row->hoursOfSleep ?>" name="hoursOfSleep" required min="4" max="14">
+      <input type="number" placeholder="<?php print $row->hoursOfSleep ?>" name="hoursOfSleep" required min="0" max="24">
 
       <label for="lastName"><b>Hours of exercise: </b></label>
-      <input type="number" placeholder="<?php print $row->hoursOfExercise?>" name="hoursOfExercise" required min="0" max="5">
+      <input type="number" placeholder="<?php print $row->hoursOfExercise?>" name="hoursOfExercise" required min="0" max="24">
 
       <label for="heartRate"><b>Average daily heart rate (BPM):</b></label>
       <input type="number" placeholder="<?php print $row->heartRate?>" name="heartRate" required min="50" max="140">
