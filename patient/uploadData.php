@@ -89,6 +89,22 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
+  
+/* Full-width input fields */
+input[type=number], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=number]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
 
 /* Set a style for all buttons */
 button {
@@ -216,17 +232,17 @@ hr {
       <p>Please fill in this form to upload health data</p>
       <hr>
       <label for="hoursOfSleep"><b>Hours of sleep: </b></label>
-      <input type="text" placeholder="eg 7" name="hoursOfSleep" required>
+      <input type="number" placeholder="eg 7" name="hoursOfSleep" required min="4" max="14">
 
-      <label for="lastName"><b>Hours of exercise: </b></label>
-      <input type="text" placeholder="eg 2" name="hoursOfExercise" required>
+      <label for="hoursOfExercise"><b>Hours of exercise: </b></label>
+      <input type="number" placeholder="eg 2" name="hoursOfExercise" required min="0" max="5">
 
       <label for="heartRate"><b>Average daily heart rate (BPM):</b></label>
-      <input type="text" placeholder="eg 73" name="heartRate" required>
+      <input type="number" placeholder="eg 73" name="heartRate" required min="50" max="140">
 
       <label for="exerciseDone"><b>Exercise Done: </b></label>
-      <input type="text" placeholder="eg Running, Yoga, etc." name="exerciseDone" required>
-
+      <input type="text" placeholder="eg Running, Yoga, etc." name="exerciseDone" required pattern="[A-Za-z]{1,15}">
+      
       <label for="dateOfExercise"><b>Date of exercise: </b></label>
       <input type="date" placeholder="" name="doe" required>
       
