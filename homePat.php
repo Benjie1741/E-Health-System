@@ -99,15 +99,48 @@ insertData();
     // Calls chat fucntion every second
     setInterval(function(){
         insertData();
-    }, 10000);
+    }, 60000); //CHANGE TIME OF DATA UPLOAD
 
-    function inserData() {
+    function insertData() {
     
-    var randHeartRate = 1;
-    var randHoursOfExercise = 1;
-    var exerciseDone = "running";
-    var date = 1;
+    var randHeartRate = Math.floor((Math.random() * 120-70) +70);
+    var randHoursOfExercise = Math.floor((Math.random() * 4));
+    var randHoursOfSleep = Math.floor((Math.random() * 10 - 5) + 5);
+    var exerciseDone = rngExercise();
+    
+    var data = "heartRate="+randHeartRate+
+                "&hoursOfExercise="+randHoursOfExercise+
+                "&hoursOfSleep="+randHoursOfSleep+
+                "&exerciseDone="+exerciseDone;
+    console.log(data);
 
+    var message = $('.textarea').val();
+    $.post('autoData.php?'+data, function(response){
+    });  
+  }
+
+  function rngExercise(){
+    var rngE = Math.floor((Math.random() *4 ));
+    var exercise = "";
+
+    switch(rngE){
+      case 0:
+        exercise = "Badminton";
+        break;
+      case 1:
+        exercise = "Tennis";
+        break;
+      case 2:
+        exercise = "Gym";
+        break;
+      case 3:
+        exercise = "Running";
+        break;
+      case 4:
+        exercise = "Swimming";
+        break;
     }
+    return exercise;
+  }
 
 </script>
