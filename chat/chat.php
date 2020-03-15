@@ -18,7 +18,8 @@ ini_set('display_errors', 1);
     </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel = "stylesheet" href = "../css/chatStyle.css"/>
+  <link rel="stylesheet" href = "../css/chatStyle.css"/>
+  <link rel="stylesheet" href="../css/doc.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
@@ -48,7 +49,7 @@ ini_set('display_errors', 1);
 <body>
 <div id ="container"> 
   <div id = "wrapper">
-    <h1 style="text-align: center;">Hello <?php echo $_SESSION['username']; ?></h1>
+    <h1 style="text-align: center;">Hello, <?php echo $_SESSION['username']; ?></h1>
     <div class = "chat_wrapper">
         <div id = "chat"></div>
         <form method = "POST" id = "messageForm">
@@ -98,5 +99,12 @@ loadChat();
     });
 
 </script>
+
+<footer class="container-fluid text-center">
+    <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Greg Smith</p>
+    <p>Made with PHP, Bootstrap, JS and MySQL</p>
+            <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
+              gsanchezcollado@gmail.com</a></p>
+</footer>
 </body>
 </html>

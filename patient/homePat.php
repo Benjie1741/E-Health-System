@@ -54,7 +54,7 @@ ini_set('display_errors', 1);
 <!-- Main body -->
 <body>
     <div id="container">
-        <h1 style="text-align:center">Hello <?php echo $_SESSION['username']?></h1>
+        <h1 style="text-align:center">Hello, <?php echo $_SESSION['username']?></h1>
         <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
@@ -80,16 +80,15 @@ ini_set('display_errors', 1);
             </div>
 		</div>
     </div>
-</body>
-
-<footer style="padding-top:3%" class="container-fluid text-center">
-    <br> <br>
-    <p>Copyright &copy; 2020</p>
-    <p>Footer Text</p>
+    
+<footer class="container-fluid text-center">
+  <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Greg Smith</p>
+  <p>Made with PHP, Bootstrap, JS and MySQL</p>
+  <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
+    gsanchezcollado@gmail.com</a></p>
 </footer>
-
+</body>
 </html>
-
 
 <script>
 //AUTO DATA UPLOAD

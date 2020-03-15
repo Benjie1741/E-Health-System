@@ -38,6 +38,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/doc.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
@@ -134,11 +135,11 @@
 <div ng-view></div>
 
 </div>
-</body>
-
-<footer style="padding-top:3%" class="container-fluid text-center">
-    <br>
-    <p>Copyright &copy; 2020</p>
-    <p>Footer Text</p>
+<footer class="container-fluid text-center">
+    <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Greg Smith</p>
+    <p>Made with PHP, Bootstrap, JS and MySQL</p>
+            <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
+              gsanchezcollado@gmail.com</a></p>
 </footer>
+</body>
 </html>

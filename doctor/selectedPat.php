@@ -168,7 +168,7 @@ $_SESSION['chat_pID'] = $_GET["pid"];
 </div>
 
 <footer class="container-fluid text-center">
-    <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>
+    <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Greg Smith</p>
     <p>Made with PHP, Bootstrap, JS and MySQL</p>
             <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
               gsanchezcollado@gmail.com</a></p>

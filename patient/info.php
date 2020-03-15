@@ -54,12 +54,11 @@ require('../includes/checkLoggedIn.php');
         </p>
 
     </div>
-</body>
-
-<footer style="padding-top:3%" class="container-fluid text-center">
-    <br> <br>
-    <p>Copyright &copy; 2020</p>
-    <p>Footer Text</p>
+<footer class="container-fluid text-center">
+  <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Greg Smith</p>
+  <p>Made with PHP, Bootstrap, JS and MySQL</p>
+  <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
+  gsanchezcollado@gmail.com</a></p>
 </footer>
-
+</body>
 </html>
