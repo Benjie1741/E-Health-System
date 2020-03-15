@@ -1,17 +1,17 @@
 <?php
-require('includes/conn.inc.php');
+require('../includes/conn.inc.php');
 
     session_start();
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['password'];   
 
     if(!empty($_POST['email'])) {
 
     if(!filter_input(INPUT_POST, 'email')){
-        header("login.php");
+        header("../login.php");
     }
     else{
-        $sql = "SELECT * FROM patients WHERE email = '$email'";
+        $sql = "SELECT * FROM doctors WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
         $dbPasswordHash = password_verify($password, $row['userPassword']);
@@ -21,22 +21,22 @@ require('includes/conn.inc.php');
             echo "valid";
             $_SESSION['email'] = $email;
             $_SESSION['login'] = 1;
-            $_SESSION['patientId'] = $row['PatientID'];
-            
-            //Sessions for chat
-            $_SESSION['username'] = $row['firstName'];
-            $_SESSION['chat_pID'] = $row['PatientID'];
-            $_SESSION['chat_dID'] = $row['doctorID'];
-            $_SESSION['redirect'] = "./homePat.php";
-            $_SESSION['msgTime'] = null;
+            $_SESSION['DoctorID'] = $row['DoctorID'];
 
-            header("Location: ./homePat.php");
+            //sessions for chat
+            $_SESSION['username'] = $row['firstName'];
+            $_SESSION['chat_dID'] = $row['DoctorID'];
+            $_SESSION['chat_pID'] = null;
+            $_SESSION['redirect'] = "../doctor/homeDoc.php";
+            $_SESSION['msgTime'] = null;
+            
+            header("Location: ../doctor/homeDoc.php");
            
         }
         else{
             $message = "Email or password incorrect";
             echo "<script type='text/javascript'>alert('$message');
-            location.href = 'login.php';
+            location.href = '../login.php';
             </script>";
         }
     }
@@ -44,7 +44,7 @@ require('includes/conn.inc.php');
 else{
             $message = "Email or password incorrect";
             echo "<script type='text/javascript'>alert('$message');
-            location.href = 'login.php';
+            location.href = '../login.php';
             </script>";
     }
 ?>

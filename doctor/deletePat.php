@@ -1,5 +1,5 @@
 <?php
-require('includes/conn.inc.php');
+require('../includes/conn.inc.php');
 session_start();
 
 $pID = $_GET['pid'];
@@ -23,7 +23,7 @@ try {
         print $e;
         $message = $e;
         echo "<script type='text/javascript'>alert('$message');
-        location.href = 'homeDoc.php';
+        location.href = './homeDoc.php';
         </script>";
 }
 ?>

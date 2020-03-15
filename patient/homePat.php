@@ -1,8 +1,8 @@
 <?php 
 //Includes
-require('includes/conn.inc.php');
-require('includes/functions.inc.php');
-require('includes/checkLoggedIn.php');    
+require('../includes/conn.inc.php');
+require('../includes/functions.inc.php');
+require('../includes/checkLoggedIn.php');    
 
 echo '<script>';
 echo 'console.log('. json_encode( $_SESSION ) .')';
@@ -46,10 +46,10 @@ ini_set('display_errors', 1);
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
-	<li><a href="uploadData.php">Upload</a></li>
+	<li><a href="./uploadData.php">Upload</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -64,21 +64,21 @@ ini_set('display_errors', 1);
             <div class="grid">
                 
                 <a href="./healthDiagram.php?type=heartRate">
-                <img src="./img/heart-icon.png" alt="heart Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                <img src="../img/heart-icon.png" alt="heart Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
 
                 <a href="./healthDiagram.php?type=hoursOfExercise">
-                <img src="./img/exercise-icon.png" alt="exercise Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                <img src="../img/exercise-icon.png" alt="exercise Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
 
                 <a href="./healthDiagram.php?type=hoursOfSleep">
-                <img src="./img/sleep-icon.png" alt="Sleep Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                <img src="../img/sleep-icon.png" alt="Sleep Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
 
-                <a href="./chat.php">
-                <img src="./img/chat-icon.png" alt="chat Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                <a href="../chat/chat.php">
+                <img src="../img/chat-icon.png" alt="chat Icon" style="padding-right: 20px; margin-bottom: 10px;">
                 </a>
-                <img src="./img/info-icon.png" alt="info Icon" style="padding-right: 20px; margin-bottom: 10px;">
+                <img src="../img/info-icon.png" alt="info Icon" style="padding-right: 20px; margin-bottom: 10px;">
             </div>
 		</div>
     </div>
@@ -111,11 +111,11 @@ ini_set('display_errors', 1);
                 "&hoursOfExercise="+randHoursOfExercise+
                 "&hoursOfSleep="+randHoursOfSleep+
                 "&exerciseDone="+exerciseDone;
-    console.log(data);
 
     var message = $('.textarea').val();
-    $.post('autoData.php?'+data, function(response){
+    $.post('./autoData.php?'+data, function(response){
     });  
+    console.log("Random Data Added: " + data);
   }
 
   function rngExercise(){

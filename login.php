@@ -157,7 +157,7 @@ span.psw {
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="checkPatLogin.php" method="post">
+  <form class="modal-content animate" action="./authentication/checkPatLogin.php" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="img_avatar2.png" alt="Avatar" class="avatar">
@@ -187,7 +187,7 @@ span.psw {
 
 <div id="id02" class="modal2">
   
-  <form class="modal-content animate" action="checkDocLogin.php" method="post">
+  <form class="modal-content animate" action="./authentication/checkDocLogin.php" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
     
