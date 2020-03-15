@@ -95,11 +95,10 @@ ini_set('display_errors', 1);
 
 <script>
 //AUTO DATA UPLOAD
-insertData();
-    // Calls chat fucntion every second
+    //Calls chat fucntion every second
     setInterval(function(){
         insertData();
-    }, 60000); //CHANGE TIME OF DATA UPLOAD
+    }, 60000); //Uploads data every minute, can be cahnged if needed
 
     function insertData() {
     
