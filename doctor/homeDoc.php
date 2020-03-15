@@ -183,12 +183,6 @@ $result = $pdo->query($sql);
 
       <label for="dateOfBirth"><b>Date of Birth</b></label>
       <input type="date" placeholder="Enter Name" name="dob" required>
-      
-      <!-- <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label> -->
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
@@ -255,8 +249,6 @@ $result = $pdo->query($sql);
 
       <label for="license"><b>License Revalidation Date</b></label>
       <input type="date" placeholder="Enter License Revalidation Date" name="license" required>      
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
