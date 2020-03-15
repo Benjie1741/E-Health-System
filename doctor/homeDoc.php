@@ -135,7 +135,7 @@ $result = $pdo->query($sql);
       <h1>Patient Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-<label for="firstName"><b>First Name</b></label>
+      <label for="firstName"><b>First Name</b></label>
       <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{3,30}">
 
       <label for="lastName"><b>Last Name</b></label>
@@ -148,7 +148,8 @@ $result = $pdo->query($sql);
       <input type="text" placeholder="Enter Address" name="address" required>
 
       <label for="phone"><b>Phone Number</b></label>
-      <input type="number" placeholder="Enter Phone Number" name="num" required pattern="[0-9]{11}">
+      <input type="text" placeholder="Enter Phone Number" name="num" required 
+      pattern="^(\+\s?7\d{1}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$">
 
       <label for="blood"><b>Blood type</b></label>
       <input type="text" placeholder="Enter BT" name="blood" required list="l1">
