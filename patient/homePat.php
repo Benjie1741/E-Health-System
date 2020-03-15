@@ -1,5 +1,4 @@
 <?php 
-//Includes
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php');    
@@ -112,7 +111,7 @@ ini_set('display_errors', 1);
                 "&exerciseDone="+exerciseDone;
 
     var message = $('.textarea').val();
-    $.post('./autoData.php?'+data, function(response){
+    $.post('../backend/autoData.php?'+data, function(response){
     });  
     console.log("Random Data Added: " + data);
   }

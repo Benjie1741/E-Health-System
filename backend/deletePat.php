@@ -17,13 +17,13 @@ try {
             $stmt->bindParam(':PatientID', $pID);
             $stmt->execute();
 
-            header("Location: ./homeDoc.php");
+            header("Location: ../doctor/homeDoc.php");
             
 }catch (\Exception $e) {
         print $e;
         $message = $e;
         echo "<script type='text/javascript'>alert('$message');
-        location.href = './homeDoc.php';
+        location.href = '../doctor/homeDoc.php';
         </script>";
 }
 ?>

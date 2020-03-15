@@ -1,5 +1,4 @@
 <?php 
-// #includes
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 
@@ -10,40 +9,24 @@ require('../includes/checkLoggedIn.php');
 
 ini_set('display_errors', 1);
 $hid = $_GET['hid'];
-//to display all the images
-$sql = "SELECT * FROM `healthdata` where `userID` = " . $patientID = $_SESSION['PatientID']. " AND `healthDataID` = " . $hid;
+$patientID = $_GET['pid'];
+$sql = "SELECT * FROM `healthdata` where `userID` = " . $patientID . " AND `healthDataID` = " . $hid;
 $result = $pdo->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Delete Data</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/doc.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- Search -->
-  <script>
-      $(document).ready(function(){
-          $('.search').on('keyup',function(){
-              var searchTerm = $(this).val().toLowerCase();
-              $('#myTable tbody tr').each(function(){
-                  var lineStr = $(this).text().toLowerCase();
-                  if(lineStr.indexOf(searchTerm) === -1){
-                      $(this).hide();
-                  }else{
-                      $(this).show();
-                  }
-              });
-          });
-      });
-</script>
 </head>
-<body>
 
+<body>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -56,11 +39,7 @@ $result = $pdo->query($sql);
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="/eHealth/chat.php">Chat</a></li>
+        <li><a href="./homeDoc.php">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -70,7 +49,7 @@ $result = $pdo->query($sql);
 </nav>
 
 <div id="id01" class="">
-  <form  action="./deleteHealthData.php"  method="post">
+  <form  action="../backend/deleteHealthData.php"  method="post">
     <div class="container">
       <h1>Delete patient health data?</h1>
       <p>Are you sure you want to delete this patient data?</p>
@@ -110,23 +89,6 @@ $result = $pdo->query($sql);
 </div>
 
 <script>
-// Get the modal
-var modal = document.getElementById('id01');
-var modal2 = document.getElementById('id02');
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-    
 function leave()
 {
   window.location.href = "./homeDoc.php";

@@ -1,12 +1,11 @@
 <?php 
-// #includes
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 
 
-   echo '<script>';
-   echo 'console.log('. json_encode( $_SESSION ) .')';
-   echo '</script>';
+  echo '<script>';
+  echo 'console.log('. json_encode( $_SESSION ) .')';
+  echo '</script>';
 
 ini_set('display_errors', 1);
 
@@ -18,7 +17,7 @@ $result = $pdo->query($sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Doctor Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -58,9 +57,6 @@ $result = $pdo->query($sql);
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="./homeDoc.php">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -107,7 +103,7 @@ $result = $pdo->query($sql);
                              </td>";
                       //Delete Patient Button
                       echo "<td>
-                         <form method='GET' name='form' action='./deletePat.php'>
+                         <form method='GET' name='form' action='../backend/deletePat.php'>
                          <input type='hidden' value='$row->PatientID' name='pid'>
                          <input type='submit' value='Delete' id='btnDel' onClick='selected($row->PatientID)'>
                          </form>
@@ -134,7 +130,7 @@ $result = $pdo->query($sql);
 <!-- patient sign up -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form  action="./insertPat.php"  method="post">
+  <form  action="../backend/insertPat.php"  method="post">
     <div class="container">
       <h1>Patient Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
@@ -195,7 +191,7 @@ $result = $pdo->query($sql);
 <!-- Doctor sign up -->
 <div id="id02" class="modal">
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form  action="./insertDoc.php"  method="post">
+  <form  action="../backend/insertDoc.php"  method="post">
     <div class="container">
       <h1>Doctor Sign Up</h1>
       <p>Please fill in this form to create an account.</p>

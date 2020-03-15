@@ -22,12 +22,12 @@ try {
 	$sql= "INSERT INTO doctors (email, userPassword, firstName, lastName, dateOfBirth, age, userAddress, phoneNumber, clearanceLevel, licenseRevalidationDate, specialty)
        VALUES ('$email', '$hashed_password', '$firstName', '$lastName', '$dob', '$age', '$userAddress', '$num', '$clearance', '$license', '$specialty')";
        $stmt = $pdo -> query($sql);
-       header("Location: ./homeDoc.php");
+       header("Location: ../doctor/homeDoc.php");
 }catch (\Exception $e) {
     	
     $message = "Email Already Exists!";
     echo "<script type='text/javascript'>alert('$message');
-    location.href = './homeDoc.php';
+    location.href = '../doctor/homeDoc.php';
     </script>";
 }
 ?>

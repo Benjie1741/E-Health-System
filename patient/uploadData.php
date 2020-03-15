@@ -1,5 +1,4 @@
 <?php 
-// #includes
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php');
@@ -14,7 +13,7 @@ $result = $pdo->query($sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Upload Health Data</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -48,7 +47,7 @@ $result = $pdo->query($sql);
 </nav>
 
 <div id="id01" class="">
-  <form  action="insertHealthData.php"  method="post">
+  <form  action="../backend/insertHealthData.php"  method="post">
     <div class="container">
       <h1>Upload data</h1>
       <p>Please fill in this form to upload health data</p>
@@ -77,25 +76,6 @@ $result = $pdo->query($sql);
     </div>
   </form>
 </div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-var modal2 = document.getElementById('id02');
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-</script>
 
 <footer class="container-fluid text-center">
     <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>

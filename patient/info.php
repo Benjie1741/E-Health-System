@@ -1,10 +1,6 @@
 <?php 
-//Includes
 require('../includes/conn.inc.php');
-require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php');    
-
-ini_set('display_errors', 1);
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,4 @@
 <?php 
-// #includes
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 
@@ -11,7 +10,8 @@ require('../includes/checkLoggedIn.php');
 ini_set('display_errors', 1);
 
 $hid = $_GET['hid'];
-$sql = "SELECT * FROM `healthdata` where `userID` = " . $patientID = $_SESSION['PatientID']. " AND `healthDataID` = " . $hid;
+$patientID = $_GET['pid'];
+$sql = "SELECT * FROM `healthdata` where `userID` = " . $patientID . " AND `healthDataID` = " . $hid;
 $result = $pdo->query($sql);
 $row = $result->fetchObject();
 ?>
@@ -43,21 +43,17 @@ $row = $result->fetchObject();
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="../chat/chat.php">Chat</a></li>
+        <li><a href="./homeDoc.php">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <div id="id01" class="">
-  <form  action="./editHealthData.php"  method="post">
+  <form  action="../backend/editHealthData.php"  method="post">
     <div class="container">
       <h1>Edit patient health data</h1>
       <p>Please edit this form to update health data</p>
@@ -94,23 +90,6 @@ $row = $result->fetchObject();
 </div>
 
 <script>
-// Get the modal
-var modal = document.getElementById('id01');
-var modal2 = document.getElementById('id02');
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-    
 function leave()
 {
   window.location.href = "./homeDoc.php";
