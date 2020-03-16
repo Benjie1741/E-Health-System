@@ -3,11 +3,11 @@ require('../includes/conn.inc.php');
 session_start();
 
 $healthDataID = $_GET['hid'];
-$userID = $_SESSION['PatientID'];
+$userID = $_SESSION['chat_pID'];
 
 try {
-        $sql = "DELETE FROM healthData WHERE userID = $userID 
-                AND healthDataID = healthDataID";
+        $sql = "DELETE FROM `healthData` WHERE `userID` = $userID 
+                AND `$healthDataID` = `healthDataID`";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':healthDataID', $healthDataID);
