@@ -17,6 +17,7 @@ $sql2 =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result2 = $pdo->query($sql);
 
 $_SESSION['chat_pID'] = $_GET["pid"];
+$pid = $_GET["pid"];
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +77,6 @@ $_SESSION['chat_pID'] = $_GET["pid"];
     <button onclick="window.location.href = '../chat/chat.php';"style="width:auto; background-color: #00acee;"> Chat with
     <?php while($row = $result2->fetchObject()) {echo "$row->firstName";}?>
     </button> <br>
-    <button style="width:auto; background-color: #00acee;"> Edit Patient Data</button>
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
@@ -161,6 +161,11 @@ $_SESSION['chat_pID'] = $_GET["pid"];
     </div>
 </div>
 <div class="col-sm-2 sidenav">
+
+<form method='GET' name='form' action='./editPatientDataForm.php'>
+  <button style="width:auto; background-color: #00acee;"> Edit Patient Data</button>  
+  <?php echo "<input type='hidden' value='$pid' name='pid'> <input type='hidden' value='1' name='hid'>"; ?>
+</form>
 </div>
   </div>
 </div>
