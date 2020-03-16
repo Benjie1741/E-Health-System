@@ -68,8 +68,8 @@ $result = $pdo->query($sql);
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
     <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register new Doctor</button>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register new patient</button>
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
@@ -124,12 +124,7 @@ $result = $pdo->query($sql);
 </div>
 
     <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
+
     </div>
   </div>
 </div>

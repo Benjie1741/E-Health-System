@@ -75,8 +75,8 @@ $_SESSION['chat_pID'] = $_GET["pid"];
     <!-- Button for chat, displays the name of the patient -->
     <button onclick="window.location.href = '../chat/chat.php';"style="width:auto; background-color: #00acee;"> Chat with
     <?php while($row = $result2->fetchObject()) {echo "$row->firstName";}?>
-    </button>
-    
+    </button> <br>
+    <button style="width:auto; background-color: #00acee;"> Edit Patient Data</button>
     </div>
     <div class="col-sm-8 text-left"> 
     <div id="patientList" class="bg-1">
@@ -87,18 +87,18 @@ $_SESSION['chat_pID'] = $_GET["pid"];
             <table id="myTable1" class= "table" style=" border: 2px solid black;">
                     <tr>
                         <td>ID</td>
-                        <td>Patient first name</td>
-                        <td>Patient last name</td>
-                        <td>Patient Date of Birth</td>
-                        <td>Patient Age</td>
-                        <td>Patient Address</td>
-                        <td>Patient Phone Number</td>
-                        <td>Patient Email</td>
-                        <td>Patient Blood Type</td>
-                        <td>Patient Medical History</td>
-                        <td>Patient Illness</td>
-                        <td>Patient Allergies</td>
-                        <td>Patient Perscription</td>                       
+                        <td>First name</td>
+                        <td>Last name</td>
+                        <td>Date of Birth</td>
+                        <td>Age</td>
+                        <td>Address</td>
+                        <td>Phone Number</td>
+                        <td>Email</td>
+                        <td>Blood Type</td>
+                        <td>Medical History</td>
+                        <td>Illness</td>
+                        <td>Allergies</td>
+                        <td>Perscription</td>                       
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
@@ -130,7 +130,9 @@ $_SESSION['chat_pID'] = $_GET["pid"];
                         <td>Hours of Sleep</td>
                         <td>Hours of Exercise</td>
                         <td>Heart Rate</td>
-                        <td>Exercise Done</td>                                               
+                        <td>Exercise Done</td>     
+                        <td></td> 
+                        <td></td>                                          
                     </tr>
             <?php
                while($row = $result1->fetchObject()) {
@@ -158,8 +160,8 @@ $_SESSION['chat_pID'] = $_GET["pid"];
             </table>
     </div>
 </div>
-    <div class="col-sm-2 sidenav">
-    </div>
+<div class="col-sm-2 sidenav">
+</div>
   </div>
 </div>
 

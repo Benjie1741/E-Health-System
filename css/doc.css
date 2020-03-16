@@ -10,8 +10,9 @@
       /* Set gray background color and 100% height */
       .sidenav {
         padding-top: 20px;
-        background-color: #f1f1f1;
-        height: 100%;
+        background-color:#f1f1f1;
+        min-height: 100%;
+        height: flex;
       }
       
       /* Set black background color, white text and some padding */
