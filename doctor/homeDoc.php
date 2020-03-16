@@ -343,28 +343,6 @@ function selected(pid){
    <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
    window.location.href = "./selectedPat.php";
 }
-
-$(document).ready(function() {
-  $('#insert').click(function(){
-    var image_name = $('image').val();
-    if(image_name == '')
-    {
-      alert("Please Select Image");
-      return false;
-    }
-    else 
-    {
-      var extension = $('#image').val().split('.').pop().toLowerCase();
-      if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1)
-      {
-        alert('Invalid Image File');
-        $('image').val('');
-        return false;
-      }
-    }
-  });
-});
-
 </script>
 
 <footer class="container-fluid text-center">

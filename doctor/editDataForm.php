@@ -92,7 +92,7 @@ $row = $result->fetchObject();
 <script>
 function leave()
 {
-  window.location.href = "./homeDoc.php";
+   window.location.href = "./homeDoc.php";
 }
 </script>
 

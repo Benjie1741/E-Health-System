@@ -49,7 +49,7 @@ while($row = $result->fetchObject()) {
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="./homePat.php">Home</a></li>
-	      <li><a href="./uploadData.php">Upload</a></li>
+	      <li><a href="./uploadData.php">Upload Health Data</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -62,7 +62,6 @@ while($row = $result->fetchObject()) {
 <body>
     <div id="container">
         <h1 style="text-align:center">Hello, <?php echo $_SESSION['username']?></h1>
-        <!-- Link diagrams -->
         <div style="text-align:center; padding-top:5%" class="imgGrid">
             <div class="grid">
                 <a href="./healthDiagram.php?type=heartRate">

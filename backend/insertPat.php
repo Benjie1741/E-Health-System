@@ -31,7 +31,7 @@ try {
 	   header("Location: ../doctor/homeDoc.php");
     }catch (\Exception $e) {
     	
-    	$message = "Email Already Exists!";
+    	$message = $e;
 		echo "<script type='text/javascript'>alert('$message');
 		location.href = '../doctor/homeDoc.php';
 		</script>";

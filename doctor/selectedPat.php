@@ -86,19 +86,19 @@ $_SESSION['chat_pID'] = $_GET["pid"];
                 <br><br>
             <table id="myTable1" class= "table" style=" border: 2px solid black;">
                     <tr>
-                        <td>ID</td>
-                        <td>First name</td>
-                        <td>Last name</td>
-                        <td>Date of Birth</td>
-                        <td>Age</td>
-                        <td>Address</td>
-                        <td>Phone Number</td>
-                        <td>Email</td>
-                        <td>Blood Type</td>
-                        <td>Medical History</td>
-                        <td>Illness</td>
-                        <td>Allergies</td>
-                        <td>Perscription</td>                       
+                        <td><b>ID</b></td>
+                        <td><b>First name</b></td>
+                        <td><b>Last name</b></td>
+                        <td><b>Date of Birth</b></td>
+                        <td><b>Age</b></td>
+                        <td><b>Address</b></td>
+                        <td><b>Phone Number</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Blood Type</b></td>
+                        <td><b>Medical History</b></td>
+                        <td><b>Illness</b></td>
+                        <td><b>Allergies</b></td>
+                        <td><b>Perscription</b></td>                       
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
@@ -126,11 +126,11 @@ $_SESSION['chat_pID'] = $_GET["pid"];
             <input type="text" class="search"  onkeyup="myFunction()" placeholder="Find Data">
             <table id="myTable" class= "table" style=" border: 2px solid black;">
                     <tr>
-                        <td>Date</td>
-                        <td>Hours of Sleep</td>
-                        <td>Hours of Exercise</td>
-                        <td>Heart Rate</td>
-                        <td>Exercise Done</td>     
+                        <td><b>Date</b></td>
+                        <td><b>Hours of Sleep</b></td>
+                        <td><b>Hours of Exercise</b></td>
+                        <td><b>Heart Rate</b></td>
+                        <td><b>Exercise Done</b></td>     
                         <td></td> 
                         <td></td>                                          
                     </tr>

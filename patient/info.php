@@ -35,7 +35,7 @@ require('../includes/checkLoggedIn.php');
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
         <li><a href="./homePat.php">Home</a></li>
-	      <li><a href="./uploadData.php">Upload</a></li>
+	      <li><a href="./uploadData.php">Upload Health Data</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>

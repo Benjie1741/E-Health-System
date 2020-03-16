@@ -37,7 +37,7 @@ $result = $pdo->query($sql);
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
         <li><a href="./homePat.php">Home</a></li>
-	      <li class="active"><a href="./uploadData.php">Upload</a></li>
+	      <li><a href="./uploadData.php">Upload Health Data</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -68,13 +68,18 @@ $result = $pdo->query($sql);
       <input type="date" placeholder="" name="doe" required>
 
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" onclick="leave()" class="cancelbtn">Cancel</button>
         <button type="submit"  class="signupbtn">Upload</button>
       </div>
     </div>
   </form>
 </div>
-
+<script>
+function leave()
+{
+   window.location.href = "./homePat.php";
+}
+</script>
 <footer class="container-fluid text-center">
     <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>
     <p>Made with PHP, Bootstrap, JS and MySQL</p>

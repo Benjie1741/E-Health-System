@@ -91,7 +91,8 @@ $result = $pdo->query($sql);
 <script>
 function leave()
 {
-  window.location.href = "./homeDoc.php";
+  <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
+   window.location.href = "./selectedPat.php";
 }
 </script>
 
