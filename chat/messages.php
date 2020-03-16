@@ -1,7 +1,7 @@
 <?php
 include('../includes/conn.inc.php');
-
 session_start();
+
 $patient_id = $_SESSION['chat_pID'];
 $doc_id = $_SESSION['chat_dID'];
 $doctorOrPatient = $_SESSION['isDoctorOrPatient'];
@@ -38,7 +38,6 @@ $_SESSION['msgTime'] = (date("F d, Y h:i:s A", $timestamp));
           $query1 = $pdo->prepare("UPDATE chatmessages SET seen = 1 WHERE pID = $patient_id AND dID = $doc_id AND sentBy = 'D'");
           $run1 = $query1->execute();
         }
-        
 
         //Display the chat
         $chat = '';
