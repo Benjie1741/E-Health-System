@@ -54,7 +54,7 @@ $row = $result->fetchObject();
 
 <div id="id01" class="">
   <form  action="../backend/editHealthData.php"  method="post">
-    <div class="container">
+    <div class="container" style="color: white">
       <h1>Edit patient health data</h1>
       <p>Please edit this form to update health data</p>
       <?php
@@ -67,19 +67,19 @@ $row = $result->fetchObject();
       <input type='hidden' value='<?php echo $patientID; ?>' name='pid'>
 
       <label for="hoursOfSleep"><b>Hours of sleep: </b></label>
-      <input type="number" placeholder="<?php print $row->hoursOfSleep ?>" name="hoursOfSleep" required min="0" max="24">
+      <input style="color: black" type="number" placeholder="<?php print $row->hoursOfSleep ?>" name="hoursOfSleep" required min="0" max="24">
 
       <label for="lastName"><b>Hours of exercise: </b></label>
-      <input type="number" placeholder="<?php print $row->hoursOfExercise?>" name="hoursOfExercise" required min="0" max="24">
+      <input style="color: black" type="number" placeholder="<?php print $row->hoursOfExercise?>" name="hoursOfExercise" required min="0" max="24">
 
       <label for="heartRate"><b>Average daily heart rate (BPM):</b></label>
-      <input type="number" placeholder="<?php print $row->heartRate?>" name="heartRate" required min="50" max="140">
+      <input style="color: black" type="number" placeholder="<?php print $row->heartRate?>" name="heartRate" required min="50" max="140">
 
       <label for="exerciseDone"><b>Exercise Done: </b></label>
-      <input type="text" placeholder="<?php print $row->exerciseDone?>" name="exerciseDone" required pattern="[A-Za-z]{1,15}">
+      <input style="color: black" type="text" placeholder="<?php print $row->exerciseDone?>" name="exerciseDone" required pattern="[A-Za-z]{1,15}">
 
       <label for="dateOfExercise"><b>Date of exercise: </b></label>
-      <input type="date" placeholder="<?php print $row->dateOfExercise?>" name="doe" required>
+      <input style="color: black" type="date" placeholder="<?php print $row->dateOfExercise?>" name="doe" required>
 
       <div class="clearfix">
         <button type="button" onclick="leave()" class="cancelbtn">Cancel</button>
