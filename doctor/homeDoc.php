@@ -179,13 +179,31 @@ $result = $pdo->query($sql);
       <input type="text" placeholder="Enter Perscription" name="prescription" required>
 
       <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
 
+      <?php $date = date("Y/m/d");?>
       <label for="dateOfBirth"><b>Date of Birth</b></label>
-      <input type="date" placeholder="Enter Name" name="dob" required>
+      <input type="date" placeholder="Enter Name" name="dob" required id="dob" max="<?php $date;?>" min="01/01/1900">
+
+      <script>
+      $(function(){
+          var dtToday = new Date();
+          
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10)
+              month = '0' + month.toString();
+          if(day < 10)
+              day = '0' + day.toString();
+          
+          var maxDate = year + '-' + month + '-' + day;
+          $('#dob').attr('max', maxDate);
+      });
+      </script>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
@@ -242,7 +260,7 @@ $result = $pdo->query($sql);
       </datalist>
 
       <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
@@ -251,7 +269,47 @@ $result = $pdo->query($sql);
       <input type="date" placeholder="Enter Name" name="dob" required>
 
       <label for="license"><b>License Revalidation Date</b></label>
-      <input type="date" placeholder="Enter License Revalidation Date" name="license" required>      
+      
+      <?php $date = date("Y/m/d");?>
+      <label for="dateOfBirth"><b>Date of Birth</b></label>
+      <input type="date" placeholder="Enter Name" name="dob" required id="dobDoc" max="<?php $date;?>" min="01/01/1900">
+
+      <label for="license"><b>License Revalidation Date</b></label>
+      <input type="date" placeholder="Enter License Revalidation Date" name="license" id="LRDDoc" max="<?php $date;?>" min="01/01/1900"required>
+      
+      <script>
+      $(function(){
+          var dtToday = new Date();
+          
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10)
+              month = '0' + month.toString();
+          if(day < 10)
+              day = '0' + day.toString();
+          
+          var maxDate = year + '-' + month + '-' + day;
+          $('#dobDoc').attr('max', maxDate);
+      });
+      </script>
+
+      <script>
+      $(function(){
+          var dtToday = new Date();
+          
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10)
+              month = '0' + month.toString();
+          if(day < 10)
+              day = '0' + day.toString();
+          
+          var maxDate = year + '-' + month + '-' + day;
+          $('#LRDDoc').attr('max', maxDate);
+      });
+      </script> 
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
