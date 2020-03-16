@@ -7,7 +7,7 @@ $userID = $_SESSION['chat_pID'];
 
 try {
         $sql = "DELETE FROM `healthData` WHERE `userID` = $userID 
-                AND `$healthDataID` = `healthDataID`";
+                AND `healthDataID` = $healthDataID";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':healthDataID', $healthDataID);
@@ -23,6 +23,6 @@ try {
         echo "<script type='text/javascript'>alert('$message');
         location.href = '../doctor/homeDoc.php';
         </script>";
-        header("Location: ../doctor/homeDoc.php");
+
    }
 ?>

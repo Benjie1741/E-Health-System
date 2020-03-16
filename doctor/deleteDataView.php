@@ -49,15 +49,10 @@ $result = $pdo->query($sql);
 </nav>
 
 <div id="id01" class="">
-  <form  action="../backend/deleteHealthData.php"  method="post">
+  <form  action="../backend/deleteHealthData.php?hid=<?php echo $hid ?>"  method="post">
     <div class="container">
       <h1>Delete patient health data?</h1>
       <p>Are you sure you want to delete this patient data?</p>
-      <?php
-        #get healthdataID from url variable
-        $patientID = $_SESSION['PatientID'];
-        $hid = $_GET['hid'];
-      ?>
       <hr>
       <table id="myTable" class= "table" style=" border: 2px solid black;">
                     <tr>
@@ -92,7 +87,7 @@ $result = $pdo->query($sql);
 function leave()
 {
   <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
-   window.location.href = "./selectedPat.php";
+   window.location.href = "./homeDoc.php";
 }
 </script>
 

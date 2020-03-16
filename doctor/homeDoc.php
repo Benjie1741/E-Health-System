@@ -104,7 +104,7 @@ $result = $pdo->query($sql);
                              </td>";
                       //Delete Patient Button
                       echo "<td>
-                         <form method='GET' name='form' action='../backend/deletePatView.php'>
+                         <form method='GET' name='form' action='./deletePatView.php'>
                          <input type='hidden' value='$row->PatientID' name='pid'>
                          <input type='submit' value='Delete' id='btnDel' onClick='selected($row->PatientID)'>
                          </form>
@@ -263,11 +263,12 @@ $result = $pdo->query($sql);
       <label for="password"><b>Password</b></label>
       <input style="color: black" type="password" placeholder="Enter Password" name="password" required>
 
+      <?php $date = date("Y/m/d");?>
       <label for="dateOfBirth"><b>Date of Birth</b></label>
-      <input style="color: black" style="color: black;"type="date" placeholder="Enter Name" name="dob" required>
+      <input style="color: black" style="color: black;"type="date" id="dobDoc" name="dob" max="<?php $date;?>" min="01/01/1900" required>
 
       <label for="license"><b>License Revalidation Date</b></label>
-      <input style="color: black;" type="date" placeholder="Enter License Revalidation Date" name="license" id="LRDDoc" max="<?php $date;?>" min="01/01/1900"required>
+      <input style="color: black;" type="date" name="license" id="LRDDoc" max="<?php $date;?>" min="01/01/1900"required>
       
       <script>
       $(function(){

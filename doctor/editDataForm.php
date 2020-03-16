@@ -54,7 +54,7 @@ $row = $result->fetchObject();
 
 <div id="id01" class="">
   <form  action="../backend/editHealthData.php"  method="post">
-    <div class="container" style="color: white">
+    <div class="container" style="color: black">
       <h1>Edit patient health data</h1>
       <p>Please edit this form to update health data</p>
       <?php
@@ -78,8 +78,26 @@ $row = $result->fetchObject();
       <label for="exerciseDone"><b>Exercise Done: </b></label>
       <input style="color: black" type="text" placeholder="<?php print $row->exerciseDone?>" name="exerciseDone" required pattern="[A-Za-z]{1,15}">
 
+      <?php $date = date("Y/m/d");?>
       <label for="dateOfExercise"><b>Date of exercise: </b></label>
-      <input style="color: black" type="date" placeholder="<?php print $row->dateOfExercise?>" name="doe" required>
+      <input style="color: black" type="date" placeholder="<?php print $row->dateOfExercise?>" name="doe" required id="dob" max="<?php $date;?>" min="01/01/1900">
+
+      <script>
+      $(function(){
+          var dtToday = new Date();
+          
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10)
+              month = '0' + month.toString();
+          if(day < 10)
+              day = '0' + day.toString();
+          
+          var maxDate = year + '-' + month + '-' + day;
+          $('#dob').attr('max', maxDate);
+      });
+      </script>
 
       <div class="clearfix">
         <button type="button" onclick="leave()" class="cancelbtn">Cancel</button>

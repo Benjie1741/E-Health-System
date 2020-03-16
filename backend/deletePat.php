@@ -2,7 +2,7 @@
 require('../includes/conn.inc.php');
 session_start();
 
-$pID = $_GET['pid'];
+$pID = $_SESSION['PatientID'];
 
 try {
             //Deletes patients health data
