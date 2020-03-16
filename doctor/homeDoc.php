@@ -138,23 +138,23 @@ $result = $pdo->query($sql);
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
+      <input style="color: black" type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
 
       <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{2,30}">
+      <input style="color: black" type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{2,30}">
 
       <label for="age"><b>Age</b></label>
-      <input type="number" placeholder="Enter Age" name="age" required min="0">
+      <input style="color: black" type="number" placeholder="Enter Age" name="age" required min="0">
 
       <label for="address"><b>Address</b></label>
-      <input type="text" placeholder="Enter Address" name="address" required>
+      <input style="color: black" type="text" placeholder="Enter Address" name="address" required>
 
       <label for="phone"><b>Phone Number</b></label>
-      <input type="text" placeholder="Enter Phone Number" name="num" required 
+      <input style="color: black" type="text" placeholder="Enter Phone Number" name="num" required 
       pattern="^(\+\s?7\d{1}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$">
 
       <label for="blood"><b>Blood type</b></label>
-      <input type="text" placeholder="Enter BT" name="blood" required list="l1">
+      <input style="color: black" type="text" placeholder="Enter BT" name="blood" required list="l1">
       <datalist id="l1">
         <option>O+</option>
         <option>O-</option>
@@ -167,22 +167,22 @@ $result = $pdo->query($sql);
       </datalist>
 
       <label for="history"><b>Medical History</b></label>
-      <input type="text" placeholder="Enter Medical History" name="history" required>
+      <input style="color: black" type="text" placeholder="Enter Medical History" name="history" required>
 
       <label for="illness"><b>Illness</b></label>
-      <input type="text" placeholder="Enter Illness" name="illness" required>
+      <input style="color: black" type="text" placeholder="Enter Illness" name="illness" required>
 
       <label for="allergies"><b>Allergies</b></label>
-      <input type="text" placeholder="Enter Allergies" name="allergies" required>
+      <input style="color: black" type="text" placeholder="Enter Allergies" name="allergies" required>
 
       <label for="prescription"><b>Prescription</b></label>
-      <input type="text" placeholder="Enter Perscription" name="prescription" required>
+      <input style="color: black" type="text" placeholder="Enter Perscription" name="prescription" required>
 
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
+      <input style="color: black" type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
 
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+      <input style="color: black" type="password" placeholder="Enter Password" name="password" required>
 
       <?php $date = date("Y/m/d");?>
       <label for="dateOfBirth"><b>Date of Birth</b></label>
@@ -222,22 +222,22 @@ $result = $pdo->query($sql);
       <p class="formText">Please fill in this form to create an account.</p>
       <hr>
       <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
+      <input style="color: black" type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
 
       <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{2,30}">
+      <input style="color: black" type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{2,30}">
 
       <label for="age"><b>Age</b></label>
-      <input type="number" placeholder="Enter Age" name="age" required min="0">
+      <input style="color: black" type="number" placeholder="Enter Age" name="age" required min="0">
 
       <label for="address"><b>Address</b></label>
-      <input type="text" placeholder="Enter Address" name="address" required>
+      <input style="color: black" type="text" placeholder="Enter Address" name="address" required>
 
       <label for="phone"><b>Phone Number</b></label>
-      <input type="number" placeholder="Enter Phone Number" name="num" required>
+      <input style="color: black" type="number" placeholder="Enter Phone Number" name="num" required>
 
       <label for="specialty"><b>Specialty</b></label>
-      <input type="text" placeholder="Enter Specialty" name="specialty" list="l2" required>
+      <input style="color: black" type="text" placeholder="Enter Specialty" name="specialty" list="l2" required>
       <datalist id="l2">
         <option>Paediatrics</option>
         <option>Gynecology</option>
@@ -250,7 +250,7 @@ $result = $pdo->query($sql);
       </datalist>
 
       <label for="clearance"><b>Clearance level</b></label>
-      <input type="number" placeholder="Enter Clearance level" name="clearance" required list="l3">
+      <input style="color: black" type="number" placeholder="Enter Clearance level" name="clearance" required list="l3">
       <datalist id="l3">
         <option>1</option>
         <option>2</option>
@@ -258,13 +258,13 @@ $result = $pdo->query($sql);
       </datalist>
 
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
+      <input style="color: black" type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
 
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+      <input style="color: black" type="password" placeholder="Enter Password" name="password" required>
 
       <label for="dateOfBirth"><b>Date of Birth</b></label>
-      <input style="color: black;"type="date" placeholder="Enter Name" name="dob" required>
+      <input style="color: black" style="color: black;"type="date" placeholder="Enter Name" name="dob" required>
 
       <label for="license"><b>License Revalidation Date</b></label>
       <input style="color: black;" type="date" placeholder="Enter License Revalidation Date" name="license" id="LRDDoc" max="<?php $date;?>" min="01/01/1900"required>
