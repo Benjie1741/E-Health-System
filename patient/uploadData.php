@@ -48,24 +48,24 @@ $result = $pdo->query($sql);
 
 <div id="id01" class="">
   <form  action="../backend/insertHealthData.php"  method="post">
-    <div class="container">
+    <div class="container" style="color: white">
       <h1>Upload data</h1>
       <p>Please fill in this form to upload health data</p>
       <hr>
       <label for="hoursOfSleep"><b>Hours of sleep: </b></label>
-      <input type="number" placeholder="eg 7" name="hoursOfSleep" required min="4" max="14">
+      <input style="color: black" type="number" placeholder="eg 7" name="hoursOfSleep" required min="4" max="14">
 
       <label for="hoursOfExercise"><b>Hours of exercise: </b></label>
-      <input type="number" placeholder="eg 2" name="hoursOfExercise" required min="0" max="5">
+      <input style="color: black" type="number" placeholder="eg 2" name="hoursOfExercise" required min="0" max="5">
 
       <label for="heartRate"><b>Average daily heart rate (BPM):</b></label>
-      <input type="number" placeholder="eg 73" name="heartRate" required min="50" max="140">
+      <input style="color: black" type="number" placeholder="eg 73" name="heartRate" required min="50" max="140">
 
       <label for="exerciseDone"><b>Exercise Done: </b></label>
-      <input type="text" placeholder="eg Running, Yoga, etc." name="exerciseDone" required pattern="[A-Za-z]{1,15}">
+      <input style="color: black" type="text" placeholder="eg Running, Yoga, etc." name="exerciseDone" required pattern="[A-Za-z]{1,15}">
       
       <label for="dateOfExercise"><b>Date of exercise: </b></label>
-      <input type="date" placeholder="" name="doe" required>
+      <input style="color: black" type="date" placeholder="" name="doe" required>
 
       <div class="clearfix">
         <button type="button" onclick="leave()" class="cancelbtn">Cancel</button>
