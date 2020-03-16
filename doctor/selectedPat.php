@@ -13,6 +13,8 @@ $sql =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
 $result = $pdo->query($sql);
 $sql1 = "SELECT * FROM `healthdata` where `userID` = " . $_GET["pid"];
 $result1 = $pdo->query($sql1);
+$sql2 =  "SELECT *  FROM `patients` where `PatientID` = " . $_GET["pid"];
+$result2 = $pdo->query($sql);
 
 $_SESSION['chat_pID'] = $_GET["pid"];
 ?>
@@ -72,7 +74,7 @@ $_SESSION['chat_pID'] = $_GET["pid"];
     <div class="col-sm-2 sidenav">
     <!-- Button for chat, displays the name of the patient -->
     <button onclick="window.location.href = '../chat/chat.php';"style="width:auto; background-color: #00acee;"> Chat with
-    <?php while($row = $result->fetchObject()) {echo "$row->firstName";}?>
+    <?php while($row = $result2->fetchObject()) {echo "$row->firstName";}?>
     </button>
     
     </div>

@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif; background-image: url('img/background.jpg');}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -153,7 +153,7 @@ span.psw {
 
 <div>
 
-  <h2>eHealth Login</h2>
+  <h2 style="text-align: center;">eHealth Login</h2>
 
   <button onclick="document.getElementById('id01').style.display='block'" >Patient Login</button>
 
@@ -169,7 +169,6 @@ span.psw {
   <form class="modal-content animate" action="./authentication/checkPatLogin.php" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
@@ -239,10 +238,4 @@ window.onclick = function(event) {
 </script>
 
 </body>
-<footer class="container-fluid bg-4 text-center" style="border-top: 3px solid #ccc;">
-
-            <!-- <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria and Luke Midgley</p>
-            <p>Contact information: <a href="mailto:gsanchezcollado@gmail.com">
-              gsanchezcollado@gmail.com</a></p> -->
-</footer>
 </html>

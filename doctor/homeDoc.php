@@ -10,7 +10,7 @@ require('../includes/checkLoggedIn.php');
 ini_set('display_errors', 1);
 
 //to display all the patients
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID`, `imageFile`, (SELECT COUNT(*) FROM chatmessages c where c.pID = PatientID and c.seen = 0) notification FROM `patients`p";
+$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID`, (SELECT COUNT(*) FROM chatmessages c where c.pID = PatientID and c.seen = 0) notification FROM `patients`p";
 $result = $pdo->query($sql);
 ?>
 
@@ -86,17 +86,12 @@ $result = $pdo->query($sql);
                         <td><b>Patient Age</b></td>
                         <td><b>View Info</b></td>
                         <td><b>Delete</b></td>
+                        <td></td>
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
-                echo '<script>';
-                echo 'console.log('. json_encode( $row->imageFile ) .')';
-                echo '</script>';
                  if($row->doctorID === $_SESSION['DoctorID']){
-                  $imageFile = $row->imageFile;
                    echo "<tr>";
-                       echo '<td><img style="max-width: 25%; height: auto;" src="data:image/jpeg;base64,'.$imageFile.'"/></td>';
-                       //echo "<td>$imageFile</td>";
                        echo "<td>$row->PatientID</td>";
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";

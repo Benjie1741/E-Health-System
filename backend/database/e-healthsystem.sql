@@ -88,7 +88,9 @@ CREATE TABLE `chatmessages` (
   `date` varchar(100) NOT NULL,
   `displayName` varchar(100) NOT NULL,
   `pID` int(100) NOT NULL,
-  `dID` int(100) NOT NULL
+  `dID` int(100) NOT NULL,
+  `seen` int(11) NOT NULL,
+  `sentBy` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

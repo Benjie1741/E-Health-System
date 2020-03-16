@@ -8,6 +8,13 @@ echo 'console.log('. json_encode( $_SESSION ) .')';
 echo '</script>';
 
 ini_set('display_errors', 1);
+$sql =  "SELECT COUNT(*) notification FROM chatmessages c where c.pID = ". $_SESSION['patientId'] ." and c.seen = 0";
+$result = $pdo->query($sql);
+while($row = $result->fetchObject()) {
+  if($row->notification > 0) {
+  echo "<script type='text/javascript'>alert('You have a message off your Doctor!'); </script>";
+  }
+}
 ?>
 
 <!DOCTYPE html>
