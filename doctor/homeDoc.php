@@ -10,7 +10,7 @@ require('../includes/checkLoggedIn.php');
 ini_set('display_errors', 1);
 
 //to display all the patients
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID` FROM `patients`";
+$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID`, `imageFile`, (SELECT COUNT(*) FROM chatmessages c where c.pID = PatientID and c.seen = 0) notification FROM `patients`p";
 $result = $pdo->query($sql);
 ?>
 
@@ -89,8 +89,14 @@ $result = $pdo->query($sql);
                     </tr>
             <?php
                while($row = $result->fetchObject()) {
+                echo '<script>';
+                echo 'console.log('. json_encode( $row->imageFile ) .')';
+                echo '</script>';
                  if($row->doctorID === $_SESSION['DoctorID']){
+                  $imageFile = $row->imageFile;
                    echo "<tr>";
+                       echo '<td><img style="max-width: 25%; height: auto;" src="data:image/jpeg;base64,'.$imageFile.'"/></td>';
+                       //echo "<td>$imageFile</td>";
                        echo "<td>$row->PatientID</td>";
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
@@ -108,6 +114,12 @@ $result = $pdo->query($sql);
                          <input type='submit' value='Delete' id='btnDel' onClick='selected($row->PatientID)'>
                          </form>
                         </td>";
+                        if($row->notification > 0){
+                          echo "<td>MESSAGE NOTIFICATION</td>";
+                        }     
+                        else {
+                          echo "<td></td>";
+                        }                  
                    echo "</tr>";
                  }
                }
@@ -187,7 +199,7 @@ $result = $pdo->query($sql);
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit"  class="signupbtn">Sign Up</button>
+        <button type="submit" id="insert" class="signupbtn">Sign Up</button>
       </div>
     </div>
   </form>
@@ -283,6 +295,27 @@ function selected(pid){
    <?php $_SESSION['PatientID'] = $_GET['pid']; ?>
    window.location.href = "./selectedPat.php";
 }
+
+$(document).ready(function() {
+  $('#insert').click(function(){
+    var image_name = $('image').val();
+    if(image_name == '')
+    {
+      alert("Please Select Image");
+      return false;
+    }
+    else 
+    {
+      var extension = $('#image').val().split('.').pop().toLowerCase();
+      if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1)
+      {
+        alert('Invalid Image File');
+        $('image').val('');
+        return false;
+      }
+    }
+  });
+});
 
 </script>
 

@@ -29,6 +29,7 @@ require('../includes/conn.inc.php');
             $_SESSION['chat_dID'] = $row['doctorID'];
             $_SESSION['redirect'] = "../patient/homePat.php";
             $_SESSION['msgTime'] = null;
+            $_SESSION['isDoctorOrPatient'] = "P";
 
             header("Location: ../patient/homePat.php");
            
