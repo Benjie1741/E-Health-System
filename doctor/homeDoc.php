@@ -133,7 +133,7 @@ $result = $pdo->query($sql);
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form  action="../backend/insertPat.php"  method="post">
-    <div class="container">
+    <div class="container" style="color: white">
       <h1>Patient Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
@@ -186,7 +186,7 @@ $result = $pdo->query($sql);
 
       <?php $date = date("Y/m/d");?>
       <label for="dateOfBirth"><b>Date of Birth</b></label>
-      <input type="date" placeholder="Enter Name" name="dob" required id="dob" max="<?php $date;?>" min="01/01/1900">
+      <input style="color: black" type="date" placeholder="Enter Name" name="dob" required id="dob" max="<?php $date;?>" min="01/01/1900">
 
       <script>
       $(function(){
@@ -217,9 +217,9 @@ $result = $pdo->query($sql);
 <div id="id02" class="modal">
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form  action="../backend/insertDoc.php"  method="post">
-    <div class="container">
+    <div class="container" style="color: white">
       <h1>Doctor Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
+      <p class="formText">Please fill in this form to create an account.</p>
       <hr>
       <label for="firstName"><b>First Name</b></label>
       <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
@@ -239,14 +239,14 @@ $result = $pdo->query($sql);
       <label for="specialty"><b>Specialty</b></label>
       <input type="text" placeholder="Enter Specialty" name="specialty" list="l2" required>
       <datalist id="l2">
-        <option>Pediatrician</option>
-        <option>Gynecologist</option>
-        <option>Surgeon</option>
-        <option>Psychiatrist</option>
-        <option>Cardiologist</option>
-        <option>Dermatologist</option>
-        <option>Oncologist</option>
-        <option>Neurologist</option>
+        <option>Paediatrics</option>
+        <option>Gynecology</option>
+        <option>Surgery</option>
+        <option>psychology</option>
+        <option>Cardiology</option>
+        <option>Dermatology</option>
+        <option>Oncology</option>
+        <option>Neurology</option>
       </datalist>
 
       <label for="clearance"><b>Clearance level</b></label>
@@ -255,8 +255,6 @@ $result = $pdo->query($sql);
         <option>1</option>
         <option>2</option>
         <option>3</option>
-        <option>4</option>
-        <option>5</option>
       </datalist>
 
       <label for="email"><b>Email</b></label>
@@ -266,16 +264,10 @@ $result = $pdo->query($sql);
       <input type="password" placeholder="Enter Password" name="password" required>
 
       <label for="dateOfBirth"><b>Date of Birth</b></label>
-      <input type="date" placeholder="Enter Name" name="dob" required>
+      <input style="color: black;"type="date" placeholder="Enter Name" name="dob" required>
 
       <label for="license"><b>License Revalidation Date</b></label>
-      
-      <?php $date = date("Y/m/d");?>
-      <label for="dateOfBirth"><b>Date of Birth</b></label>
-      <input type="date" placeholder="Enter Name" name="dob" required id="dobDoc" max="<?php $date;?>" min="01/01/1900">
-
-      <label for="license"><b>License Revalidation Date</b></label>
-      <input type="date" placeholder="Enter License Revalidation Date" name="license" id="LRDDoc" max="<?php $date;?>" min="01/01/1900"required>
+      <input style="color: black;" type="date" placeholder="Enter License Revalidation Date" name="license" id="LRDDoc" max="<?php $date;?>" min="01/01/1900"required>
       
       <script>
       $(function(){

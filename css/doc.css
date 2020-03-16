@@ -182,6 +182,10 @@ input[type=password]:focus, input[type=password]:focus {
     clear: both;
     display: table;
   }
+
+  .formText{
+    color: white;
+  }
   
   /* Change styles for cancel button and signup button on extra small screens */
   @media screen and (max-width: 300px) {
