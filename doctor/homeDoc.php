@@ -104,7 +104,7 @@ $result = $pdo->query($sql);
                              </td>";
                       //Delete Patient Button
                       echo "<td>
-                         <form method='GET' name='form' action='../backend/deletePat.php'>
+                         <form method='GET' name='form' action='../backend/deletePatView.php'>
                          <input type='hidden' value='$row->PatientID' name='pid'>
                          <input type='submit' value='Delete' id='btnDel' onClick='selected($row->PatientID)'>
                          </form>
