@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2020 at 06:09 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Mar 16, 2020 at 05:05 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `e-health`
+-- Database: `ehealth`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatmessages`
+--
+
+CREATE TABLE `chatmessages` (
+  `message` varchar(1000) NOT NULL,
+  `date` varchar(100) NOT NULL,
+  `displayName` varchar(100) NOT NULL,
+  `pID` int(100) NOT NULL,
+  `dID` int(100) NOT NULL,
+  `seen` int(11) NOT NULL,
+  `sentBy` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -36,12 +52,19 @@ CREATE TABLE `doctors` (
   `age` tinyint(3) NOT NULL,
   `userAddress` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phoneNumber` bigint(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `licenseRevalidationDate` date NOT NULL,
   `specialty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `clearanceLevel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`DoctorID`, `firstName`, `lastName`, `dateOfBirth`, `age`, `userAddress`, `phoneNumber`, `email`, `userPassword`, `licenseRevalidationDate`, `specialty`, `clearanceLevel`) VALUES
+(1, 'Gustavo', 'Sanchez', '1998-01-02', 22, '26 Leadmill Road', 7845287335, 'g@g.com', '$2y$10$l8lz.HNR4oM3B3gHuEtB4eFzDx2K4Ebu.vHA1I2fUy.7n5ZBj/pVS', '2027-09-09', 'Oncologist', '5');
 
 -- --------------------------------------------------------
 
@@ -73,7 +96,7 @@ CREATE TABLE `patients` (
   `age` int(3) NOT NULL,
   `userAddress` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `phoneNumber` bigint(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bloodType` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `medicalHistory` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -82,17 +105,6 @@ CREATE TABLE `patients` (
   `doctorID` int(11) NOT NULL,
   `prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE `chatmessages` (
-  `message` varchar(1000) NOT NULL,
-  `date` varchar(100) NOT NULL,
-  `displayName` varchar(100) NOT NULL,
-  `pID` int(100) NOT NULL,
-  `dID` int(100) NOT NULL,
-  `seen` int(11) NOT NULL,
-  `sentBy` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 --
 -- Indexes for dumped tables
@@ -103,6 +115,7 @@ CREATE TABLE `chatmessages` (
 --
 ALTER TABLE `doctors`
   ADD PRIMARY KEY (`DoctorID`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `DoctorID` (`DoctorID`);
 
 --
@@ -117,6 +130,7 @@ ALTER TABLE `healthdata`
 --
 ALTER TABLE `patients`
   ADD PRIMARY KEY (`PatientID`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `PatientID` (`PatientID`),
   ADD KEY `DoctorID` (`doctorID`);
 
@@ -128,19 +142,19 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `healthdata`
 --
 ALTER TABLE `healthdata`
-  MODIFY `HealthDataID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `HealthDataID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
