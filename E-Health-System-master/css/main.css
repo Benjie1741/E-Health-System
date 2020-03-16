@@ -1,0 +1,62 @@
+/* main */
+
+#container {
+	max-width: 1366px;
+	margin:auto;
+
+	/* position: relative;
+	text-align: center; */
+}
+
+/** PAGE */
+
+#page {
+	overflow: hidden;
+	display:flex;
+	width: 1100px;
+	margin: 0px 25x;
+	padding: 50px 0px;
+}
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+/* CONTENT */
+
+.content{ 
+	display: flex;
+	box-sizing: border-box;
+}
+
+#content h2 {
+	font-size: 2.10em;
+}
+
+/* Boxes with info */
+
+.box {
+	display:flex;
+	margin: 0px 50px;
+	padding: 50px 0px;
+}
+
+.box .box {
+	width: 320px;
+	margin-right:40px;
+}
+
+.grid {
+	padding: 5px; 
+	width: 25%;
+}
+
+.centered{
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
