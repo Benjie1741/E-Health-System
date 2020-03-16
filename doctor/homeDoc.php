@@ -138,10 +138,10 @@ $result = $pdo->query($sql);
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{3,30}">
+      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
 
       <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{3,30}">
+      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{2,30}">
 
       <label for="age"><b>Age</b></label>
       <input type="number" placeholder="Enter Age" name="age" required min="0">
@@ -222,10 +222,10 @@ $result = $pdo->query($sql);
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{3,30}">
+      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]{2,30}">
 
       <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{3,30}">
+      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]{2,30}">
 
       <label for="age"><b>Age</b></label>
       <input type="number" placeholder="Enter Age" name="age" required min="0">
