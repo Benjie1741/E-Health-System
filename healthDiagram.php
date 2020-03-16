@@ -49,6 +49,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
   <script src="chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -84,11 +85,24 @@
         <!-- PHP for storing the data from the db into an array, only stores the latest 7 values by date -->
         <?php 
         $i = 0;
-				  while($row =$stmt->fetchObject()){
+	    
+	    // ensures its not an empty string.
+	    $twitter = null;
+	    
+	   while($row =$stmt->fetchObject()){
             if ($i < 7 ) {
             $dataPoints[] = $row->$sType;
             $datePoints[] = $row->dateOfExercise;
             $i++;
+	    
+            //concatenates health data into twitter variable.
+            $twitter .= " Value: ";
+            $twitter .= $row->$sType;
+            $twitter .= ", ";
+
+            $twitter .= "Date: ";
+            $twitter .= $row->dateOfExercise;
+		    
             }
           }
         ?>
@@ -113,6 +127,18 @@
 
     <!-- Displaying the graph -->
     <script>
+	    
+      // facebook button.
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    }
+    
+    
     window.onload = function () {
       var graphType =  "<?php echo $cType; ?>";
       loadGraph(graphType);
@@ -147,6 +173,16 @@
 <div ng-view></div>
 
 </div>
+	
+<a href="https://twitter.com/intent/tweet?text=I'm%20using%20the%20eHealth%20App,%20Here's%20my%20<?php echo $sType?>%20for%20this%20week: <?php echo strval($twitter)?>"><i class="fa fa-twitter" style="font-size:36px;color:#00ACEE;padding-left:6%"></i>
+
+<!-- Facebook share button -->
+  <i class="fb-share-button" 
+    data-href="https://google.co.uk" 
+    data-layout="button_count" data-size="large">
+  </i>
+	
+	
 </body>
 
 <footer style="padding-top:3%" class="container-fluid text-center">
