@@ -153,7 +153,7 @@ span.psw {
 
 <div>
 
-  <h2 style="text-align: center;">eHealth Login</h2>
+  <h2 style="text-align: center;">eHealth Login - Arjun Individual</h2>
 
   <button onclick="document.getElementById('id01').style.display='block'" >Patient Login</button>
 
