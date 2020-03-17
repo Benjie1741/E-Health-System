@@ -1,5 +1,5 @@
 <?php
 
-header("Location: ../eHealth/login.php");
+header("Location: ./login.php");
 
 ?>
