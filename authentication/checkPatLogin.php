@@ -14,6 +14,12 @@ require('../includes/conn.inc.php');
         $sql = "SELECT * FROM patients WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $row =$stmt->fetch(pdo::FETCH_ASSOC);
+        if ($row == "") {
+            $message = "Email Not Found";
+            echo "<script type='text/javascript'>alert('$message');
+            location.href = '../patient/changePassword.php';
+            </script>";
+        } else {
         $dbPasswordHash = password_verify($password, $row['userPassword']);
 
         if($dbPasswordHash == true){
@@ -45,6 +51,7 @@ require('../includes/conn.inc.php');
             location.href = '../login.php';
             </script>";
         }
+    }
     }
 }
 else{
