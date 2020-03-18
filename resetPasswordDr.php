@@ -3,15 +3,15 @@ require('./includes/conn.inc.php');
 
 session_start();
 
+//get relevant data 
 $userPassword = $_POST['password'];
 $email = $_SESSION['email'];
 
-print $userPassword;
-print $email;
-
+//hash new password before sending to db
 $hashed_password = password_hash($userPassword, PASSWORD_DEFAULT);
 
 try {
+        //update only password
 	$sql = "UPDATE `doctors` 
 		SET userPassword=:userPassword
                 WHERE email = '". $email . "'";
@@ -20,7 +20,11 @@ try {
 
                 $stmt->bindParam(':userPassword', $hashed_password);
 
-                $stmt->execute();
+                if($stmt->execute()){
+                        echo "<div class='alert alert-success'>Password is updated.</div>";
+                }else{
+                        echo "<div class='alert alert-danger'>Unable to update password.</div>";
+                }
 
 	        header("Location: ./login.php");
 }catch (\Exception $e) {

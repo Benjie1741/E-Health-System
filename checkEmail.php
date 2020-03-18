@@ -57,6 +57,7 @@ try {
                 } 
                 else 
                 {
+                    //if successful redirect to new page for updating new password for dr
                     echo "Message has been sent successfully";
                     echo '<script lanuage="javascript">';
                     echo 'location.replace("./newPasswordDr.php")';
@@ -122,6 +123,7 @@ try {
                 //If it didnt find the same email in db, redirect
                 else
                 {
+                    //if successful redirect to new page for updating new password for pat
                     echo '<script language="javascript">';
                     echo 'alert("Email not found!")';
                     echo '</script>';
