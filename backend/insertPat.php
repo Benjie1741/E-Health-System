@@ -20,13 +20,16 @@ $illness = $_POST['illness'];
 $prescription = $_POST['prescription'];
 $allergies = $_POST['allergies'];
 
+$file = base64_encode(file_get_contents($_FILES["image"]["tmp_name"]));
+
+echo '<script>console.log('.json_encode($file).')</script>';
 
 $hashed_password = password_hash($userPassword, PASSWORD_DEFAULT);
 
 try {
 
-       $sql= "INSERT INTO patients (email, userPassword, doctorID, firstName, lastName, dateOfBirth, age, userAddress, phoneNumber, bloodType, medicalHistory, allergies, prescription, illness)
-       VALUES ('$email', '$hashed_password', '$doctorID', '$firstName', '$lastName', '$dob', '$age', '$userAddress', '$num', '$blood', '$history', '$allergies', '$prescription', '$illness')";
+       $sql= "INSERT INTO patients (email, userPassword, doctorID, firstName, lastName, dateOfBirth, age, userAddress, phoneNumber, bloodType, medicalHistory, allergies, prescription, illness, imageFile)
+       VALUES ('$email', '$hashed_password', '$doctorID', '$firstName', '$lastName', '$dob', '$age', '$userAddress', '$num', '$blood', '$history', '$allergies', '$prescription', '$illness', '$file')";
        $stmt = $pdo -> query($sql);
 	   header("Location: ../doctor/homeDoc.php");
     }catch (\Exception $e) {

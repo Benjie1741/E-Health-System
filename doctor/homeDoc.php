@@ -10,7 +10,7 @@ require('../includes/checkLoggedIn.php');
 ini_set('display_errors', 1);
 
 //to display all the patients
-$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID`, (SELECT COUNT(*) FROM chatmessages c where c.pID = PatientID and c.seen = 0) notification FROM `patients`p";
+$sql =  "SELECT `PatientID`, `age`, `firstName`, `lastName`, `doctorID`, `imageFile`, (SELECT COUNT(*) FROM chatmessages c where c.pID = PatientID and c.seen = 0) notification FROM `patients`p";
 $result = $pdo->query($sql);
 ?>
 
@@ -80,6 +80,7 @@ $result = $pdo->query($sql);
                 <br><br>
             <table id="myTable" class= "table" style=" border: 2px solid black;">
                     <tr>
+                        <td><b>Image</b></td>
                         <td><b>ID</b></td>
                         <td><b>Patient first name</b></td>
                         <td><b>Patient last name</b></td>
@@ -91,7 +92,9 @@ $result = $pdo->query($sql);
             <?php
                while($row = $result->fetchObject()) {
                  if($row->doctorID === $_SESSION['DoctorID']){
+                  $imageFile = $row->imageFile;
                    echo "<tr>";
+                       echo '<td><img style="max-width: 25%; height: auto;" src="data:image/jpeg;base64,'.$imageFile.'"/></td>';
                        echo "<td>$row->PatientID</td>";
                        echo "<td>$row->firstName</td>";
                        echo "<td>$row->lastName</td>";
@@ -132,7 +135,7 @@ $result = $pdo->query($sql);
 <!-- patient sign up -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form  action="../backend/insertPat.php"  method="post">
+  <form  action="../backend/insertPat.php"  method="post" enctype="multipart/form-data">
     <div class="container" style="color: white">
       <h1>Patient Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
@@ -182,12 +185,19 @@ $result = $pdo->query($sql);
       <input style="color: black" type="text" placeholder="Enter Email" name="email" required pattern="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b">
 
       <label for="password"><b>Password</b></label>
-      <input style="color: black" type="password" placeholder="Enter Password" name="password" required>
+      <input style="color: black" type="password" placeholder="Enter Password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})">
 
       <?php $date = date("Y/m/d");?>
       <label for="dateOfBirth"><b>Date of Birth</b></label>
       <input style="color: black" type="date" placeholder="Enter Name" name="dob" required id="dob" max="<?php $date;?>" min="01/01/1900">
 
+      <br/><br/>   
+
+      <label for="image"><b>Upload image of Patient</b></label>
+      <input type="file" name="image" id="image" required>
+
+      <br/><br/>   
+      
       <script>
       $(function(){
           var dtToday = new Date();
@@ -303,6 +313,29 @@ $result = $pdo->query($sql);
           $('#LRDDoc').attr('max', maxDate);
       });
       </script> 
+
+      <script>
+     $(document).ready(function() {
+  $('#insert').click(function(){
+    var image_name = $('image').val();
+    if(image_name == '')
+    {
+      alert("Please Select Image");
+      return false;
+    }
+    else 
+    {
+      var extension = $('#image').val().split('.').pop().toLowerCase();
+      if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1)
+      {
+        alert('Invalid Image File');
+        $('image').val('');
+        return false;
+      }
+    }
+  });
+  });
+      </script>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>

@@ -54,7 +54,7 @@ echo '<script>console.log('. json_encode($patientID). ')</script>';
 </nav>
 
 <div id="id01" class="">
-  <form  action="../backend/editPatientData.php"  method="post">
+  <form  action="../backend/editPatientData.php"  method="post" enctype="multipart/form-data">
     <div class="container" style="color: black">
       <h1>Edit patient health data</h1>
       <p>Please edit this form to update health data</p>
@@ -81,6 +81,13 @@ echo '<script>console.log('. json_encode($patientID). ')</script>';
 
       <label for="prescription"><b>Prescription: </b></label>
       <input style="color: black" type="text" value="<?php print $row->prescription?>" name="prescription" required>
+
+      <br/><br/>   
+
+      <label for="image"><b>Upload image of Patient</b></label>
+      <input type="file" name="image" id="image">
+
+      <br/><br/>   
 
       <script>
       $(function(){

@@ -52,6 +52,7 @@ while($row = $result->fetchObject()) {
 	      <li><a href="./uploadData.php">Upload Health Data</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="../patient/changePassword.php"><span class="glyphicon glyphicon-asterisk"></span> Change Password</a></li>
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
