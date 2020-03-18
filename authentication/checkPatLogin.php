@@ -17,7 +17,7 @@ require('../includes/conn.inc.php');
         if ($row == "") {
             $message = "Email Not Found";
             echo "<script type='text/javascript'>alert('$message');
-            location.href = '../patient/changePassword.php';
+            location.href = '../login.php';
             </script>";
         } else {
         $dbPasswordHash = password_verify($password, $row['userPassword']);
