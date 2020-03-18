@@ -26,7 +26,7 @@
     //Testing create function
     //$test = array("6", "Steve", "Buscemi", "2020-08-23", "56", "Leadmill Point",
     //              "01234567891", "SBuscemi@fake.co.uk", "SB123", "AB", "None", "Coronavirus", 
-    //              "Peanuts", "2", "Paracetamol");
+    //              "Peanuts", "1", "Paracetamol");
     //CreateNewPatient($test)
 
     //Testing getOneFromPatients
@@ -36,7 +36,7 @@
     //Testing update
     //$test = array("6", "Steve", "Buscemi", "2020-08-23", "56", "Flat F, Leadmill Point",
     //              "01234567891", "SBuscemi@fake.co.uk", "SB123", "AB", "None", "Coronavirus AND Denge", 
-    //              "Peanuts", "2", "Paracetamol and antibiotics");
+    //              "Peanuts", "1", "Paracetamol and antibiotics");
     //updateRecordFromPatients($test);
 
     //Testing delete
