@@ -1,3 +1,7 @@
+ <!-- 
+    Description: Displays login page for patient/doctor. This is the default page.
+    Calls: /authentication/checkDocLogin.php - /authentication/checkPatLogin.php
+ -->
  <!DOCTYPE html>
 <html>
 <head>

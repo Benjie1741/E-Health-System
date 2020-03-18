@@ -1,4 +1,8 @@
 <?php 
+//Description: Form used to update Patient details.
+//Called by: selectedPat.php Line 165.
+//Calls: /backend/editPatientData.php.
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 

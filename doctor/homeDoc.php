@@ -1,4 +1,9 @@
 <?php 
+//Description: Home view for the doctor that is displayed once they log in. Here a list of the doctors patients are displayed. Here the doctor can register a new patient or a new doctor.
+//Called by: authentication/checkDocLogin.php - backend/deleteHealthData.php - backend/deletePat.php - backend/editHealthData.php - backend/editPatientData.php - backend/insertDoc.php - backend/insertPat.php
+//           doctor/deleteDataView.php - doctor/deletePatView.php - doctor/editDataForm.php - doctor/editPatientDataForm.php - doctor/selectedPat.php
+//Calls: doctor/selectedPat.php - /deletePatView.php - /backend/insertPat.php - /backend/insertDoc.php 
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 

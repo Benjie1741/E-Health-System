@@ -1,5 +1,8 @@
 <?php 
-// #includes
+//Desciption: Checks to see if you are sure you want to delete a patient record.
+//Called by: homeDoc.php Line 107.
+//Calls: /backend/deletePat.php.
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 

@@ -1,4 +1,8 @@
 <?php 
+//Description: Form to allow the user to manually add Health data.
+//Called by: insertHealthData.php - healthDiagram.php - homePat.php - info.php - uploadData.php
+//Calls: /backend/insertHealthData.php 
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php');

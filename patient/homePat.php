@@ -1,4 +1,9 @@
 <?php 
+//Description: The homepage for the patient.
+//Called by: authentication/checkPatLogin.php - autoData.php - insertHealthData.php - healthDiagram.php - info.php - uploadData.php
+//Calls: backend/autoData.php - healthDiagram.php - chat.php - info.php
+
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php');    

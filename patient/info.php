@@ -1,4 +1,6 @@
 <?php 
+//Description: Info page that tells the user how to operate the program.
+
 require('../includes/conn.inc.php');
 require('../includes/checkLoggedIn.php');    
 ?>
@@ -46,8 +48,8 @@ require('../includes/checkLoggedIn.php');
 </head>
 <!-- Main body -->
 <body>
-    <div id="container" style="text-align:center;">
-        <h1 >Instructions: </h1>
+    <div id="container">
+    <h1 >Instructions: </h1>
         
 
         <p > 

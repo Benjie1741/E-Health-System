@@ -1,4 +1,8 @@
 <?php 
+//Description: Displays a specific patients information and health data. From this page the chat can be accessed with said patient.
+//Called by: homeDoc.php
+//Calls: chat/chat.php - /editDataForm.php - /deleteDataView.php - /editPatientDataForm.php
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 

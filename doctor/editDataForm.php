@@ -1,4 +1,8 @@
 <?php 
+//Description: Form to edit a patients health data record.
+//Called by: selectedPat.php Line 145.
+//Calls: /backend/editHealthData.php.
+
 require('../includes/conn.inc.php');
 require('../includes/functions.inc.php');
 require('../includes/checkLoggedIn.php'); 
