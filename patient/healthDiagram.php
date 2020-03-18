@@ -124,6 +124,7 @@
       loadGraph(graphType);
     }
 
+    // Facebook API
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
@@ -161,6 +162,7 @@
 
 </div>
 
+<!-- Twitter Link -->
 <a href="https://twitter.com/intent/tweet?text=I'm%20using%20the%20eHealth%20App,%20Here's%20my%20<?php echo $sType?>%20for%20this%20week: <?php echo strval($twitter)?>"><i class="fa fa-twitter" style="font-size:36px;color:#00ACEE;padding-left:6%"></i>
 
 <!-- Facebook share button -->
