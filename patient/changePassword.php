@@ -1,11 +1,6 @@
 <?php 
 require('../includes/conn.inc.php');
 require('../includes/checkLoggedIn.php'); 
-
-   echo '<script>';
-   echo 'console.log('. json_encode( $_SESSION ) .')';
-   echo '</script>';
-
 ini_set('display_errors', 1);
 ?>
 
@@ -48,7 +43,7 @@ ini_set('display_errors', 1);
 
 <div id="id01" class="">
   <form  action="../backend/changePassword.php"  method="post">
-    <div class="container" style="color: black">
+    <div class="container">
       <h1>Change your password</h1>
       <p>Please edit this form to update your password</p>
       <hr>

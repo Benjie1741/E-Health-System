@@ -49,7 +49,7 @@ $result = $pdo->query($sql);
 
 <div id="id01" class="">
   <form  action="../backend/insertHealthData.php"  method="post">
-    <div class="container" style="color: black">
+    <div class="container" >
       <h1>Upload data</h1>
       <p>Please fill in this form to upload health data</p>
       <hr>
