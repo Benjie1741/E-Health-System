@@ -177,7 +177,7 @@ span.psw {
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
-        
+      <p><a href="enterEmail.php">Forgot your password?</a></p>
       <button type="submit">Login</button>
     </div>
 
@@ -203,7 +203,7 @@ span.psw {
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
-        
+      <p><a href="enterEmail.php">Forgot your password?</a></p>        
       <button type="submit">Login</button>
     </div>
 
