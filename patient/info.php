@@ -46,11 +46,26 @@ require('../includes/checkLoggedIn.php');
 </head>
 <!-- Main body -->
 <body>
-    <div id="container">
-        <h1 style="text-align:center">Hello <?php echo $_SESSION['username']?></h1>
+    <div id="container" style="text-align:center;">
+        <h1 >Instructions: </h1>
+        
 
-        <p> 
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <p > 
+          To input your own health data, please click on Upload Health Data.
+          <br><br>
+          To display heart rate data, click on the heart icon.
+          <br>
+          To display exercise data, click on the sport shoe icon.
+          <br>
+          To display sleep data, click on the thinking bubble that shows 'Z z' in the image.
+          <br><br>
+          To open the chat, click on the speech boxes with a '?' in the image.
+          <br><br>
+          To go back to the home page, click'Home' on the navigation bar on the top of the page.
+          <br><br>
+        To log out, click on the logout icon on the top right corner.
+        <br>
+
         </p>
 
     </div>
