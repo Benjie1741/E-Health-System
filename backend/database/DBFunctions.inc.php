@@ -51,12 +51,12 @@ function CreateNewHealthData($healthDataArray)
 	$stmt = $pdo->prepare($sql);
 
 	//bind params 
-	$stmt->bindParam(':userID', $healthDataArray);
-	$stmt->bindParam(':hoursOfSleep', $hoursOfSleep);
-	$stmt->bindParam(':hoursOfExercise', $hoursOfExercise);
-	$stmt->bindParam(':heartRate', $heartRate);
-	$stmt->bindParam(':exerciseDone', $exerciseDone);
-	$stmt->bindParam(':dateOfExercise', $dateOfExercise);
+	$stmt->bindParam(':userID', $healthDataArray[0]);
+	$stmt->bindParam(':hoursOfSleep', $hoursOfSleep[1]);
+	$stmt->bindParam(':hoursOfExercise', $hoursOfExercise[2]);
+	$stmt->bindParam(':heartRate', $heartRate[3]);
+	$stmt->bindParam(':exerciseDone', $exerciseDone[4]);
+	$stmt->bindParam(':dateOfExercise', $dateOfExercise[6]);
 
 	//execute sql code
 	if($stmt->execute()){
@@ -77,7 +77,12 @@ function getOneRecordFromTableHealthData($healthDataID)
 
 	//prepare query and run
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>You got one record.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to get one record.</div>";
+	}
 
 	//store retrieved row from db to variable
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -111,7 +116,11 @@ function updateRecordFromHealthData($recordArray)
 	$stmt->bindParam(':exerciseDone', $recordArray[5]);
 	$stmt->bindParam(':dateOfExercise', $recordArray[6]);
 
-	$stmt->execute();
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>You updated one record from the healthData table.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to update record.</div>";
+	}
 }
 
 //Function for deleting records from the healthData table
@@ -124,7 +133,11 @@ function deleteRecordFromHealthData($userID)
 	$sql = "DELETE FROM healthData WHERE healthDataID = $userID";
 	$stmt = $pdo->prepare($sql);
 
-	$stmt->execute();
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>You successfully deleted a record.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to delete record.</div>";
+	}
 }
 
 //Array Format for inputting things into db:
@@ -189,7 +202,12 @@ function getOneRecordFromTablePatients($patientID)
 
 	//prepare query and run
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>Got one record from table.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to get one record.</div>";
+	}
 
 	//store retrieved row from db to variable
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -232,7 +250,11 @@ function updateRecordFromPatients($recordArray)
 	$stmt->bindParam(':doctorID', $recordArray[13]);
 	$stmt->bindParam(':prescription', $recordArray[14]);
 
-	$stmt->execute();
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>Successfuly updated a record.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to update table.</div>";
+	}
 }
 
 //Function for deleting records from the patients table
@@ -245,7 +267,11 @@ function deleteRecordFromPatients($patientID)
 	$sql = "DELETE FROM patients WHERE patientID = $patientID";
 	$stmt = $pdo->prepare($sql);
 
-	$stmt->execute();
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>Deleted one record from table.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to delete record.</div>";
+	}
 }
 
 //Array Format for inputting things into db:
@@ -307,7 +333,12 @@ function getOneRecordFromTableDoctors($doctorID)
 
 	//prepare query and run
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>Selected one record from table.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to get one record.</div>";
+	}
 
 	//store retrieved row from db to variable
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -347,7 +378,11 @@ function updateRecordFromDoctor($recordArray)
 	$stmt->bindParam(':specialty', $recordArray[10]);
 	$stmt->bindParam(':clearanceLevel', $recordArray[11]);
 
-	$stmt->execute();
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>Record successfuly updated.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to update record.</div>";
+	}
 }
 
 //Function for deleting records from the db
@@ -358,7 +393,11 @@ function deleteRecordFromDoctors($doctorID)
 	$sql = "DELETE FROM doctors WHERE doctorID = $doctorID";
 	$stmt = $pdo->prepare($sql);
 
-	$stmt->execute();
+	if($stmt->execute()){
+		echo "<div class='alert alert-success'>Deleted a record from table.</div>";
+	}else{
+		echo "<div class='alert alert-danger'>Unable to delete record.</div>";
+	}
 }
 
 //Universal functions
