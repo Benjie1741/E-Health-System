@@ -31,6 +31,11 @@ require('../includes/conn.inc.php');
             $_SESSION['msgTime'] = null;
             $_SESSION['isDoctorOrPatient'] = "P";
 
+            //Session for individual part
+            $_SESSION['theme'] = $row['theme'];
+            $_SESSION['textSize'] = $row['textSize'];
+            $_SESSION['font'] = $row['font'];
+
             header("Location: ../patient/homePat.php");
            
         }

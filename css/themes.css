@@ -1,0 +1,14 @@
+.Light-Mode{
+    background-color: white;
+    color: black;
+}
+
+.Dark-Mode{
+    background-color: black;
+    color: grey;
+}
+
+.Colour-assist{
+    background-color: orange;
+    color: blue;
+}

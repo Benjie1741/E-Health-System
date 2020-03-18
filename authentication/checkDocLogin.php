@@ -30,6 +30,11 @@ require('../includes/conn.inc.php');
             $_SESSION['redirect'] = "../doctor/homeDoc.php";
             $_SESSION['msgTime'] = null;
             $_SESSION['isDoctorOrPatient'] = "D";
+
+            //Session for individual part
+            $_SESSION['theme'] = null;
+            $_SESSION['textSize'] = null;
+            $_SESSION['font'] = null;
             
             header("Location: ../doctor/homeDoc.php");
            

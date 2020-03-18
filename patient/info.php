@@ -62,3 +62,16 @@ require('../includes/checkLoggedIn.php');
 </footer>
 </body>
 </html>
+
+<script>
+  window.onload = function(){
+    var t = "<?php echo $_SESSION['theme']; ?>";
+    var f = "<?php echo $_SESSION['font']; ?>";
+    var s = "<?php echo $_SESSION['textSize']; ?>";
+
+    console.log(t + f + s);
+    document.body.classList.toggle(t);
+    document.body.style.fontFamily = f;
+    document.body.style.fontSize = s;
+  }
+</script>

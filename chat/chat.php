@@ -62,7 +62,7 @@ ini_set('display_errors', 1);
 </div>
 
 <script>
-loadChat();
+  loadChat();
     // Calls chat fucntion every second
     setInterval(function(){ loadChat(); }, 1000);
 
@@ -97,6 +97,23 @@ loadChat();
       });  
         return false;
     });
+
+    window.onload = function(){
+    var docOrPat = "<?php echo $_SESSION['isDoctorOrPatient']; ?>";
+    console.log(docOrPat);
+
+    if(docOrPat != "D"){
+    var t = "<?php echo $_SESSION['theme']; ?>";
+    var f = "<?php echo $_SESSION['font']; ?>";
+    var s = "<?php echo $_SESSION['textSize']; ?>";
+
+
+    document.body.classList.toggle(t);
+    document.body.style.fontFamily = f;
+    document.body.style.fontSize = s;
+    }
+
+  }
 
 </script>
 

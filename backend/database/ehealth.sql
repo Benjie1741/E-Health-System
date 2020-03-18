@@ -103,7 +103,10 @@ CREATE TABLE `patients` (
   `illness` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `allergies` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `doctorID` int(11) NOT NULL,
-  `prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `prescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `textSize` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `font` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

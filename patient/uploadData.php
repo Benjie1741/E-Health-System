@@ -37,7 +37,7 @@ $result = $pdo->query($sql);
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
         <li><a href="./homePat.php">Home</a></li>
-	      <li><a href="./uploadData.php">Upload Health Data</a></li>
+	      <li class="active"><a href="./uploadData.php">Upload Health Data</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -93,10 +93,21 @@ $result = $pdo->query($sql);
   </form>
 </div>
 <script>
-function leave()
-{
+  //Function for themes
+  window.onload = function(){
+    var t = "<?php echo $_SESSION['theme']; ?>";
+    var f = "<?php echo $_SESSION['font']; ?>";
+    var s = "<?php echo $_SESSION['textSize']; ?>";
+
+    console.log(t + f + s);
+    document.body.classList.toggle(t);
+    document.body.style.fontFamily = f;
+    document.body.style.fontSize = s;
+  }
+
+  function leave(){
    window.location.href = "./homePat.php";
-}
+  }
 </script>
 <footer class="container-fluid text-center">
     <p>Created by: Gustavo Sanchez, Arjun Grewal, Kenneth Alegria, Luke Midgley and Gregg Smith</p>
