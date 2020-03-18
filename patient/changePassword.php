@@ -16,6 +16,7 @@ ini_set('display_errors', 1);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/themes.css">
   <link rel="stylesheet" href="../css/form.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -85,3 +86,16 @@ function leave()
 
 </body>
 </html>
+
+<script>
+  window.onload = function(){
+    var t = "<?php echo $_SESSION['theme']; ?>";
+    var f = "<?php echo $_SESSION['font']; ?>";
+    var s = "<?php echo $_SESSION['textSize']; ?>";
+
+    console.log(t + f + s);
+    document.body.classList.toggle(t);
+    document.body.style.fontFamily = f;
+    document.body.style.fontSize = s;
+  }
+</script>
