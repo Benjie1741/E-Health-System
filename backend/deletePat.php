@@ -1,4 +1,7 @@
 <?php
+//Description: Deletes a specific patient and all there health data from the system.
+//Called by: deletePatView.php Line 73.
+
 require('../includes/conn.inc.php');
 session_start();
 

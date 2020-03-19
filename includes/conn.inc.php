@@ -1,4 +1,5 @@
 <?php
+//Connection to the database
 $dsn = 'mysql:host=localhost;dbname=ehealth';
 $user = 'root';
 $password = '';

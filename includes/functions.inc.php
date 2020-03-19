@@ -1,4 +1,5 @@
 <?php
+//Functions for cleaning inputs
 function safeInt($int){
 	return filter_var($int, FILTER_VALIDATE_INT);
 }

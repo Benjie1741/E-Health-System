@@ -1,4 +1,7 @@
 <?php
+//Description: Deletes specific health data for a patient.
+//Called by: deleteDataView.php Line 52.
+
 require('../includes/conn.inc.php');
 session_start();
 

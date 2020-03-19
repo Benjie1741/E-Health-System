@@ -3,10 +3,6 @@
   require('../includes/functions.inc.php');
   require('../includes/checkLoggedIn.php'); 
 
-  echo '<script>';
-  echo 'console.log('. json_encode( $_SESSION ) .')';
-  echo '</script>';
-
   //Sets the health parameter, the user id, and the type of graph
   $sType = safeString($_GET['type']);
   $user_id = $_SESSION["patientId"];

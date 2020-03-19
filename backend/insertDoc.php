@@ -1,4 +1,7 @@
 <?php
+//Description: Creates a new Doctor.
+//Called by: homeDoc.php Line 219.
+
 include('../includes/conn.inc.php');
 
 $email = $_POST['email'];

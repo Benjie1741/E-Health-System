@@ -42,7 +42,7 @@ require('../includes/conn.inc.php');
             $_SESSION['textSize'] = $row['textSize'];
             $_SESSION['font'] = $row['font'];
 
-            header("Location: '../login.php");
+            header("Location: ../login.php");
            
         }
         else{

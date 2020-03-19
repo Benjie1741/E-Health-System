@@ -1,4 +1,7 @@
 <?php
+//Description: Edit a patients details.
+//Called by: editPatientDataForm.php Line 57.
+
 require('../includes/conn.inc.php');
 
 $address = $_POST['address'];

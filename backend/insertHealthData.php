@@ -1,4 +1,7 @@
 <?php
+//Description: Creates new health data for a patient.
+//Called by: uploadData.php Line 50.
+
 require('../includes/conn.inc.php');
 session_start();
 

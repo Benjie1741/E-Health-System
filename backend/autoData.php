@@ -1,4 +1,6 @@
 <?php 
+//Description: Takes patient data from the "sensor" and uploads it to the database
+//Called by: homePat.php Line 119.
 include('includes/conn.inc.php');
 require('includes/functions.inc.php');
 session_start();

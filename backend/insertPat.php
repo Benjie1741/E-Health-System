@@ -1,4 +1,7 @@
 <?php
+//Description: Creates a new Patient.
+//Called by: homeDoc.php Line 135.
+
 include('../includes/conn.inc.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
